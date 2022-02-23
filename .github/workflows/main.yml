@@ -65,7 +65,14 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          projectPath: uOttawa-Live-Tour/uOttawa_Live_Tour
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results
+          path: artifacts
 
       # Build
       - name: Build project
