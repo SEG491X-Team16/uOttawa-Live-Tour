@@ -82,7 +82,14 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: WebGL
+          projectPath: uOttawa-Live-Tour/uOttawa_Live_Tour
+          targetPlatform: Android
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
+
 
       # Output
       - uses: actions/upload-artifact@v2
