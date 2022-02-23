@@ -65,7 +65,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: uOttawa-Live-Tour/uOttawa_Live_Tour
+          projectPath: uOttawa_Live_Tour
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: actions/upload-artifact@v2
@@ -82,7 +82,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          projectPath: uOttawa-Live-Tour/uOttawa_Live_Tour
+          projectPath: uOttawa_Live_Tour
           targetPlatform: Android
 
       - uses: actions/upload-artifact@v2
