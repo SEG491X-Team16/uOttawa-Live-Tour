@@ -1,9 +1,14 @@
 name: Actions
 
-on: [push, pull_request]
+on: push #[push, pull_request]
 
 # Allows you to run this workflow manually from the Actions tab
 #workflow_dispatch:
+
+# cancel any jobs that are already in progress
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
