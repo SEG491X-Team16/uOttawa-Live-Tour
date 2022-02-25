@@ -1,6 +1,6 @@
 # uOttawa Live Tour
 
-![tests status](https://github.com/SEG491X-Team16/uOttawa-Live-Tour/actions/workflows/main.yml/badge.svg)
+![tests status](https://github.com/SEG491X-Team16/uOttawa-Live-Tour/actions/workflows/main.yml/badge.svg?branch=main)
 
 uOttawa Live Tour* is a navigation app that helps students, faculty, and visitors explore the University of Ottawa campus by taking them on an AR guided tour. The app uses camera and location data to identify buildings, provide turn-by-turn directions, as well as highlight points of interest and fun facts. It will be usable in both French and English. 
 
