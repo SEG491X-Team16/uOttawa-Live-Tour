@@ -21,7 +21,7 @@ public class GPSConsumer : MonoBehaviour
     {
         if (GPSSingleton.Instance.isDataValid())
         {
-            locationUpdate.text =  i + ":" + GPSSingleton.Instance.getLastUpdate() + " : "+ GPSSingleton.Instance.getLatitude() + " : " + GPSSingleton.Instance.getLongitude();
+            locationUpdate.text =  i + ":" + GPSSingleton.Instance.getLastUpdate() + " : "+ GPSSingleton.Instance.getCurrentCoordinates().Latitude + " : " + GPSSingleton.Instance.getCurrentCoordinates().Longitude;
             i++;
         }
     }

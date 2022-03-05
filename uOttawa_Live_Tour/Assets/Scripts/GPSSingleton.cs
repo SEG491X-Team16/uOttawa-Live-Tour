@@ -11,12 +11,23 @@ using TMPro;
 * Adapted from code at: https://nosuchstudio.medium.com/how-to-access-gps-location-in-unity-521f1371a7e3
 */
 
+//This struct is used to hold latitude and longitude for coordinates
+public struct GPSCoords
+{
+    public GPSCoords(double lat, double lon) {
+        Latitude = lat;
+        Longitude = lon;
+    }
+
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+}
+
 public class GPSSingleton : MonoBehaviour
 {
 
     //The latitude and Longitude in Decimal Degrees
-    private double latitude = 0.0;
-    private double longitude =  0.0;
+    private GPSCoords coordinates = new GPSCoords(0, 0);
 
     //The timestamp of the last location update
     private double lastUpdate = -1.0;
@@ -106,8 +117,7 @@ public class GPSSingleton : MonoBehaviour
 
         //update values until we become dissconnected
         while (UnityEngine.Input.location.status == LocationServiceStatus.Running) {
-            this.latitude = UnityEngine.Input.location.lastData.latitude;
-            this.longitude = UnityEngine.Input.location.lastData.longitude;
+            this.coordinates = new GPSCoords(UnityEngine.Input.location.lastData.latitude, UnityEngine.Input.location.lastData.longitude);
             this.lastUpdate = UnityEngine.Input.location.lastData.timestamp;
 
             Debug.Log("Location: " 
@@ -134,16 +144,10 @@ public class GPSSingleton : MonoBehaviour
         return this.lastUpdate;
     }
 
-    //returns the latitude in decimal degrees
-    public double getLatitude()
+    //returns the most recent latitude and longitude
+    public GPSCoords getCurrentCoordinates()
     {
-        return this.latitude;
-    }
-
-    //returns the longitude in decimal degrees
-    public double getLongitude()
-    {
-        return this.longitude;
+        return this.coordinates;
     }
 
     // Start is called before the first frame update
