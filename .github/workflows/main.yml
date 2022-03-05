@@ -18,7 +18,10 @@ jobs:
         matrix:
             targetPlatform:
                 - Android
-                - iOS
+                #Disable until we can actually test on iOS
+                #rn we get errors we can't debug
+                #- iOS
+
     steps:
       # Checkout
       - name: Checkout repository
