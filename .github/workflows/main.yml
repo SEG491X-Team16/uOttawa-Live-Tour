@@ -19,6 +19,7 @@ jobs:
             targetPlatform:
                 - Android
                 - iOS
+
     steps:
       # Checkout
       - name: Checkout repository

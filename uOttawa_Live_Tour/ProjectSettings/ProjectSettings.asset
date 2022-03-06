@@ -135,7 +135,9 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -4884861691810931230, guid: f0acb88e2f666d443af3a28ca9046127, type: 2}
+  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -154,6 +156,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.SEG491XTeam16.uOttawaLiveTour
+    iPhone: com.SEG491XTeam16.uOttawaLiveTour
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -444,8 +447,9 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
-  locationUsageDescription: 
+  cameraUsageDescription: We use the camera to analyze buildings.
+  locationUsageDescription: We use location to provide navigation and place markers
+    correctly.
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
   switchNMETAOverride: 
