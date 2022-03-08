@@ -29,6 +29,9 @@ public class GPSSingleton : MonoBehaviour
     //The latitude and Longitude in Decimal Degrees
     private GPSCoords coordinates = new GPSCoords(0, 0);
 
+    //The first recorded GPS point for the user
+    private GPSCoords userOrigin = new GPSCoords(0, 0);
+
     //The timestamp of the last location update
     private double lastUpdate = -1.0;
 
@@ -113,6 +116,9 @@ public class GPSSingleton : MonoBehaviour
                 + UnityEngine.Input.location.lastData.altitude + " " 
                 + UnityEngine.Input.location.lastData.horizontalAccuracy + " " 
                 + UnityEngine.Input.location.lastData.timestamp);
+
+            //record the user's original position
+            this.userOrigin = new GPSCoords(UnityEngine.Input.location.lastData.latitude, UnityEngine.Input.location.lastData.longitude);
         }
 
         //update values until we become dissconnected
@@ -144,10 +150,21 @@ public class GPSSingleton : MonoBehaviour
         return this.lastUpdate;
     }
 
-    //returns the most recent latitude and longitude
+    /*Returns the most recent latitude and longitude. Returns 0, 0 as the coordinates
+      if no data has been read yet.
+    */
     public GPSCoords getCurrentCoordinates()
     {
         return this.coordinates;
+    }
+
+    /*Returns the first recorded GPS coordinates for the user, this cooresponds 
+      to (0, 0) in the unity world. Returns 0, 0 as the coordinates if no data has 
+      been read yet.
+    */
+    public GPSCoords getUserOrigin()
+    {
+        return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }
 
     // Start is called before the first frame update
