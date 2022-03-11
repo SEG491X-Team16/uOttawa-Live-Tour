@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 using TMPro;
+using System;
 
 /**
 * This class is created once per scene and it provides the location to all assets/scripts that require it.
@@ -21,6 +22,26 @@ public struct GPSCoords
 
     public double Latitude { get; set; }
     public double Longitude { get; set; }
+
+    //returns distance from other in metres
+    //based on code from: https://www.movable-type.co.uk/scripts/latlong.html
+    public double GetDistance(GPSCoords other) {
+        const int R = 6371000; //earth's mean radius in metres
+
+        double radianLat1 = this.Latitude * (Math.PI /180);
+        double radianLat2 = other.Latitude * (Math.PI /180);
+
+        double radianDeltaLat = (other.Latitude - this.Latitude) * (Math.PI /180);
+        double radianDeltaLon = (other.Longitude - this.Longitude) * (Math.PI /180);
+
+        double a = Math.Sin(radianDeltaLat / 2) * Math.Sin(radianDeltaLat / 2) +
+                    Math.Cos(radianLat1) * Math.Cos(radianLat2) * 
+                    Math.Sin(radianDeltaLon) * Math.Sin(radianDeltaLon);
+
+        double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+        return (R * c);
+    }
 }
 
 public class GPSSingleton : MonoBehaviour
@@ -139,13 +160,13 @@ public class GPSSingleton : MonoBehaviour
     }
 
     //returns true if the singleton has valid GPS coordinates
-    public bool isDataValid()
+    public bool IsDataValid()
     {
         return this.lastUpdate != -1;
     }
 
     //returns the timestamp of the last coordinates update
-    public double getLastUpdate()
+    public double GetLastUpdate()
     {
         return this.lastUpdate;
     }
@@ -153,7 +174,7 @@ public class GPSSingleton : MonoBehaviour
     /*Returns the most recent latitude and longitude. Returns 0, 0 as the coordinates
       if no data has been read yet.
     */
-    public GPSCoords getCurrentCoordinates()
+    public GPSCoords GetCurrentCoordinates()
     {
         return this.coordinates;
     }
@@ -162,7 +183,7 @@ public class GPSSingleton : MonoBehaviour
       to (0, 0) in the unity world. Returns 0, 0 as the coordinates if no data has 
       been read yet.
     */
-    public GPSCoords getUserOrigin()
+    public GPSCoords GetUserOrigin()
     {
         return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }

@@ -16,18 +16,18 @@ public class Path
 
     private int _currentSegmentIndex = 0;
 
-    public PathSegment getCurrentSegment() {
+    public PathSegment GetCurrentSegment() {
         return (this._segments.Length == 0) ? (null) : (this._segments[_currentSegmentIndex]);
     }
 
-    public bool hasNextSegment() {
+    public bool HasNextSegment() {
         return this._currentSegmentIndex < (this._segments.Length - 1);
     }
 
-    public PathSegment getNextSegment() {
-        if (hasNextSegment()) {
+    public PathSegment GetNextSegment() {
+        if (HasNextSegment()) {
             this._currentSegmentIndex++;
         }
-        return getCurrentSegment();
+        return GetCurrentSegment();
     }
 }
