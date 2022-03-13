@@ -27,7 +27,6 @@ public class MoveMarker : MonoBehaviour
     private double centerLon = -75.682059d;
     private double centerLat = 45.422425d;
 
-    public bool rotate;
     public bool followPlayer;
     public float yOffset;
 
@@ -55,11 +54,6 @@ public class MoveMarker : MonoBehaviour
 
         //apply position
         transform.localPosition = new Vector3(x, 1.5f + yOffset, z);
-
-        //slowly rotates location marker
-        if (rotate){
-            transform.Rotate(Vector3.up * 25f* Time.deltaTime);
-        }
 
         //will add onto this later to account for the person location marker so it can rotate with your magnetic direction
 

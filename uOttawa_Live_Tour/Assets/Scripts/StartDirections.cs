@@ -6,7 +6,7 @@ using TMPro;
 
 public class StartDirections : MonoBehaviour
 {
-
+    //gameObjects in scene used in script
     [SerializeField] GameObject playerMarker;
     [SerializeField] GameObject tourStartPinMarker;
     [SerializeField] GameObject notOnCampusError;
@@ -14,53 +14,63 @@ public class StartDirections : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] TextMeshProUGUI locationText;
 
-    private const double radius = 6371000d;
+    private const double radius = 6371000d; //radius of earth
+
+    //lat & lon bounds for campus
     private double latMax = 45.425846d;
     private double lonMax = -75.675846d;
     private double latMin = 45.418926d;
     private double lonMin = -75.688351d;
+
     private double playerLat;
     private double playerLon;
     
     private double startLat = 45.42466d;
     private double startLon = -75.68608d;
-    private double minDistance = 3d;
+    private float minDistance = 5f;
     float distance;
     
+    //used so distance is updated 1 time/sec
     private int interval = 1; 
     private int nextTime = 0;
     
     bool onCampus = false;
-    bool zoomedIn = false;
+
+    //used for scaling markers and camera size
     float minOrthographicSize = 1f;
     float maxOrthographicSize = 5f;
+    float minScale = 0.0625f;
+    float maxScale = 0.125f;
     public float smoothTime = 0.1F;
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 velocityCam = Vector3.zero;
+    private Vector3 velocityPlayerScale = Vector3.zero;
+    private Vector3 velocityStartScale = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //get GPS data
         if (GPSSingleton.Instance.isDataValid()) {
             playerLat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
             playerLon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
         } else{
+            //placeholder values when not enabled
             playerLat = playerMarker.GetComponent<MoveMarker>().lat;
             playerLon = playerMarker.GetComponent<MoveMarker>().lon;
         }
 
+        //get tour starting position lat/lon
+        startLat = tourStartPinMarker.GetComponent<MoveMarker>().lat;
+        startLon = tourStartPinMarker.GetComponent<MoveMarker>().lon;
+
         onCampus = isOnCampus();
 
         if(!onCampus){
-            //not on campus error
+            //display not on campus error
             notOnCampusError.SetActive(true);
             map.SetActive(false);
             locationText.SetText("");
-        } else{
-            //distance = CalculateDistace(playerLat, playerLon, startLat, startLon);
-            //MoveCamera(false);
-            //ZoomCamera(false);
-        }    
+        } 
     }
 
     // Update is called once per frame
@@ -73,27 +83,30 @@ public class StartDirections : MonoBehaviour
 
             onCampus = isOnCampus();
             if(!onCampus){
+                //display not on campus error
                 notOnCampusError.SetActive(true);
                 map.SetActive(false);
                 locationText.SetText("");
-                //not on campus error
+
             } else {
                 notOnCampusError.SetActive(false);
                 map.SetActive(true);
 
                 distance = CalculateDistace(playerLat, playerLon, startLat, startLon);
-
-                locationText.SetText("" + playerLat + ", "+ playerLon + " Distance: " + distance);
+                locationText.SetText(" Distance to Start: " + Mathf.Round(distance) + "m");
 
                 if(distance <= minDistance){
                     //display success, move to next scene
                 }
             }  
         }
+        
         MoveCamera(true);
         ZoomCamera(true);
+        ScaleMarkers(true);
     }
 
+    //checks if player is within bounds
     bool isOnCampus(){
         return (playerLat <= latMax && playerLat >= latMin) && (playerLon <= lonMax && playerLon >= lonMin);
     }
@@ -117,14 +130,20 @@ public class StartDirections : MonoBehaviour
         return distance;
     }
 
+    //zooms camera based on position relative to tour starting position
     void ZoomCamera(bool easeTransition){
+        //create bounds
         Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+
+        //add both markers' positions to bounds
         bounds.Encapsulate(tourStartPinMarker.transform.position);
         bounds.Encapsulate(playerMarker.transform.position);
-        float boundingDistance = bounds.size.x;
-        //Debug.Log(boundingDistance + ", " + distance/700);
+
+        //get distance between points
+        float boundingDistance = Mathf.Sqrt(bounds.size.x*bounds.size.x + bounds.size.y*bounds.size.y);
 
         float zoom = Mathf.Lerp(minOrthographicSize, maxOrthographicSize, distance/700);
+
         if (easeTransition){
             camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, zoom, Time.deltaTime);
         }else{
@@ -132,14 +151,25 @@ public class StartDirections : MonoBehaviour
         }
     }
 
+    //moves camera to center of player and tour starting position
     void MoveCamera(bool easeTransition){
         Vector3 midpoint = (tourStartPinMarker.transform.position + playerMarker.transform.position)/2;
-        midpoint.y += 10f;
+        midpoint.y = Mathf.Max(tourStartPinMarker.transform.position.y, playerMarker.transform.position.y) + 1f;
+
         if (easeTransition){
-            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, midpoint, ref velocity, smoothTime);
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, midpoint, ref velocityCam, smoothTime);
         } else{
             camera.transform.position = midpoint;
         }
+    }
+
+    //scales markers' size based on position relative to eachother
+    void ScaleMarkers(bool easeTransition){
+
+        float scale = Mathf.Lerp(minScale, maxScale, distance/200);
+        Vector3 scaleVector = new Vector3(scale,scale,scale);
+        playerMarker.transform.localScale = Vector3.SmoothDamp(playerMarker.transform.localScale, scaleVector, ref velocityPlayerScale, smoothTime);
+        tourStartPinMarker.transform.localScale = Vector3.SmoothDamp(tourStartPinMarker.transform.localScale, scaleVector, ref velocityStartScale, smoothTime);
     }
 
     void GetLocation(){
