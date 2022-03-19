@@ -131,6 +131,10 @@ namespace Google.XR.ARCoreExtensions
         private bool _isReturning;
 
         /// <summary>
+        /// Cached Cloud Anchor history data used.
+        /// </summary>
+        private CloudAnchorHistoryCollection _history = new CloudAnchorHistoryCollection();
+        /// <summary>
         /// The history data that represents the current hosted Cloud Anchor.
         /// </summary>
         private CloudAnchorHistory _hostedCloudAnchor;
@@ -169,6 +173,11 @@ namespace Google.XR.ARCoreExtensions
 
             InstructionBar.SetActive(true);
 
+            // Manually pre-load cloud anchor in resolving set
+            Controller.LoadCloudAnchorHistory();
+            _history = Controller.getCloudAnchorHistory();
+            Controller.ResolvingSet.Add(_history.Collection[0].Id);
+
             switch (Controller.Mode)
             {
                 case PersistentCloudAnchorsController.ApplicationMode.Ready:
@@ -179,6 +188,8 @@ namespace Google.XR.ARCoreExtensions
                     DebugText.text = "ARCore is preparing for " + Controller.Mode;
                     break;
             }
+
+
         }
 
 
@@ -265,6 +276,9 @@ namespace Google.XR.ARCoreExtensions
             {
                 return;
             }
+
+            // Manually pre-load cloud anchor in resolving set
+            Controller.ResolvingSet.Add(_history.Collection[0].Id);
 
             Debug.LogFormat("Attempting to resolve {0} Cloud Anchor(s): {1}",
                 Controller.ResolvingSet.Count,

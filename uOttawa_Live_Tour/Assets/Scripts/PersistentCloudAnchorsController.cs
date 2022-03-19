@@ -23,6 +23,7 @@ namespace Google.XR.ARCoreExtensions
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using UnityEngine;
     using UnityEngine.XR.ARFoundation;
 
@@ -85,6 +86,13 @@ namespace Google.XR.ARCoreExtensions
         public HashSet<string> ResolvingSet = new HashSet<string>();
 
         /// <summary>
+        /// The collection of cloud anchors saved in memory
+        /// at least one time.
+        /// </summary>
+        private CloudAnchorHistoryCollection _history = new CloudAnchorHistoryCollection();
+
+
+        /// <summary>
         /// The key name used in PlayerPrefs which indicates whether the start info has displayed
         /// at least one time.
         /// </summary>
@@ -143,10 +151,33 @@ namespace Google.XR.ARCoreExtensions
         public void SwitchToARView()
         {
             ResetAllViews();
-            HomePage.SetActive(true);
             ARView.SetActive(true);
             SetPlatformActive(true);
         }
+
+        /// <summary>
+        /// Retrieve persistent Cloud Anchors history data from memory
+        /// </summary>
+        /// <returns>A collection of persistent Cloud Anchors history data.</returns>
+        public CloudAnchorHistoryCollection getCloudAnchorHistory()
+        {
+            return _history;
+        }
+
+        /// <summary>
+        /// Load the persistent Cloud Anchors history from the database into memory
+        /// </summary>
+        public void LoadCloudAnchorHistory()
+        {
+            // Manually set _history since database isn't yet integrated in project
+            // (Set to Id property to that of a cloud anchor hosted in the past 24h )
+            var anchorJson = "{\"Id\":\"ua-b08c5ba41df5001f6a272bc53dac73ea\",\"Name\":\"NotRelevantNorIsTime\",\"SerializedTime\":\"2022-03-16 2:13:33 PM\"}";
+            var data = JsonUtility.FromJson<CloudAnchorHistory>(anchorJson);
+            _history.Collection.Add(data);
+                
+            return;
+        }
+
 
         /// <summary>
         /// The Unity Awake() method.     
@@ -163,7 +194,10 @@ namespace Google.XR.ARCoreExtensions
             // Enable Persistent Cloud Anchors scene to target 60fps camera capture frame rate
             // on supported devices.
             // Note, Application.targetFrameRate is ignored when QualitySettings.vSyncCount != 0.
-            Application.targetFrameRate = 60;        
+            Application.targetFrameRate = 60;
+            SwitchToHomePage();
+
+            Debug.Log("Hello World");
         }
 
         /// <summary>
