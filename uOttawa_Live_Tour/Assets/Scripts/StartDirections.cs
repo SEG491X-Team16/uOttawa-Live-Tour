@@ -17,16 +17,16 @@ public class StartDirections : MonoBehaviour
     private const double radius = 6371000d; //radius of earth
 
     //lat & lon bounds for campus
-    private double latMax = 45.425846d;
-    private double lonMax = -75.675846d;
-    private double latMin = 45.418926d;
-    private double lonMin = -75.688351d;
+    public double latMax = 45.425846d;
+    public double lonMax = -75.675846d;
+    public double latMin = 45.418926d;
+    public double lonMin = -75.688351d;
 
     private double playerLat;
     private double playerLon;
     
-    private double startLat = 45.42466d;
-    private double startLon = -75.68608d;
+    public double startLat = 45.42466d;
+    public double startLon = -75.68608d;
     private float minDistance = 5f;
     float distance;
     
@@ -63,7 +63,7 @@ public class StartDirections : MonoBehaviour
         startLat = tourStartPinMarker.GetComponent<MoveMarker>().lat;
         startLon = tourStartPinMarker.GetComponent<MoveMarker>().lon;
 
-        onCampus = isOnCampus();
+        onCampus = IsOnCampus(playerLat, playerLon);
 
         if(!onCampus){
             //display not on campus error
@@ -81,7 +81,7 @@ public class StartDirections : MonoBehaviour
         if (Time.time >= nextTime) {
             nextTime += interval; //only check once a second
 
-            onCampus = isOnCampus();
+            onCampus = IsOnCampus(playerLat, playerLon);
             if(!onCampus){
                 //display not on campus error
                 notOnCampusError.SetActive(true);
@@ -92,7 +92,7 @@ public class StartDirections : MonoBehaviour
                 notOnCampusError.SetActive(false);
                 map.SetActive(true);
 
-                distance = CalculateDistace(playerLat, playerLon, startLat, startLon);
+                distance = CalculateDistance(playerLat, playerLon, startLat, startLon);
                 locationText.SetText(" Distance to Start: " + Mathf.Round(distance) + "m");
 
                 if(distance <= minDistance){
@@ -107,14 +107,14 @@ public class StartDirections : MonoBehaviour
     }
 
     //checks if player is within bounds
-    bool isOnCampus(){
+    public bool IsOnCampus(double playerLat, double playerLon){
         return (playerLat <= latMax && playerLat >= latMin) && (playerLon <= lonMax && playerLon >= lonMin);
     }
 
 
     //Method uses the Haversine formula to calculate the distance between the two GPS points
     //formula for calclating distance can be found at http://www.movable-type.co.uk/scripts/latlong.html
-    float CalculateDistace(double lat1, double lon1, double lat2, double lon2){
+    public float CalculateDistance(double lat1, double lon1, double lat2, double lon2){
         double radians = Mathf.PI/180;
 
         int r = 6371000;
