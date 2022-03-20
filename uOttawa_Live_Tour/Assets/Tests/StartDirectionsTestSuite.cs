@@ -32,8 +32,8 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuiteCameraMovesToMidpoint()
     {
-        Button button2 = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
-        button2.onClick.Invoke(); 
+        Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
+        button.onClick.Invoke(); 
 
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
@@ -86,6 +86,9 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuitePlayerWithinStartingRange()
     {
+        Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
+        button.onClick.Invoke(); 
+
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
         GameObject player = getChildGameObjectByName(map, "personMarker");
@@ -108,6 +111,9 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuiteStartingPointSet()
     {
+        Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
+        button.onClick.Invoke(); 
+        
         StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
