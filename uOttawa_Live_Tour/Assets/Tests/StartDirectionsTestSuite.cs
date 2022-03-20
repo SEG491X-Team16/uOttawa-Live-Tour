@@ -32,12 +32,15 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuiteCameraMovesToMidpoint()
     {
+        Button button2 = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
+        button2.onClick.Invoke(); 
 
-        Button button = scene.transform.GetChild(4).GetChild(0).GetChild(0).gameObject.GetComponent<Button>();
-        button.onClick.Invoke(); 
-        GameObject start = scene.transform.GetChild(5).GetChild(67).gameObject;
-        GameObject player = scene.transform.GetChild(5).GetChild(68).gameObject;
-        GameObject camera = scene.transform.GetChild(0).gameObject;
+        GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
+        GameObject start = getChildGameObjectByName(map, "pinMarker");
+        GameObject player = getChildGameObjectByName(map, "personMarker");
+
+        GameObject camera = getChildGameObjectByName(scene, "Main Camera");
+
 
         yield return new WaitForSecondsRealtime(2);
 
@@ -48,7 +51,7 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuitePlayerOutOfBounds()
     {
-        StartDirections startScript = scene.transform.GetChild(6).gameObject.GetComponent<StartDirections>();
+        StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
     
         double offset = 0.000001d;
         double latMax = startScript.latMax;
@@ -67,8 +70,8 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuitePlayerWithinBounds()
     {
-        StartDirections startScript = scene.transform.GetChild(6).gameObject.GetComponent<StartDirections>();
-
+        StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
+    
         double latMax = startScript.latMax;
         double lonMax = startScript.lonMax;
         double latMin = startScript.latMin;
@@ -83,9 +86,10 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuitePlayerWithinStartingRange()
     {
-        GameObject start = scene.transform.GetChild(5).GetChild(67).gameObject;
-        GameObject player = scene.transform.GetChild(5).GetChild(68).gameObject;
-        StartDirections startScript = scene.transform.GetChild(6).gameObject.GetComponent<StartDirections>();
+        GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
+        GameObject start = getChildGameObjectByName(map, "pinMarker");
+        GameObject player = getChildGameObjectByName(map, "personMarker");
+        StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
       
         double startLat = startScript.startLat;
         double startLon = startScript.startLon;
@@ -104,13 +108,28 @@ public class StartDirectionsTestSuite
     [UnityTest]
     public IEnumerator StartDirectionsTestSuiteStartingPointSet()
     {
-        StartDirections startScript = scene.transform.GetChild(6).gameObject.GetComponent<StartDirections>();
-        GameObject start = scene.transform.GetChild(5).GetChild(67).gameObject;
+        StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
+        GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
+        GameObject start = getChildGameObjectByName(map, "pinMarker");
         MoveMarker moveMarkerStart = start.GetComponent<MoveMarker>();
 
         yield return null;
         Assert.IsTrue(startScript.startLon == moveMarkerStart.lon);
         Assert.IsTrue(startScript.startLat == moveMarkerStart.lat);
 
+        
+
     }
+
+
+    public GameObject getChildGameObjectByName(GameObject parent, string name) {
+        for (int i = 0; i < parent.transform.childCount; i ++){
+            if (parent.transform.GetChild(i).name == name){
+                return parent.transform.GetChild(i).gameObject;
+            }
+        }
+        Debug.Log("child not found");
+        return null;
+     }
+
 }
