@@ -34,6 +34,7 @@ public class StartDirectionsTestSuite
     {
         Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
         button.onClick.Invoke(); 
+        yield return null;
 
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
@@ -88,6 +89,7 @@ public class StartDirectionsTestSuite
     {
         Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
         button.onClick.Invoke(); 
+        yield return null;
 
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
@@ -113,7 +115,8 @@ public class StartDirectionsTestSuite
     {
         Button button = getChildGameObjectByName(getChildGameObjectByName( getChildGameObjectByName(scene, "Canvas"), "Instructions"), "ContinueButton").GetComponent<Button>();
         button.onClick.Invoke(); 
-        
+        yield return null;
+
         StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
