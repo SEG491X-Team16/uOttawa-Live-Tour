@@ -12,6 +12,29 @@ public class Waypoint //: MonoBehaviour
         set => _coordinates = value;
     }
 
+    private int _id = 0;
+
+    public int ID
+    {
+        get => _id;
+        set => _id = value;
+    }
+
+    private GameObject _inGameInstance;
+
+    public void SetInGameInstance(GameObject instance) {
+        this._inGameInstance = instance;
+    }
+
+    public void ClearInGameInstance() {
+        GameObject.Destroy(_inGameInstance);
+        this._inGameInstance = null;
+    }
+
+    public bool IsVisible() {
+        return this._inGameInstance != null;
+    }
+
     // Start is called before the first frame update
     // void Start()
     // {

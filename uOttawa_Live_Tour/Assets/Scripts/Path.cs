@@ -28,6 +28,13 @@ public class Path
         if (HasNextSegment()) {
             this._currentSegmentIndex++;
         }
+        Debug.Log("get next seg");
         return GetCurrentSegment();
+    }
+
+    public void ClearVisiblePath() {
+        foreach (PathSegment seg in this._segments) {
+            seg.ClearVisibleWaypoints();
+        }
     }
 }
