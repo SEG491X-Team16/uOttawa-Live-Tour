@@ -23,7 +23,7 @@ public class StartPathButton : MonoBehaviour
         PathSegment seg1 = new PathSegment();
 
         Waypoint way1 = new Waypoint();
-        GPSCoords gps1 = new GPSCoords(45.05434f, -75.63994f);
+        GPSCoords gps1 = new GPSCoords(45.054411f, -75.640017f);//(45.05434f, -75.63994f);
         way1.Coordinates = gps1;
         way1.ID = 1;
 
@@ -32,12 +32,12 @@ public class StartPathButton : MonoBehaviour
         // way1.Coordinates = gps1;
 
         Waypoint way2 = new Waypoint();
-        GPSCoords gps2 = new GPSCoords(45.054436f, -75.639698f);
+        GPSCoords gps2 = new GPSCoords(45.054515f, -75.640025f);//(45.054436f, -75.639698f);
         way2.Coordinates = gps2;
         way2.ID = 2;
 
         Waypoint way3 = new Waypoint();
-        GPSCoords gps3 = new GPSCoords(45.054449f, -75.639620f);
+        GPSCoords gps3 = new GPSCoords(45.054614f, -75.640073f);//(45.054449f, -75.639620f);
         way3.Coordinates = gps3;
         way3.ID = 3;
 

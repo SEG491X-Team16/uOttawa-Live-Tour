@@ -169,7 +169,7 @@ public class PathManager : MonoBehaviour
         Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
 
         Vector3 dir = new Vector3((float)x, 0, (float)z);
-        Vector3 heading = new Vector3(0, (float)GPSSingleton.Instance.GetUserOriginHeading(), 0);
+        Vector3 heading = new Vector3(0, -1*(float)GPSSingleton.Instance.GetUserOriginHeading(), 0);
         // Vector3 heading = new Vector3(0, 270f, 0);
         dir = Quaternion.Euler(heading) * dir;
 
