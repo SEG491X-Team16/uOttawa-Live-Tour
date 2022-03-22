@@ -5928,6 +5928,12 @@ MonoBehaviour:
   map: {fileID: 293976002125997598}
   camera: {fileID: 636415248875666734}
   locationText: {fileID: 636415249678100531}
+  latMax: 45.425846
+  lonMax: -75.675846
+  latMin: 45.418926
+  lonMin: -75.688351
+  startLat: 45.42466
+  startLon: -75.68608
   smoothTime: 0.3
 --- !u!1 &636415250407071644
 GameObject:
@@ -6768,7 +6774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
