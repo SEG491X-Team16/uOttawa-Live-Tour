@@ -40,7 +40,7 @@ public class StartDirectionsTestSuite
         GameObject start = getChildGameObjectByName(map, "pinMarker");
         GameObject player = getChildGameObjectByName(map, "personMarker");
         GameObject camera = getChildGameObjectByName(scene, "Main Camera");
-        if (start == null){
+        if (start == scene){
             Assert.IsTrue(true);
             Debug.Log("pinMarker not found");
             yield break;
@@ -99,7 +99,7 @@ public class StartDirectionsTestSuite
         GameObject start = getChildGameObjectByName(map, "pinMarker");
         GameObject player = getChildGameObjectByName(map, "personMarker");
         StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
-        if (start == null){
+        if (start == scene){
             Assert.IsTrue(true);
             Debug.Log("pinMarker not found");
             yield break;
@@ -129,7 +129,7 @@ public class StartDirectionsTestSuite
         StartDirections startScript = getChildGameObjectByName(scene, "GPS").GetComponent<StartDirections>();
         GameObject map = getChildGameObjectByName(scene, "uOttawaMap");
         GameObject start = getChildGameObjectByName(map, "pinMarker");
-        if (start == null){
+        if (start == scene){
             Assert.IsTrue(true);
             Debug.Log("pinMarker not found");
             yield break;
@@ -152,7 +152,7 @@ public class StartDirectionsTestSuite
             }
         }
         Debug.Log("child not found");
-        return null;
+        return scene;
      }
 
 }
