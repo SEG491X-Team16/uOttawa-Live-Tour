@@ -88,7 +88,14 @@ public class PathManager : MonoBehaviour
                         && (Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)) < MaxDistFromWayPointToDisplay)) {
                 //make the next waypoint visible
                 if (currSegment.IncrementVisibleStart()) {
-                    placeWaypoint(currSegment.GetVisibleStart(), userPos, currSegment.GetNextVisibleStart());
+                    Waypoint next = currSegment.GetNextVisibleStart();
+
+                    //use current waypoint if no more waypoints
+                    if (next == null) {
+                        next = currSegment.GetVisibleStart();
+                    }
+                    
+                    placeWaypoint(currSegment.GetVisibleStart(), userPos, next);
                 }
             }
 
