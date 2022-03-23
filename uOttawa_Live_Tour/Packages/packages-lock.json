@@ -12,10 +12,11 @@
       "hash": "89aebe571a18ccc244996c71997fb8a28f5832b0"
     },
     "com.unity.collab-proxy": {
-      "version": "1.15.12",
+      "version": "1.15.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0",
         "com.unity.services.core": "1.0.1"
       },
       "url": "https://packages.unity.com"
@@ -62,6 +63,13 @@
     "com.unity.mobile.android-logcat": {
       "version": "1.2.3",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
