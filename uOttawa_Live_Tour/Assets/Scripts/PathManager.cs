@@ -41,10 +41,18 @@ public class PathManager : MonoBehaviour
 
     private Path currentPath;
 
+    public Transform target;
+    public GameObject cube;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");   
+        Debug.Log("start");  
+
+        Vector3 relativePos = cube.transform.position - target.position;
+
+        cube.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up) * Quaternion.AngleAxis(90, Vector3.up);
+
     }
 
     // Update is called once per frame
@@ -80,7 +88,7 @@ public class PathManager : MonoBehaviour
                         && (Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)) < MaxDistFromWayPointToDisplay)) {
                 //make the next waypoint visible
                 if (currSegment.IncrementVisibleStart()) {
-                    placeWaypoint(currSegment.GetVisibleStart(), userPos);
+                    placeWaypoint(currSegment.GetVisibleStart(), userPos, currSegment.GetNextVisibleStart());
                 }
             }
 
@@ -129,15 +137,25 @@ public class PathManager : MonoBehaviour
         }
     }
 
-    private void placeWaypoint(Waypoint waypoint, GPSCoords userPos) {
+    private void placeWaypoint(Waypoint waypoint, GPSCoords userPos, Waypoint nextWaypoint) {
         // GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
 
         // double latOffset = userPos.Latitude - waypoint.Coordinates.Latitude;
         // double lonOffset = userPos.Longitude - waypoint.Coordinates.Longitude;
 
+        //get position of this waypoint
         Vector3 waypointPos = getWaypointUnityPos(waypoint);
 
-        Instantiate(arrowPrefab, waypointPos, Quaternion.identity);
+        //get direction to point to
+        Vector3 nextWaypointPos = getWaypointUnityPos(nextWaypoint);
+
+        //TODO: what about at the ends? point to cloud anchor?
+
+        Vector3 relativePos = waypointPos - nextWaypointPos;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+        //create the waypoint in the unity world
+        Instantiate(arrowPrefab, waypointPos, rotation);//Quaternion.identity);
 
         // Instantiate(prefab, new Vector3((float)latOffset, 0, (float)lonOffset), Quaternion.identity);
         // var obj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);

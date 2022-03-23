@@ -7,6 +7,8 @@ public class StartPathButton : MonoBehaviour
 {
     public Button startBtn;
 
+    public Button nextBtn;
+
     public PathManager pathManager;
 
     // Start is called before the first frame update
@@ -14,6 +16,10 @@ public class StartPathButton : MonoBehaviour
     {
         Button btn = startBtn.GetComponent<Button>();
         btn.onClick.AddListener(onClickTask);
+
+        Button btnN = nextBtn.GetComponent<Button>();
+        btnN.onClick.AddListener(onClickNext);
+        nextBtn.enabled = false;
     }
 
     void onClickTask() {
@@ -69,6 +75,17 @@ public class StartPathButton : MonoBehaviour
         // Debug.Log("path set up");
         // pathManager.StartNextPathSegment();
         Debug.Log("path started");
+    }
+
+    public void onPathSegmentFinished() {
+        nextBtn.enabled = true;
+        Debug.Log("path segment done");
+    }
+
+    public void onClickNext() {
+        nextBtn.enabled = false;
+        Debug.Log("continuing to next segement");
+        pathManager.StartNextPathSegment();
     }
 
     // Update is called once per frame
