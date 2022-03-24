@@ -11,7 +11,7 @@ public class StartDirections : MonoBehaviour
     [SerializeField] GameObject tourStartPinMarker;
     [SerializeField] GameObject notOnCampusError;
     [SerializeField] GameObject map;
-    [SerializeField] Camera camera;
+    [SerializeField] new Camera camera;
     [SerializeField] TextMeshProUGUI locationText;
 
     private const double radius = 6371000d; //radius of earth

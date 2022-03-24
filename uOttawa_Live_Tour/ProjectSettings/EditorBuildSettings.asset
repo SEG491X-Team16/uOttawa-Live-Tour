@@ -8,9 +8,21 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GPSTest.unity
     guid: f244339986ea60747b42bfe31293818a
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/Settings.unity
+    guid: b393ca3da6b14894db03fd7d8ebaee42
   - enabled: 1
     path: Assets/Scenes/TourStartDirections.unity
     guid: c7b5adc2e960b6b4aa7b7457c1827561
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/3DMap AR Scene.unity
+    guid: de94d9b0e60b0294aa6a83df94a2504e
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: a77c0f663ca9f9f40923825c3805c182, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 310489921802f4148bd7e8a72cbf686f, type: 2}

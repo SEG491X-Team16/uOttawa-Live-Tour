@@ -8,7 +8,7 @@ public class CamYRot : MonoBehaviour
     //It is then used as a reference in front of which the 3d map is projected
     //This way it tracks position and stays in front of the player
 
-    public GameObject camera;
+    public new GameObject camera;
     Vector3 rotation;
     
     // Start is called before the first frame update

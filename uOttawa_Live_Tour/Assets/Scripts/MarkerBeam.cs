@@ -16,7 +16,15 @@ public class MarkerBeam : MonoBehaviour
     void Update()
     {
         lineRenderer.SetPosition(0, new Vector3(marker.transform.position.x, marker.transform.position.y, marker.transform.position.z));
-        lineRenderer.SetPosition(1, new Vector3(marker.transform.position.x, marker.transform.position.y - 1f, marker.transform.position.z));
-        //can update this to a raycast later
+        //lineRenderer.SetPosition(1, new Vector3(marker.transform.position.x, marker.transform.position.y - 1f, marker.transform.position.z));
+        RaycastHit hit;
+        if (Physics.Raycast(marker.transform.position, -transform.up, out hit)){
+            if (hit.collider){
+                lineRenderer.SetPosition(1, hit.point);
+            } 
+        } else {
+                lineRenderer.SetPosition(1, new Vector3(marker.transform.position.x, marker.transform.position.y - 1f, marker.transform.position.z));
+        }
+
     }
 }
