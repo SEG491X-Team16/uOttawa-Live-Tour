@@ -32,8 +32,6 @@ public class MapScript : MonoBehaviour
 
         lastRotation = cameraY.transform.eulerAngles.y;
 
-        highlightBuilding("CRX");
-
     }
     
     void Update()
