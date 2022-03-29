@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://uottawa-live-tour-default-rtdb.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">625793377857</string>
+  <string name="google_storage_bucket" translatable="false">uottawa-live-tour.appspot.com</string>
+  <string name="project_id" translatable="false">uottawa-live-tour</string>
+  <string name="google_api_key" translatable="false">AIzaSyBKIjIF7e1wg8N8G5dhMLT9dX8JRJV2OZQ</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBKIjIF7e1wg8N8G5dhMLT9dX8JRJV2OZQ</string>
+  <string name="google_app_id" translatable="false">1:625793377857:android:6b79272ecb54895922c8c0</string>
+  <string name="default_web_client_id" translatable="false">625793377857-pono5dttq6hr6g8rdepusqcpho5nco27.apps.googleusercontent.com</string>
+</resources>

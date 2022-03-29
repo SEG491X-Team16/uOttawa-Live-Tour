@@ -164,7 +164,7 @@ namespace Google.XR.ARCoreExtensions
         /// <summary>
         /// The Unity OnEnable() method.
         /// </summary>
-        public void OnEnable()
+        public async void OnEnable()
         {
             _timeSinceStart = 0.0f;
             _isReturning = false;
@@ -174,7 +174,7 @@ namespace Google.XR.ARCoreExtensions
             InstructionBar.SetActive(true);
 
             // Manually pre-load cloud anchor in resolving set
-            Controller.LoadCloudAnchorHistory();
+            await Controller.LoadCloudAnchorHistory();
             _history = Controller.getCloudAnchorHistory();
             Controller.ResolvingSet.Add(_history.Collection[0].Id);
 

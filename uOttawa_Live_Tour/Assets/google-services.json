@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "625793377857",
+    "firebase_url": "https://uottawa-live-tour-default-rtdb.firebaseio.com",
+    "project_id": "uottawa-live-tour",
+    "storage_bucket": "uottawa-live-tour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625793377857:android:6b79272ecb54895922c8c0",
+        "android_client_info": {
+          "package_name": "com.SEG491XTeam16.uOttawaLiveTour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625793377857-pono5dttq6hr6g8rdepusqcpho5nco27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKIjIF7e1wg8N8G5dhMLT9dX8JRJV2OZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625793377857-pono5dttq6hr6g8rdepusqcpho5nco27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625793377857:android:3c3ae38a11a9042a22c8c0",
+        "android_client_info": {
+          "package_name": "com.uOttawaLiveTour.TourManager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625793377857-pono5dttq6hr6g8rdepusqcpho5nco27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKIjIF7e1wg8N8G5dhMLT9dX8JRJV2OZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625793377857-pono5dttq6hr6g8rdepusqcpho5nco27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

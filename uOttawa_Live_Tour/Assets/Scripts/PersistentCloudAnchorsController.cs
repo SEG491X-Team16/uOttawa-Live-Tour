@@ -27,8 +27,15 @@ namespace Google.XR.ARCoreExtensions
     using UnityEngine;
     using UnityEngine.XR.ARFoundation;
 
+    using Firebase;
+    using Firebase.Database;
+
     public class PersistentCloudAnchorsController : MonoBehaviour
     {
+        [Header("Firebase")]
+        public Firebase.FirebaseApp app; 
+        public DatabaseReference DBreference;
+
         [Header("AR Foundation")]
 
         /// <summary>
@@ -167,14 +174,33 @@ namespace Google.XR.ARCoreExtensions
         /// <summary>
         /// Load the persistent Cloud Anchors history from the database into memory
         /// </summary>
-        public void LoadCloudAnchorHistory()
+        public async Task LoadCloudAnchorHistory()
         {
+            // Retrieve anchor data from database
+            await DBreference.Child("anchors").GetValueAsync().ContinueWith(task => {
+                if (task.Exception != null)
+                {
+                    Debug.LogWarning(message: $"Failed to register task with {task.Exception}");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    // Load anchor data into history collection
+                    foreach (DataSnapshot anchor in snapshot.Children) {
+                        var data = JsonUtility.FromJson<CloudAnchorHistory>(anchor.GetRawJsonValue());
+                        _history.Collection.Add(data);
+                        _history.Collection.Sort((left, right) => right.CreatedTime.CompareTo(left.CreatedTime));
+                    }                   
+                }
+            });
+
+            // For testing purposes only:
             // Manually set _history since database isn't yet integrated in project
             // (Set to Id property to that of a cloud anchor hosted in the past 24h )
             var anchorJson = "{\"Id\":\"ua-b08c5ba41df5001f6a272bc53dac73ea\",\"Name\":\"NotRelevantNorIsTime\",\"SerializedTime\":\"2022-03-16 2:13:33 PM\"}";
             var data = JsonUtility.FromJson<CloudAnchorHistory>(anchorJson);
-            _history.Collection.Add(data);
-                
+            _history.Collection.Insert(0, data);
+
             return;
         }
 
@@ -198,6 +224,21 @@ namespace Google.XR.ARCoreExtensions
             SwitchToHomePage();
 
             Debug.Log("Hello World");
+
+            // Check and optionally update Firebase Google Play services dependencies
+            Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+                var dependencyStatus = task.Result;
+                if (dependencyStatus == Firebase.DependencyStatus.Available) {
+                    // If they are available, initialise Firebase
+                    InitializeFirebase();
+
+                    // Set a flag here to indicate whether Firebase is ready to use by your app.
+                } else {
+                    Debug.LogError(System.String.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                    // Firebase Unity SDK is not safe to use here.
+                }
+            });
         }
 
         /// <summary>
@@ -219,6 +260,12 @@ namespace Google.XR.ARCoreExtensions
                     SwitchToHomePage();
                 }
             }            
+        }
+
+        private void InitializeFirebase()
+        {
+            Debug.Log("Setting up database...");
+            DBreference = FirebaseDatabase.DefaultInstance.RootReference;
         }
 
         private void ResetAllViews()
