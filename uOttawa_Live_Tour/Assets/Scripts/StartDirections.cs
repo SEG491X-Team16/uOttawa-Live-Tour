@@ -50,9 +50,9 @@ public class StartDirections : MonoBehaviour
     void Start()
     {
         //get GPS data
-        if (GPSSingleton.Instance.isDataValid()) {
-            playerLat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
-            playerLon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
+        if (GPSSingleton.Instance.IsDataValid()) {
+            playerLat = GPSSingleton.Instance.GetCurrentCoordinates().Latitude;
+            playerLon = GPSSingleton.Instance.GetCurrentCoordinates().Longitude;
         } else{
             //placeholder values when not enabled
             playerLat = playerMarker.GetComponent<MoveMarker>().lat;
@@ -97,6 +97,7 @@ public class StartDirections : MonoBehaviour
 
                 if(distance <= minDistance){
                     //display success, move to next scene
+                    SceneSwitch.loadTourPath();
                 }
             }  
         }
@@ -173,9 +174,9 @@ public class StartDirections : MonoBehaviour
     }
 
     void GetLocation(){
-        if (GPSSingleton.Instance.isDataValid()){
-            playerLat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
-            playerLon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
+        if (GPSSingleton.Instance.IsDataValid()){
+            playerLat = GPSSingleton.Instance.GetCurrentCoordinates().Latitude;
+            playerLon = GPSSingleton.Instance.GetCurrentCoordinates().Longitude;
         } else{
             playerLat = playerMarker.GetComponent<MoveMarker>().lat;
             playerLon = playerMarker.GetComponent<MoveMarker>().lon;

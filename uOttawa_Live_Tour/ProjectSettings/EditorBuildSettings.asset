@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GPSTest.unity
     guid: f244339986ea60747b42bfe31293818a
   - enabled: 1
+    path: Assets/Scenes/PathTest.unity
+    guid: 1f12616624fbaeb44978f4161c4a3f88
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
