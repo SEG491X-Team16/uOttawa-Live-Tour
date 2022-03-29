@@ -14,45 +14,46 @@ public class MoveMarker : MonoBehaviour
     //45.425846, -75.688351 -> 6.92, -5.35 (top left) 
     //45.418926, -75.675846 -> -6.92, 5.35 (bottom right)
 
-    public float lat = 45.423284f;
-    public float lon = -75.684895f;
+    public double lat;
+    public double lon;
 
-    public float x;
-    public float z;    
-    private float radius = 6378.1f ;
+    float x;
+    float z;    
 
-    private float topLon = -75.688351f;
-    private float topLat = 45.425846f;
-    private float bottomLon = -75.675846f;
-    private float bottomLat = 45.418926f;
-    private float centerLon = -75.682059f;
-    private float centerLat = 45.422425f;
+    private double topLon = -75.688351d;
+    private double topLat = 45.425846d;
+    private double bottomLon = -75.675846d;
+    private double bottomLat = 45.418926d;
+    private double centerLon = -75.682059d;
+    private double centerLat = 45.422425d;
 
-    public bool rotate;
+    public bool followPlayer;
+    public float yOffset;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = new Vector3(x, 1.5f, z);
+        transform.localPosition = new Vector3(x, 1.5f + yOffset, z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //set lat and lon to current GPS coordinates here
+        if(followPlayer){
+            if (GPSSingleton.Instance.isDataValid())
+            {
+                lat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
+                lon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
+            }
+        }
 
         //convert lat/lon to position on map
         LonToX(lon);
         LatToZ(lat);
 
         //apply position
-        transform.localPosition = new Vector3(x, 1.5f, z);
-
-        //slowly rotates location marker
-        if (rotate){
-            transform.Rotate(Vector3.up * 25f* Time.deltaTime);
-        }
+        transform.localPosition = new Vector3(x, 1.5f + yOffset, z);
 
         //will add onto this later to account for the person location marker so it can rotate with your magnetic direction
 
@@ -61,16 +62,16 @@ public class MoveMarker : MonoBehaviour
 
     //Tried a bunch of ways to project coordinates using different projecting methods, but they always gave odd numbers
     //I found simply mapping them worked the best since the map is pretty small in scale and doesnt really have to account for Earth's curvature
-    void LonToX (float lon){
+    void LonToX (double lon){
         //calculate difference between points on map as a percentage and multiply by maps's dimension
-        float deltaX = (lon - centerLon)/(topLon - bottomLon);
-        x = 6.92f * deltaX * 2;
+        double deltaX = (lon - centerLon)/(topLon - bottomLon);
+        x = (float)(6.92f * deltaX * 2);
 
     }
 
-    void LatToZ (float lat){
+    void LatToZ (double lat){
          //calculate difference between points on map as a percentage and multiply by maps's dimension
-        float deltaZ = (lat - centerLat)/(bottomLat - topLat);
-        z = 5.35f * deltaZ * 2;
+        double deltaZ = (lat - centerLat)/(bottomLat - topLat);
+        z = (float)(5.35f * deltaZ * 2);
     }
 }
