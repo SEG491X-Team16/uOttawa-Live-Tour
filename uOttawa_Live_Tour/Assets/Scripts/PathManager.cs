@@ -3,86 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using TMPro;
 
-//Based on example from: https://blog.anarks2.com/Geolocated-AR-In-Unity-ARFoundation/
-
-// //TODO: move this???
-public struct UnityCoords {
-    public UnityCoords(double x, double y, double z) {
-        X = x;
-        Y = y;
-        Z = z;
-    }
-
-    public double X { get; set; }
-    public double Y { get; set; }
-    public double Z { get; set; }
-}
+//Based on theory/quasi-example from: https://blog.anarks2.com/Geolocated-AR-In-Unity-ARFoundation/
 
 public class PathManager : MonoBehaviour
 {
-    private const float MaxDistFromWayPointToDisplay = 40.0f; //meters
+    //Max distance user can be from waypoint for them to be visible
+    private const float MaxDistFromWayPointToDisplay = 400.0f; //meters
+
+    //Max distance user can be from the last waypoint for the system to register as
+    //the user having reached the end of the segment
     private const float MaxDistFromEnd = 5.0f; //meters
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
     public UnityEvent pathSegmentFinished;
 
-    //the prefab used for arrows
+    //the prefab used for instantiating the waypoint arrows
     public GameObject arrowPrefab;
 
+    //Two models used for debugging
     public GameObject userPosPrefab;
     private GameObject userPosInstance;
 
+    //flag that is true if the pathManager should display waypoints
     private bool guidanceEnabled = false;
 
-    private bool flag = false;
-
+    //the Path that is currently being followed
     private Path currentPath;
-
-    public Transform target;
-    public GameObject cube;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");  
-
-        Vector3 relativePos = cube.transform.position - target.position;
-
-        cube.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up) * Quaternion.AngleAxis(90, Vector3.up);
-
+         
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (GPSSingleton.Instance.isDataValid() && !flag) {
-        //     Debug.Log("placing waypoint");
-        //     GPSCoords pos = GPSSingleton.Instance.getCurrentCoordinates();
-        //     pos.Latitude = pos.Latitude + 6;
-        //     pos.Longitude = pos.Longitude + 6;
-
-        //     Waypoint way = new Waypoint();
-        //     way.Coordinates = pos;
-
-        //     placeWaypoint(way);
-        //     flag = true;
-        // }
-
         //if we have a path
         if ((this.currentPath != null) && guidanceEnabled) {
-            // Debug.Log("updating");
             GPSCoords userPos = GPSSingleton.Instance.GetCurrentCoordinates();
 
             PathSegment currSegment = this.currentPath.GetCurrentSegment();
 
-            // Debug.Log(currSegment == null);
-
-            // Debug.Log(Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)));
-
-            // Debug.Log("user lat: "+userPos.Latitude+" lon: "+userPos.Longitude+", vis id: "+currSegment.GetNextVisibleStart().ID+" lat: "+currSegment.GetNextVisibleStart().Coordinates.Latitude+" lon: "+currSegment.GetNextVisibleStart().Coordinates.Longitude);
             //check if current visible ends need to be added or removed
             while (((currSegment.GetVisibleStart() == null) || (currSegment.GetLastWaypoint() != currSegment.GetVisibleStart())) 
                         && (Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)) < MaxDistFromWayPointToDisplay)) {
@@ -90,17 +54,18 @@ public class PathManager : MonoBehaviour
                 if (currSegment.IncrementVisibleStart()) {
                     Waypoint next = currSegment.GetNextVisibleStart();
 
+                    //TODO: what about at the ends? point to cloud anchor?
                     //use current waypoint if no more waypoints
                     if (next == null) {
                         next = currSegment.GetVisibleStart();
                     }
                     
-                    placeWaypoint(currSegment.GetVisibleStart(), userPos, next);
+                    placeWaypoint(currSegment.GetVisibleStart(), next);
                 }
             }
 
             while ((currSegment.GetVisibleEnd() != null) && Math.Abs(userPos.GetDistance(currSegment.GetVisibleEnd().Coordinates)) > MaxDistFromWayPointToDisplay) {
-                //make the last waypoint NOT visible
+                //TODO: make the last waypoint NOT visible
             }
 
             //if we have access to knowing cloud anchors loads we might want to use that instead
@@ -108,13 +73,16 @@ public class PathManager : MonoBehaviour
             if ((currSegment.GetVisibleStart() != null) && (currSegment.GetLastWaypoint() == currSegment.GetVisibleStart())
                     && (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd)) {
                 //trigger pathsegment end
-                guidanceEnabled = false;
+                //guidanceEnabled = false;
+                cleanup();
 
                 //trigger event callback
                 this.pathSegmentFinished.Invoke();
             }
         }
 
+        //show current user pos for debugging
+        //TODO: remove this when done
         if (userPosPrefab != null) {
             if (userPosInstance != null) {
                 Destroy(userPosInstance);
@@ -144,36 +112,22 @@ public class PathManager : MonoBehaviour
         }
     }
 
-    private void placeWaypoint(Waypoint waypoint, GPSCoords userPos, Waypoint nextWaypoint) {
-        // GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
-
-        // double latOffset = userPos.Latitude - waypoint.Coordinates.Latitude;
-        // double lonOffset = userPos.Longitude - waypoint.Coordinates.Longitude;
-
+    //place the waypoint and have it point to the next waypoint
+    private void placeWaypoint(Waypoint waypoint, Waypoint nextWaypoint) {
         //get position of this waypoint
         Vector3 waypointPos = getWaypointUnityPos(waypoint);
 
         //get direction to point to
         Vector3 nextWaypointPos = getWaypointUnityPos(nextWaypoint);
 
-        //TODO: what about at the ends? point to cloud anchor?
-
         Vector3 relativePos = waypointPos - nextWaypointPos;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 
         //create the waypoint in the unity world
         Instantiate(arrowPrefab, waypointPos, rotation);//Quaternion.identity);
-
-        // Instantiate(prefab, new Vector3((float)latOffset, 0, (float)lonOffset), Quaternion.identity);
-        // var obj = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-        //obj.transform.position = new Vector3((float)latOffset, 0, (float)lonOffset);
-        // obj.transform.position = new Vector3((float)waypointPos.Y, (float)waypointPos.Z, (float)waypointPos.X);
-        // Debug.Log("object placed at: "+latOffset+":"+lonOffset);
-        // Debug.Log("object placed at: "+waypointPos.x+":"+waypointPos.z);
-        // obj.transform.localScale = new Vector3(1,1,1);
     }
 
-    //(x, y, z)
+    //get the waypoint position in the unity world from the waypoint GPS point
     private Vector3 getWaypointUnityPos(Waypoint waypoint) {
         GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
 
@@ -189,18 +143,13 @@ public class PathManager : MonoBehaviour
             x = -1 * x;
         }
 
-        // Debug.Log("x: "+x+", y: "+z);
+        // Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
 
-        Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
-
+        //vector3 = (x, y, z)
         Vector3 dir = new Vector3((float)x, 0, (float)z);
         Vector3 heading = new Vector3(0, -1*(float)GPSSingleton.Instance.GetUserOriginHeading(), 0);
-        // Vector3 heading = new Vector3(0, 270f, 0);
         dir = Quaternion.Euler(heading) * dir;
 
-        // Debug.Log("dir x: "+dir.x+", y: "+dir.y+", z: "+dir.z);
-
-        //TODO: determine positive vs negative
         return dir;
     }
 
@@ -208,8 +157,8 @@ public class PathManager : MonoBehaviour
         waypoint.ClearInGameInstance();
     }
 
+    //clean up the path, and move all visible waypoints
     private void cleanup() {
-        // do clean up here
         //make sure that all waypoints are removed and not visible
         if (this.currentPath != null) {
             this.currentPath.ClearVisiblePath();

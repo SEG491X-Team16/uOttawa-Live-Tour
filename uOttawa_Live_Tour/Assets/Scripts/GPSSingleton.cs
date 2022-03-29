@@ -210,6 +210,7 @@ public class GPSSingleton : MonoBehaviour
     */
     public GPSCoords GetUserOrigin()
     {
+        //return new GPSCoords(45.054411f, -75.640017f);
         return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }
 
