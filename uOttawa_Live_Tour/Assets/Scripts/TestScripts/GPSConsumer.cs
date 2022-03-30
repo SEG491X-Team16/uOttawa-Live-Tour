@@ -19,9 +19,9 @@ public class GPSConsumer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GPSSingleton.Instance.isDataValid())
+        if (GPSSingleton.Instance.IsDataValid())
         {
-            locationUpdate.text =  i + ":" + GPSSingleton.Instance.getLastUpdate() + " : "+ GPSSingleton.Instance.getCurrentCoordinates().Latitude + " : " + GPSSingleton.Instance.getCurrentCoordinates().Longitude;
+            locationUpdate.text =  i + ":" + GPSSingleton.Instance.GetLastUpdate() + " : "+ GPSSingleton.Instance.GetCurrentCoordinates().Latitude + " : " + GPSSingleton.Instance.GetCurrentCoordinates().Longitude;
             i++;
         }
     }
