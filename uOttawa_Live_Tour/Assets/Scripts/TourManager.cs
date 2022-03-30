@@ -7,9 +7,14 @@ public class TourManager : MonoBehaviour
 
     public PathManager pathManager;
 
+    public POIManager poiManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //prevent the screen from going to sleep
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         Path path = getPath();
         pathManager.SetCurrentPath(path);
     }
