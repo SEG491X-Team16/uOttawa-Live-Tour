@@ -11,7 +11,7 @@ public class StartDirections : MonoBehaviour
     [SerializeField] GameObject tourStartPinMarker;
     [SerializeField] GameObject notOnCampusError;
     [SerializeField] GameObject map;
-    [SerializeField] new Camera camera;
+    [SerializeField] Camera camera;
     [SerializeField] TextMeshProUGUI locationText;
 
     private const double radius = 6371000d; //radius of earth
@@ -49,15 +49,7 @@ public class StartDirections : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //get GPS data
-        if (GPSSingleton.Instance.isDataValid()) {
-            playerLat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
-            playerLon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
-        } else{
-            //placeholder values when not enabled
-            playerLat = playerMarker.GetComponent<MoveMarker>().lat;
-            playerLon = playerMarker.GetComponent<MoveMarker>().lon;
-        }
+        GetLocation();
 
         //get tour starting position lat/lon
         startLat = tourStartPinMarker.GetComponent<MoveMarker>().lat;

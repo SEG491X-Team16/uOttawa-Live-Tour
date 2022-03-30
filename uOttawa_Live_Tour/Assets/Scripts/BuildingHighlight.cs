@@ -1,56 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using TMPro;
+using System;
 
 public class BuildingHighlight : MonoBehaviour
 {
-
-    public Material materialSelect;
-    public Material material;
-
-    public GameObject textPrefab;
-    private Camera camera;
-    private GameObject text;
-    private bool selected;
+    private string[] buildings = {"15/17", "34/36", "38", "40", "90U", "109", "110", "143", "227", "538/540", "542", "555", "559", "600", "603", "631", "ARC", "ATK", "AWHC", "BRS", "BSC", "CBY", "CRG", "CRX", "CTE", "DMS", "DRO", "FSS", "FTX", "GNN", "GSD", "HGN", "HNN", "HSY", "KED", "LABO", "LBC", "LMX", "LPR", "LR3", "LRR", "MCE", "MHN", "MNN", "MNO", "MNT", "MRD", "MRN", "MRT", "ODL", "PRZ", "SCR", "SMD", "SMN", "STE", "STM", "STN", "STT", "SWT", "TBT", "THN", "UCU", "VNR", "WCA", "WLD"};
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        AddOutlineComponent();
     }
-    
 
     // Update is called once per frame
     void Update()
     {
-        //check for input
-        if (Input.GetMouseButtonDown(0)){
 
-            RaycastHit hit;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+    }
 
-            //cast ray from camera to input location and check if gameObject was selected
-            if (Physics.Raycast(ray, out hit, 1500)){
+    public void AddOutlineComponent() {
+        for (int i = 0; i < transform.childCount; i ++){
+            if (Array.Exists(buildings, element => element == transform.GetChild(i).name)){
+                var outline = transform.GetChild(i).gameObject.AddComponent<Outline>();
+                outline.OutlineColor = Color.red;
+                outline.OutlineWidth = 5f;
+                outline.OutlineMode = Outline.Mode.OutlineVisible;
+                outline.enabled = false;
 
-                if(hit.collider.gameObject.transform.parent.name == name && !selected){
-                    GetComponent<Renderer>().material = materialSelect;
-
-                    Vector3 renderPosition = new Vector3 (hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y +.1f, hit.collider.gameObject.transform.position.z);
-                    text = Object.Instantiate(textPrefab, renderPosition, Quaternion.identity, transform.parent);
-
-                    text.GetComponent<TextMeshPro>().text = name;
-                    
-                    selected = true;
-                
-                } else if(selected){
-                    GetComponent<Renderer>().material = material;
-                    Destroy(text);
-                    selected = false;
-                }
             }
         }
-        
     }
+
+    public bool setBuildingHighlight(string name) {
+        for (int i = 0; i < transform.childCount; i ++){
+            if (transform.GetChild(i).name == name){
+                var outline = transform.GetChild(i).GetComponent<Outline>();
+                outline.enabled = true;
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool clearBuildingHighlight(string name) {
+        for (int i = 0; i < transform.childCount; i ++){
+            if (transform.GetChild(i).name == name){
+                var outline = transform.GetChild(i).GetComponent<Outline>();
+                outline.enabled = false;
+
+                return true;
+            }
+        }
+        return false;
+    }
+        
 }
