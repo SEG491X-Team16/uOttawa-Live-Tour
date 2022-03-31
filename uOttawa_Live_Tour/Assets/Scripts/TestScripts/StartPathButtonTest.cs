@@ -66,7 +66,12 @@ public class StartPathButtonTest : MonoBehaviour
         seg2.Waypoints = ways2;
 
         PathSegment[] segments = new PathSegment[] {seg1, seg2};
-        path.Segments = segments;
+        // path.Segments = segments;
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
+
+        PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
 
         Debug.Log("path created");
 

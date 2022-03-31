@@ -73,8 +73,8 @@ public class PathManager : MonoBehaviour
             if ((currSegment.GetVisibleStart() != null) && (currSegment.GetLastWaypoint() == currSegment.GetVisibleStart())
                     && (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd)) {
                 //trigger pathsegment end
-                //guidanceEnabled = false;
-                cleanup();
+                guidanceEnabled = false;
+                // cleanup();
 
                 //trigger event callback
                 this.pathSegmentFinished.Invoke();
@@ -106,10 +106,16 @@ public class PathManager : MonoBehaviour
 
     //this is called when the user clicks the Continue button after a stop on the tour
     public void StartNextPathSegment() {
+        cleanup();
         if (this.currentPath.HasNextSegment()) {
             this.currentPath.GetNextSegment();
             guidanceEnabled = true;
         }
+    }
+
+    public void CleanupCurrentSegment()
+    {
+        cleanup();
     }
 
     //place the waypoint and have it point to the next waypoint

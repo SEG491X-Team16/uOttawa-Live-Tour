@@ -9,14 +9,18 @@ public class TourManager : MonoBehaviour
 
     public POIManager poiManager;
 
+    private Path _path;
+
     // Start is called before the first frame update
     void Start()
     {
         //prevent the screen from going to sleep
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        Path path = getPath();
-        pathManager.SetCurrentPath(path);
+        this._path = getPath();
+        pathManager.SetCurrentPath(this._path);
+
+        // poiManager.AddPOI(this._path.GetCurrentPOI());
     }
 
     // Update is called once per frame
@@ -25,7 +29,22 @@ public class TourManager : MonoBehaviour
         
     }
 
-    Path getPath() {
+    public void OnPathSegmentFinished() {
+        Debug.Log("path segment finished callback");
+        poiManager.AddPOI(this._path.GetCurrentPOI());
+    }
+
+    public void OnPOIAchieved() {
+        Debug.Log("POI achieved callback");
+        pathManager.CleanupCurrentSegment();
+    }
+
+    public void OnContinueTour() {
+        Debug.Log("continue tour callback");
+        pathManager.StartNextPathSegment();
+    }
+
+    private Path getPath() {
         //TODO: get the path from the database
 
         Path path = new Path();
@@ -69,7 +88,14 @@ public class TourManager : MonoBehaviour
         seg2.Waypoints = ways2;
 
         PathSegment[] segments = new PathSegment[] {seg1, seg2};
-        path.Segments = segments;
+        // path.Segments = segments;
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
+
+        PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
+
+        path.SetSegmentsAndPOIs(segments, pois);
 
         Debug.Log("path created");
 

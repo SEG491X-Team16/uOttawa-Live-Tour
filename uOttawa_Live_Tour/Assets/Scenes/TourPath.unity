@@ -247,7 +247,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathSegmentFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750188600}
+        m_TargetAssemblyTypeName: TourManager, Assembly-CSharp
+        m_MethodName: OnPathSegmentFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   arrowPrefab: {fileID: 5455971433749074636, guid: c6d085ce9c7142447a5c3e1c0a6c3742, type: 3}
   userPosPrefab: {fileID: 1579198269362428144, guid: bc0706785497c8749a50208c615757ce, type: 3}
 --- !u!4 &184395893
@@ -397,6 +409,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchorManager: {fileID: 672368147}
   CloudAnchorPrefab: {fileID: 919132149155446097, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
+  poiAchieved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1750188600}
+        m_TargetAssemblyTypeName: TourManager, Assembly-CSharp
+        m_MethodName: OnPOIAchieved
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &878685217
 Transform:
   m_ObjectHideFlags: 0
