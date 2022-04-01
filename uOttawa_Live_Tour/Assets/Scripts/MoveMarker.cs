@@ -41,10 +41,10 @@ public class MoveMarker : MonoBehaviour
     void Update()
     {
         if(followPlayer){
-            if (GPSSingleton.Instance.isDataValid())
+            if (GPSSingleton.Instance.IsDataValid())
             {
-                lat = GPSSingleton.Instance.getCurrentCoordinates().Latitude;
-                lon = GPSSingleton.Instance.getCurrentCoordinates().Longitude;
+                lat = GPSSingleton.Instance.GetCurrentCoordinates().Latitude;
+                lon = GPSSingleton.Instance.GetCurrentCoordinates().Longitude;
             }
         }
 
