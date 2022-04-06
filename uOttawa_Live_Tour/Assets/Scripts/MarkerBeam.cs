@@ -15,7 +15,7 @@ public class MarkerBeam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         lineRenderer.SetPosition(0, new Vector3(marker.transform.position.x, marker.transform.position.y, marker.transform.position.z));
         //lineRenderer.SetPosition(1, new Vector3(marker.transform.position.x, marker.transform.position.y - 1f, marker.transform.position.z));

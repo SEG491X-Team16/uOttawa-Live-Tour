@@ -55,4 +55,20 @@ public class EnableGPSNotification : MonoBehaviour
             
         }
     }
+
+    public void OpenLocationSettings(){
+        #if UNITY_ANDROID
+        
+        using (var unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        using (AndroidJavaObject currentActivityObject = unityClass.GetStatic<AndroidJavaObject>("currentActivity"))
+        using (var intentObject = new AndroidJavaObject( "android.content.Intent", "android.settings.LOCATION_SOURCE_SETTINGS")){
+            currentActivityObject.Call("startActivity", intentObject);
+        }
+
+        #elif UNITY_IOS
+
+
+        #endif
+
+    }
 }
