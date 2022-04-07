@@ -9,11 +9,11 @@ using System;
 public class PathManager : MonoBehaviour
 {
     //Max distance user can be from waypoint for them to be visible
-    private const float MaxDistFromWayPointToDisplay = 400.0f; //meters
+    private const float MaxDistFromWayPointToDisplay = 500.0f; //meters
 
     //Max distance user can be from the last waypoint for the system to register as
     //the user having reached the end of the segment
-    private const float MaxDistFromEnd = 5.0f; //meters
+    private const float MaxDistFromEnd = 500.0f; //meters
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
@@ -54,13 +54,15 @@ public class PathManager : MonoBehaviour
                 if (currSegment.IncrementVisibleStart()) {
                     Waypoint next = currSegment.GetNextVisibleStart();
 
-                    //TODO: what about at the ends? point to cloud anchor?
-                    //use current waypoint if no more waypoints
+                    //point to POI if no more waypoints
+                    GPSCoords pointTo;
                     if (next == null) {
-                        next = currSegment.GetVisibleStart();
+                        pointTo = currentPath.GetCurrentPOI().Coordinates;
+                    } else {
+                        pointTo = next.Coordinates;
                     }
                     
-                    placeWaypoint(currSegment.GetVisibleStart(), next);
+                    placeWaypoint(currSegment.GetVisibleStart(), pointTo);
                 }
             }
 
@@ -73,6 +75,7 @@ public class PathManager : MonoBehaviour
             if ((currSegment.GetVisibleStart() != null) && (currSegment.GetLastWaypoint() == currSegment.GetVisibleStart())
                     && (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd)) {
                 //trigger pathsegment end
+                Debug.Log("reached end");
                 guidanceEnabled = false;
                 // cleanup();
 
@@ -90,7 +93,7 @@ public class PathManager : MonoBehaviour
 
             Waypoint way = new Waypoint();
             way.Coordinates = GPSSingleton.Instance.GetCurrentCoordinates();
-            Vector3 waypointPos = getWaypointUnityPos(way);
+            Vector3 waypointPos = getWaypointUnityPos(way.Coordinates);
 
             userPosInstance = Instantiate(userPosPrefab, waypointPos, Quaternion.identity);
         }
@@ -105,12 +108,14 @@ public class PathManager : MonoBehaviour
     }
 
     //this is called when the user clicks the Continue button after a stop on the tour
-    public void StartNextPathSegment() {
+    public bool StartNextPathSegment() {
         cleanup();
         if (this.currentPath.HasNextSegment()) {
             this.currentPath.GetNextSegment();
             guidanceEnabled = true;
+            return true;
         }
+        return false;
     }
 
     public void CleanupCurrentSegment()
@@ -119,35 +124,41 @@ public class PathManager : MonoBehaviour
     }
 
     //place the waypoint and have it point to the next waypoint
-    private void placeWaypoint(Waypoint waypoint, Waypoint nextWaypoint) {
+    private void placeWaypoint(Waypoint waypoint, GPSCoords pointTo) {
+        Debug.Log("rendering waypoint");
+
         //get position of this waypoint
-        Vector3 waypointPos = getWaypointUnityPos(waypoint);
+        Debug.Log("waypoint");
+        Vector3 waypointPos = getWaypointUnityPos(waypoint.Coordinates);
 
         //get direction to point to
-        Vector3 nextWaypointPos = getWaypointUnityPos(nextWaypoint);
+        Debug.Log("points to");
+        Vector3 nextWaypointPos = getWaypointUnityPos(pointTo);
 
         Vector3 relativePos = waypointPos - nextWaypointPos;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up) * Quaternion.Euler(0, -90, 0); 
+        //rotate 90 degrees to compensate for the prefab beign 90 degrees off 
 
         //create the waypoint in the unity world
-        Instantiate(arrowPrefab, waypointPos, rotation);//Quaternion.identity);
+        waypoint.SetInGameInstance(Instantiate(arrowPrefab, waypointPos, rotation));//Quaternion.identity);
     }
 
     //get the waypoint position in the unity world from the waypoint GPS point
-    private Vector3 getWaypointUnityPos(Waypoint waypoint) {
+    private Vector3 getWaypointUnityPos(GPSCoords waypoint) {
         GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
 
-        double x = origin.GetDistance(new GPSCoords(origin.Latitude, waypoint.Coordinates.Longitude));
-        double z = origin.GetDistance(new GPSCoords(waypoint.Coordinates.Latitude, origin.Longitude));
+        double x = origin.GetDistance(new GPSCoords(origin.Latitude, waypoint.Longitude));
+        double z = origin.GetDistance(new GPSCoords(waypoint.Latitude, origin.Longitude));
 
         //correct the positive vs negative axis
-        if (origin.Latitude > waypoint.Coordinates.Latitude) {
+        if (origin.Latitude > waypoint.Latitude) {
             z = -1 * z;
         }
 
-        if (origin.Longitude > waypoint.Coordinates.Longitude) {
+        if (origin.Longitude > waypoint.Longitude) {
             x = -1 * x;
         }
+        Debug.Log("lat, lon: "+waypoint.Latitude+","+waypoint.Longitude+"x, z: "+x+","+z);
 
         // Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
 

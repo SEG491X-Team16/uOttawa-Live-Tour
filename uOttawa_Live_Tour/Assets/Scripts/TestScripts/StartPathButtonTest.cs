@@ -68,8 +68,11 @@ public class StartPathButtonTest : MonoBehaviour
         PathSegment[] segments = new PathSegment[] {seg1, seg2};
         // path.Segments = segments;
 
-        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
-        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5");
+        GPSCoords arcPos = new GPSCoords(45.420713f, -75.678542f);
+        GPSCoords crxPos = new GPSCoords(45.421709f, -75.681234f);
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos);
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CBY", crxPos);
 
         PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
 

@@ -108,7 +108,7 @@ public class GPSSingleton : MonoBehaviour
 
         #endif
 
-        UnityEngine.Input.location.Start(500f, 500f);
+        UnityEngine.Input.location.Start(5f, 5f);
 
         //enable the compass, otherwise we get 0
         UnityEngine.Input.compass.enabled = true;
@@ -210,13 +210,14 @@ public class GPSSingleton : MonoBehaviour
     */
     public GPSCoords GetUserOrigin()
     {
-        //return new GPSCoords(45.054411f, -75.640017f);
-        return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
+        return new GPSCoords(45.424622f, -75.685978f);
+        // return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }
 
     public float GetUserOriginHeading()
     {
-        return this.userOriginHeading;
+        return 0;
+        // return this.userOriginHeading;
     }
 
     // Start is called before the first frame update

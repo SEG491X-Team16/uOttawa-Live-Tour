@@ -27,8 +27,10 @@ public class Waypoint //: MonoBehaviour
     }
 
     public void ClearInGameInstance() {
-        GameObject.Destroy(_inGameInstance);
-        this._inGameInstance = null;
+        if (this._inGameInstance != null) {
+            GameObject.Destroy(_inGameInstance);
+            this._inGameInstance = null;
+        }
     }
 
     public bool IsVisible() {

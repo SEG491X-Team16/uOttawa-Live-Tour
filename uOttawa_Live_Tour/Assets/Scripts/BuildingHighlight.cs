@@ -32,7 +32,7 @@ public class BuildingHighlight : MonoBehaviour
         }
     }
 
-    public bool setBuildingHighlight(string name) {
+    public bool SetBuildingHighlight(string name) {
         for (int i = 0; i < transform.childCount; i ++){
             if (transform.GetChild(i).name == name){
                 var outline = transform.GetChild(i).GetComponent<Outline>();
@@ -44,7 +44,7 @@ public class BuildingHighlight : MonoBehaviour
         return false;
     }
 
-    public bool clearBuildingHighlight(string name) {
+    public bool ClearBuildingHighlight(string name) {
         for (int i = 0; i < transform.childCount; i ++){
             if (transform.GetChild(i).name == name){
                 var outline = transform.GetChild(i).GetComponent<Outline>();
