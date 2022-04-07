@@ -5,7 +5,7 @@ using TMPro;
 
 public class MapScript2D : MonoBehaviour
 {
-    public GameObject camera;
+    public new GameObject camera;
 
     public float yOffset;
     public float forwardOffset;
