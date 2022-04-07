@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Waypoint //: MonoBehaviour
 {
+
+    public Waypoint(GPSCoords coordinates, int id) {
+        this._coordinates = coordinates;
+        this._id = id;
+    }
+
     private GPSCoords _coordinates = new GPSCoords(0, 0);
 
     public GPSCoords Coordinates

@@ -68,48 +68,25 @@ public class TourManager : MonoBehaviour
         //TODO: get the path from the database
 
         Path path = new Path();
-        PathSegment seg1 = new PathSegment();
-
-        Waypoint way1 = new Waypoint();
-        GPSCoords gps1 = new GPSCoords(45.054411f, -75.640017f);//(45.05434f, -75.63994f);
-        way1.Coordinates = gps1;
-        way1.ID = 1;
-
-        // Waypoint way1 = new Waypoint();
-        // GPSCoords gps1 = new GPSCoords(45.054439, -75.639727);
-        // way1.Coordinates = gps1;
-
-        Waypoint way2 = new Waypoint();
-        GPSCoords gps2 = new GPSCoords(45.054515f, -75.640025f);//(45.054436f, -75.639698f);
-        way2.Coordinates = gps2;
-        way2.ID = 2;
-
-        Waypoint way3 = new Waypoint();
-        GPSCoords gps3 = new GPSCoords(45.054614f, -75.640073f);//(45.054449f, -75.639620f);
-        way3.Coordinates = gps3;
-        way3.ID = 3;
+        
+        //sgement 1
+        Waypoint way1 = new Waypoint(new GPSCoords(45.054411f, -75.640017f), 1);
+        Waypoint way2 = new Waypoint(new GPSCoords(45.054515f, -75.640025f), 2);
+        Waypoint way3 = new Waypoint(new GPSCoords(45.054614f, -75.640073f), 3);
 
         Waypoint[] ways1 = new Waypoint[] {way1, way2, way3 };
-        seg1.Waypoints = ways1;
+        PathSegment seg1 = new PathSegment(ways1);
 
-        PathSegment seg2 = new PathSegment();
-
-        Waypoint way4 = new Waypoint();
-        GPSCoords gps4 = new GPSCoords(45.054439f, -75.639727f);
-        way4.Coordinates = gps4;
-        way4.ID = 4;
-
-        Waypoint way5 = new Waypoint();
-        GPSCoords gps5 = new GPSCoords(45.054436f, -75.639698f);
-        way5.Coordinates = gps5;
-        way5.ID = 5;
+        //segment 2
+        Waypoint way4 = new Waypoint(new GPSCoords(45.054439f, -75.639727f), 4);
+        Waypoint way5 = new Waypoint(new GPSCoords(45.054436f, -75.639698f), 5);
 
         Waypoint[] ways2 = new Waypoint[] {way4, way5};
-        seg2.Waypoints = ways2;
+        PathSegment seg2 = new PathSegment(ways2);
 
         PathSegment[] segments = new PathSegment[] {seg1, seg2};
-        // path.Segments = segments;
 
+        //POIs
         GPSCoords arcPos = new GPSCoords(45.420713f, -75.678542f);
         GPSCoords crxPos = new GPSCoords(45.421709f, -75.681234f);
 
@@ -129,88 +106,34 @@ public class TourManager : MonoBehaviour
         //TODO: get the path from the database
 
         Path path = new Path();
-        PathSegment seg1 = new PathSegment();
 
-        Waypoint way1 = new Waypoint();
-        GPSCoords gps1 = new GPSCoords(45.424638f, -75.685985f);//(45.05434f, -75.63994f);
-        way1.Coordinates = gps1;
-        way1.ID = 1;
-
-        // Waypoint waya = new Waypoint();
-        // GPSCoords gpsa = new GPSCoords(45.424552f, -75.685973f);//(45.05434f, -75.63994f);
-        // waya.Coordinates = gpsa;
-        // waya.ID = 1;
-
-        // Waypoint way1 = new Waypoint();
-        // GPSCoords gps1 = new GPSCoords(45.054439, -75.639727);
-        // way1.Coordinates = gps1;
-
-        // Waypoint way2 = new Waypoint();
-        // GPSCoords gps2 = new GPSCoords(45.054515f, -75.640025f);//(45.054436f, -75.639698f);
-        // way2.Coordinates = gps2;
-        // way2.ID = 2;
-
-        // Waypoint way3 = new Waypoint();
-        // GPSCoords gps3 = new GPSCoords(45.054614f, -75.640073f);//(45.054449f, -75.639620f);
-        // way3.Coordinates = gps3;
-        // way3.ID = 3;
-
-        Waypoint[] ways1 = new Waypoint[] {way1};//, way2, way3 };
-        seg1.Waypoints = ways1;
-
-        PathSegment seg2 = new PathSegment();
-
-        Waypoint way4 = new Waypoint();
-        GPSCoords gps4 = new GPSCoords(45.424620f, -75.685984f);
-        way4.Coordinates = gps4;
-        way4.ID = 4;
-
-        Waypoint way5 = new Waypoint();
-        GPSCoords gps5 = new GPSCoords(45.424701f, -75.686042f);
-        way5.Coordinates = gps5;
-        way5.ID = 5;
-
-        Waypoint way2 = new Waypoint();
-        GPSCoords gps2 = new GPSCoords(45.424810f, -75.686134f);//(45.054436f, -75.639698f);
-        way2.Coordinates = gps2;
-        way2.ID = 2;
-
-        Waypoint way3 = new Waypoint();
-        GPSCoords gps3 = new GPSCoords(45.424906f, -75.686210f);//(45.054449f, -75.639620f);
-        way3.Coordinates = gps3;
-        way3.ID = 3;
+        // Path Segment #1
+        Waypoint way1 = new Waypoint(new GPSCoords(45.424638f, -75.685985f), 1);
+        
+        Waypoint[] ways1 = new Waypoint[] {way1};
+        PathSegment seg1 = new PathSegment(ways1);
+        
+        // Path,Segment #2
+        Waypoint way4 = new Waypoint(new GPSCoords(45.424620f, -75.685984f), 4);
+        Waypoint way5 = new Waypoint(new GPSCoords(45.424701f, -75.686042f), 5);
+        Waypoint way2 = new Waypoint(new GPSCoords(45.424810f, -75.686134f), 2);
+        Waypoint way3 = new Waypoint(new GPSCoords(45.424906f, -75.686210f), 3);
 
         Waypoint[] ways2 = new Waypoint[] {way4, way5, way2, way3};
-        seg2.Waypoints = ways2;
+        PathSegment seg2 = new PathSegment(ways2);
 
-        PathSegment seg3 = new PathSegment();
-
-        Waypoint way6 = new Waypoint();
-        GPSCoords gps6 = new GPSCoords(45.425017f, -75.686314f);
-        way6.Coordinates = gps6;
-        way6.ID = 4;
-
-        Waypoint way7 = new Waypoint();
-        GPSCoords gps7 = new GPSCoords(45.425115f, -75.686395f);
-        way7.Coordinates = gps7;
-        way7.ID = 5;
-
-        Waypoint way8 = new Waypoint();
-        GPSCoords gps8 = new GPSCoords(45.425041f, -75.686601f);//(45.054436f, -75.639698f);
-        way8.Coordinates = gps8;
-        way8.ID = 2;
-
-        Waypoint way9 = new Waypoint();
-        GPSCoords gps9 = new GPSCoords(45.424991f, -75.686748f);//(45.054449f, -75.639620f);
-        way9.Coordinates = gps9;
-        way9.ID = 3;
+        //path segment #3
+        Waypoint way6 = new Waypoint(new GPSCoords(45.425017f, -75.686314f), 6);
+        Waypoint way7 = new Waypoint(new GPSCoords(45.425115f, -75.686395f), 7);
+        Waypoint way8 = new Waypoint(new GPSCoords(45.425041f, -75.686601f), 8);
+        Waypoint way9 = new Waypoint(new GPSCoords(45.424991f, -75.686748f), 9);
 
         Waypoint[] ways3 = new Waypoint[] {way6, way7, way8, way9};
-        seg3.Waypoints = ways3;
+        PathSegment seg3 = new PathSegment(ways3);
 
         PathSegment[] segments = new PathSegment[] {seg1, seg2, seg3};
-        // path.Segments = segments;
 
+        //Points of Interest
         GPSCoords signPos = new GPSCoords(45.424552f, -75.685973f);
         GPSCoords statuePos = new GPSCoords(45.425004f, -75.686192f);
         GPSCoords haganPos = new GPSCoords(45.425038f, -75.686832f);

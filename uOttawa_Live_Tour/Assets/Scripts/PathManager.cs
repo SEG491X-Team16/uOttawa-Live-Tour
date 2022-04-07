@@ -91,8 +91,7 @@ public class PathManager : MonoBehaviour
                 Destroy(userPosInstance);
             }
 
-            Waypoint way = new Waypoint();
-            way.Coordinates = GPSSingleton.Instance.GetCurrentCoordinates();
+            Waypoint way = new Waypoint(GPSSingleton.Instance.GetCurrentCoordinates(), 0);
             Vector3 waypointPos = getWaypointUnityPos(way.Coordinates);
 
             userPosInstance = Instantiate(userPosPrefab, waypointPos, Quaternion.identity);

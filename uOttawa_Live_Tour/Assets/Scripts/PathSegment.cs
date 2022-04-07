@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PathSegment 
 {
+
+    public PathSegment(Waypoint[] waypoints) {
+        this._waypoints = waypoints;
+    }
+
     private Waypoint[] _waypoints;
     public Waypoint[] Waypoints
     {
