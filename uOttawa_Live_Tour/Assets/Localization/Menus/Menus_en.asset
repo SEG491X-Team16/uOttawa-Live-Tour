@@ -22,5 +22,17 @@ MonoBehaviour:
     m_Localized: Welcome!
     m_Metadata:
       m_Items: []
+  - m_Id: 13375427468824576
+    m_Localized: Start Tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376184993681408
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376434949033984
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -19,6 +19,18 @@ MonoBehaviour:
     m_Key: welcome
     m_Metadata:
       m_Items: []
+  - m_Id: 13375427468824576
+    m_Key: start_tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376184993681408
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376434949033984
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -22,5 +22,17 @@ MonoBehaviour:
     m_Localized: Bienvenue!
     m_Metadata:
       m_Items: []
+  - m_Id: 13375427468824576
+    m_Localized: Commencer la Visite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376184993681408
+    m_Localized: "Param\xE8tres"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13376434949033984
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
