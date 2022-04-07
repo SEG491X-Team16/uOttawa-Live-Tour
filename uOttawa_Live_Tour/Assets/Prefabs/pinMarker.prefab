@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 4583036002394308723}
   - component: {fileID: 4039886694134063052}
   m_Layer: 0
-  m_Name: pinMarkerTest
+  m_Name: pinMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

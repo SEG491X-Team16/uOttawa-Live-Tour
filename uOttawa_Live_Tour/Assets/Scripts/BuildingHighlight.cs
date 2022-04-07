@@ -16,8 +16,7 @@ public class BuildingHighlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        setBuildingHighlight("TBT");
-
+        
     }
 
     public void AddOutlineComponent() {
