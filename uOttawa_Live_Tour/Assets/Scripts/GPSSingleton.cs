@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 using TMPro;
+using System;
 
 /**
 * This class is created once per scene and it provides the location to all assets/scripts that require it.
@@ -14,20 +15,52 @@ using TMPro;
 //This struct is used to hold latitude and longitude for coordinates
 public struct GPSCoords
 {
-    public GPSCoords(double lat, double lon) {
+    public GPSCoords(float lat, float lon) {
         Latitude = lat;
         Longitude = lon;
     }
 
-    public double Latitude { get; set; }
-    public double Longitude { get; set; }
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
+
+    //returns distance from other in metres
+    //based on code from: https://www.movable-type.co.uk/scripts/latlong.html
+    public double GetDistance(GPSCoords other) {
+        const int R = 6371000; //earth's mean radius in metres
+
+        double radianLat1 = this.Latitude * (Math.PI /180);
+        double radianLat2 = other.Latitude * (Math.PI /180);
+
+        double radianDeltaLat = (other.Latitude - this.Latitude) * (Math.PI /180);
+        double radianDeltaLon = (other.Longitude - this.Longitude) * (Math.PI /180);
+
+        double a = Math.Sin(radianDeltaLat / 2) * Math.Sin(radianDeltaLat / 2) +
+                    Math.Cos(radianLat1) * Math.Cos(radianLat2) * 
+                    Math.Sin(radianDeltaLon) * Math.Sin(radianDeltaLon);
+
+        double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+        return (R * c);
+    }
 }
 
 public class GPSSingleton : MonoBehaviour
 {
 
+    //Minimum accepted GPS accuracy in metres
+    private const int MinGPSAccuracy = 100; 
+
+    //max time waiting for GPS to give good accuracy in seconds
+    private const int GPSWaitTimeout = 5;
+
     //The latitude and Longitude in Decimal Degrees
     private GPSCoords coordinates = new GPSCoords(0, 0);
+
+    //The first recorded GPS point for the user
+    private GPSCoords userOrigin = new GPSCoords(0, 0);
+
+    //the first recorded heading of the user
+    private float userOriginHeading = 0;
 
     //The timestamp of the last location update
     private double lastUpdate = -1.0;
@@ -40,6 +73,7 @@ public class GPSSingleton : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.Log("multiple instances");
             Destroy(this);
             return;
         }
@@ -75,6 +109,9 @@ public class GPSSingleton : MonoBehaviour
         #endif
 
         UnityEngine.Input.location.Start(500f, 500f);
+
+        //enable the compass, otherwise we get 0
+        UnityEngine.Input.compass.enabled = true;
                 
         // Wait until service initializes
         int maxWait = 15;
@@ -113,6 +150,19 @@ public class GPSSingleton : MonoBehaviour
                 + UnityEngine.Input.location.lastData.altitude + " " 
                 + UnityEngine.Input.location.lastData.horizontalAccuracy + " " 
                 + UnityEngine.Input.location.lastData.timestamp);
+
+            bool originRecorded = false;
+            DateTime start = DateTime.Now;
+            while ((UnityEngine.Input.location.status == LocationServiceStatus.Running) && !originRecorded)  { 
+                //record the user's original position
+                if ((UnityEngine.Input.location.lastData.horizontalAccuracy <= MinGPSAccuracy) || ((DateTime.Now.Second - start.Second) > GPSWaitTimeout)) {
+                    this.userOrigin = new GPSCoords(UnityEngine.Input.location.lastData.latitude, UnityEngine.Input.location.lastData.longitude);
+                    this.userOriginHeading = UnityEngine.Input.compass.trueHeading;
+
+                    originRecorded = true;
+                }
+                yield return 0;
+            }
         }
 
         //update values until we become dissconnected
@@ -123,6 +173,8 @@ public class GPSSingleton : MonoBehaviour
             Debug.Log("Location: " 
                 + UnityEngine.Input.location.lastData.latitude + " " 
                 + UnityEngine.Input.location.lastData.longitude + " " 
+                + UnityEngine.Input.location.lastData.horizontalAccuracy + " " 
+                + UnityEngine.Input.compass.trueHeading + " "
                 + UnityEngine.Input.location.lastData.timestamp);
 
             yield return new WaitForSeconds(1f);
@@ -133,21 +185,38 @@ public class GPSSingleton : MonoBehaviour
     }
 
     //returns true if the singleton has valid GPS coordinates
-    public bool isDataValid()
+    public bool IsDataValid()
     {
         return this.lastUpdate != -1;
     }
 
     //returns the timestamp of the last coordinates update
-    public double getLastUpdate()
+    public double GetLastUpdate()
     {
         return this.lastUpdate;
     }
 
-    //returns the most recent latitude and longitude
-    public GPSCoords getCurrentCoordinates()
+    /*Returns the most recent latitude and longitude. Returns 0, 0 as the coordinates
+      if no data has been read yet.
+    */
+    public GPSCoords GetCurrentCoordinates()
     {
         return this.coordinates;
+    }
+
+    /*Returns the first recorded GPS coordinates for the user, this cooresponds 
+      to (0, 0) in the unity world. Returns 0, 0 as the coordinates if no data has 
+      been read yet.
+    */
+    public GPSCoords GetUserOrigin()
+    {
+        //return new GPSCoords(45.054411f, -75.640017f);
+        return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
+    }
+
+    public float GetUserOriginHeading()
+    {
+        return this.userOriginHeading;
     }
 
     // Start is called before the first frame update
