@@ -39,6 +39,7 @@ public class PointOfInterest : MonoBehaviour
         set => _coordinates = value;
     }
 
+    //the dialog to be shown at the POI
     private Dialogue _dialogue;
 
     public Dialogue Dialogue

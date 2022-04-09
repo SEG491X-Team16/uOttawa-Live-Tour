@@ -2,21 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The Tour Manager coordinates the tour and the other managers
+//It controls the entire TourPath scene
 public class TourManager : MonoBehaviour
 {
 
+    //reference to the Path Manager in the scene
     public PathManager pathManager;
 
+    //reference to the POI Manager in the scene
     public POIManager poiManager;
 
+    //reference to the Dialog Manager in the scene
     public DialogueManager dialogueManager;
 
+    //reference to the Building Highlighter on the 3D map in the scene
     public BuildingHighlight buildingHighlighter;
 
+    //reference to the Destination Pin on the 3D map in the scene
     public MoveMarker destinationMarker;
 
+    //reference to the object that handles switching scenes
     public SceneSwitch sceneSwitch;
 
+    //the tour path to be used for the tour
     private Path _path;
 
     // Start is called before the first frame update
@@ -25,14 +34,13 @@ public class TourManager : MonoBehaviour
         //prevent the screen from going to sleep
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+        //set up the tour
         this._path = getTabaretPath();
         pathManager.SetCurrentPath(this._path);
 
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
-
-        // poiManager.AddPOI(this._path.GetCurrentPOI());
     }
 
     // Update is called once per frame
@@ -41,11 +49,15 @@ public class TourManager : MonoBehaviour
         
     }
 
+    //callback when the user reaches the end of the path segment
+    //tells the POI Manager to start looking for the POI
     public void OnPathSegmentFinished() {
         Debug.Log("path segment finished callback");
         poiManager.AddPOI(this._path.GetCurrentPOI());
     }
 
+    //callback when the POI Manager finds the POI
+    //tells the DialogManager to show the Dialog
     public void OnPOIAchieved() {
         Debug.Log("POI achieved callback");
         pathManager.CleanupCurrentSegment();
@@ -53,16 +65,20 @@ public class TourManager : MonoBehaviour
         dialogueManager.StartDialogue(this._path.GetCurrentPOI().Dialogue);
     }
 
+    //callback when the DialogManager signals the dialog as complete and
+    //the user is ready for the next path segement
     public void OnContinueTour() {
         Debug.Log("continue tour callback");
+        //cleanup
         poiManager.RemovePOI(this._path.GetCurrentPOI());
         buildingHighlighter.ClearBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
 
-        //if we've reached the end, go back to the main menu
+        //if we've reached the end of the tour, go back to the main menu
         if (!pathManager.StartNextPathSegment()) {
             sceneSwitch.loadMenu();
         }
 
+        //start the next segment
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
@@ -115,6 +131,7 @@ public class TourManager : MonoBehaviour
         return path;
     }
 
+    //this is the current demo path
     private Path getTabaretPath() {
         //TODO: get the path from the database
 
