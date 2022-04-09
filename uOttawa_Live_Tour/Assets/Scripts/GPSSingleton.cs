@@ -65,6 +65,8 @@ public class GPSSingleton : MonoBehaviour
     //The timestamp of the last location update
     private double lastUpdate = -1.0;
 
+    private bool running = false;
+
     //The instance of the class
     public static GPSSingleton Instance { get; private set; }
 
@@ -84,6 +86,8 @@ public class GPSSingleton : MonoBehaviour
     //connect to the devices location services and update the stored variables
     IEnumerator GPSCoroutine() {
 
+        running = true;
+
         //Persmissions
         #if UNITY_ANDROID
         
@@ -94,6 +98,7 @@ public class GPSSingleton : MonoBehaviour
 
         if (!UnityEngine.Input.location.isEnabledByUser) {
             Debug.Log("Android Location not enabled");
+            running = false;
             yield break;
             //we need to do something here to let user know
         }
@@ -102,6 +107,7 @@ public class GPSSingleton : MonoBehaviour
 
         if (!UnityEngine.Input.location.isEnabledByUser) {
             Debug.Log("IOS Location not enabled");
+            running = false;
             yield break;
             //we need to do something here to let user know
         }
@@ -134,12 +140,14 @@ public class GPSSingleton : MonoBehaviour
         // Service didn't initialize in 15 seconds
         if (maxWait < 1) {
             Debug.Log("Timed out");
+            running = false;
             yield break;
         }
 
         // Connection has failed
         if (UnityEngine.Input.location.status != LocationServiceStatus.Running) {
             Debug.LogFormat("Unable to determine device location. Failed with status {0}", UnityEngine.Input.location.status);
+            running = false;
             yield break;
         } else {
             Debug.LogFormat("Location service live. status {0}", UnityEngine.Input.location.status);
@@ -182,6 +190,7 @@ public class GPSSingleton : MonoBehaviour
 
         // Stop service when done
         UnityEngine.Input.location.Stop();
+        running = false;
     }
 
     //returns true if the singleton has valid GPS coordinates
@@ -218,6 +227,17 @@ public class GPSSingleton : MonoBehaviour
     {
         return 0;
         // return this.userOriginHeading;
+    }
+
+    public bool IsRunning(){
+        return running;
+    }
+
+    public void RestartGPS()
+    {
+        if(!running){
+            StartCoroutine(GPSCoroutine());
+        }
     }
 
     // Start is called before the first frame update
