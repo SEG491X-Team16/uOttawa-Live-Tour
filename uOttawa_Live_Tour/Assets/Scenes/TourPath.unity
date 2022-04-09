@@ -5601,7 +5601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorManager: {fileID: 672368147}
-  CloudAnchorPrefab: {fileID: 919132149155446097, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
+  CloudAnchorPrefab: {fileID: 3806076437702269641, guid: 8ea0e34cc7b18734cae40ade07997625, type: 3}
   poiAchieved:
     m_PersistentCalls:
       m_Calls:
