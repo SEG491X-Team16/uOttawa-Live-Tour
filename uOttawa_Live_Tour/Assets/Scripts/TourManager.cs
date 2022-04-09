@@ -9,6 +9,8 @@ public class TourManager : MonoBehaviour
 
     public POIManager poiManager;
 
+    public DialogueManager dialogueManager;
+
     public BuildingHighlight buildingHighlighter;
 
     public MoveMarker destinationMarker;
@@ -47,6 +49,8 @@ public class TourManager : MonoBehaviour
     public void OnPOIAchieved() {
         Debug.Log("POI achieved callback");
         pathManager.CleanupCurrentSegment();
+
+        dialogueManager.StartDialogue(this._path.GetCurrentPOI().Dialogue);
     }
 
     public void OnContinueTour() {
@@ -90,8 +94,17 @@ public class TourManager : MonoBehaviour
         GPSCoords arcPos = new GPSCoords(45.420713f, -75.678542f);
         GPSCoords crxPos = new GPSCoords(45.421709f, -75.681234f);
 
-        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos);
-        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CRX", crxPos);
+        Dialogue dia1 = new Dialogue();
+        dia1.buildingName = "Tabaret Sign";
+        dia1.informations = new string[] {"Welcome to the uOttawa Live Tour!", "This is Tabaret, the first building ever built on campus. It's also on the uOttawa logo."};
+
+        Dialogue dia2 = new Dialogue();
+        dia2.buildingName = "She Dances with the Earth, Water and Sky";
+        dia2.informations = new string[] {"She Dances with the Earth, Water and Sky: This piece of artwork recognizes, and is dedicated to, the relationship between the University of Ottawa and the Omamìwìnini Anishinàbeg as well as all Indigenous people in the National Capital Region."};
+
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos, dia1);
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CRX", crxPos, dia2);
 
         PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
 
@@ -138,9 +151,21 @@ public class TourManager : MonoBehaviour
         GPSCoords statuePos = new GPSCoords(45.425004f, -75.686192f);
         GPSCoords haganPos = new GPSCoords(45.425038f, -75.686832f);
 
-        PointOfInterest pOI1 = new PointOfInterest("ua-6a4d616b518ee56e51b2dd0f354abba4", "TBT", signPos);
-        PointOfInterest pOI2 = new PointOfInterest("ua-8b8ebc2d7f303d5e749506701d75d6da", "TBT", statuePos);
-        PointOfInterest pOI3 = new PointOfInterest("ua-3ed9aac7f115ccc7560ff188518fc26a", "HGN", haganPos);
+        Dialogue dia1 = new Dialogue();
+        dia1.buildingName = "Tabaret Sign";
+        dia1.informations = new string[] {"Welcome to the uOttawa Live Tour!", "This is Tabaret, the first building ever built on campus. It's also on the uOttawa logo."};
+
+        Dialogue dia2 = new Dialogue();
+        dia2.buildingName = "She Dances with the Earth, Water and Sky";
+        dia2.informations = new string[] {"She Dances with the Earth, Water and Sky: This piece of artwork recognizes, and is dedicated to, the relationship between the University of Ottawa and the Omamìwìnini Anishinàbeg as well as all Indigenous people in the National Capital Region."};
+
+        Dialogue dia3 = new Dialogue();
+        dia3.buildingName = "Hagan Hall";
+        dia3.informations = new string[] {"This is Hagan Hall, one of the buildings on campus frequently used for classes. Hint: look for the abbrevation 'HGN' in front of the room name for classes here."};
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-6a4d616b518ee56e51b2dd0f354abba4", "TBT", signPos, dia1);
+        PointOfInterest pOI2 = new PointOfInterest("ua-8b8ebc2d7f303d5e749506701d75d6da", "TBT", statuePos, dia2);
+        PointOfInterest pOI3 = new PointOfInterest("ua-3ed9aac7f115ccc7560ff188518fc26a", "HGN", haganPos, dia3);
 
         PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2, pOI3};
 

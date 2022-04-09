@@ -48,8 +48,17 @@ public class StartPathButtonTest : MonoBehaviour
         GPSCoords arcPos = new GPSCoords(45.420713f, -75.678542f);
         GPSCoords crxPos = new GPSCoords(45.421709f, -75.681234f);
 
-        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos);
-        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CBY", crxPos);
+        Dialogue dia1 = new Dialogue();
+        dia1.buildingName = "Tabaret Sign";
+        dia1.informations = new string[] {"Welcome to the uOttawa Live Tour!", "This is Tabaret the first building ever built on campus. It's also on the uOttawa logo."};
+
+        Dialogue dia2 = new Dialogue();
+        dia2.buildingName = "She Dances with the Earth, Water and Sky";
+        dia2.informations = new string[] {"This piece of artwork recognizes, and is dedicated to, the relationship between the University of Ottawa and the Omamìwìnini Anishinàbeg as well as all Indigenous people in the National Capital Region."};
+
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos, dia1);
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CBY", crxPos, dia2);
 
         PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
 

@@ -5,10 +5,11 @@ using UnityEngine;
 public class PointOfInterest : MonoBehaviour
 {
 
-    public PointOfInterest(string cloudAnchorId, string buildingHighlight, GPSCoords coordinates) {
+    public PointOfInterest(string cloudAnchorId, string buildingHighlight, GPSCoords coordinates, Dialogue dialogue) {
         this._cloudAnchorId = cloudAnchorId;
         this._buildingHighlight = buildingHighlight;
         this._coordinates = coordinates;
+        this._dialogue = dialogue;
     }
 
     //ID of the cloud anchor for the POI
@@ -36,6 +37,14 @@ public class PointOfInterest : MonoBehaviour
     {
         get => _coordinates;
         set => _coordinates = value;
+    }
+
+    private Dialogue _dialogue;
+
+    public Dialogue Dialogue
+    {
+        get => _dialogue;
+        set => _dialogue = value;
     }
 
     // Start is called before the first frame update
