@@ -5081,7 +5081,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   arrowPrefab: {fileID: 919132149155446097, guid: b721381dc0e880b49aabdc3862db7fb0, type: 3}
-  userPosPrefab: {fileID: 1579198269362428144, guid: bc0706785497c8749a50208c615757ce, type: 3}
+  userPosPrefab: {fileID: 0}
 --- !u!4 &184395893
 Transform:
   m_ObjectHideFlags: 0
