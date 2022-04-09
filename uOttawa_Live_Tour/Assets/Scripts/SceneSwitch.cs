@@ -18,4 +18,9 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/Menu");
     }
+
+    public static void loadTourPath()
+    {
+        SceneManager.LoadScene("Scenes/TourPath");
+    }
 }
