@@ -7,8 +7,12 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {   
     private Queue<string> informations;
+    private Queue<Sprite> sprites;
+    //private Queue<Image> images;
     public Text buildingNameText;
     public Text informationText;
+    public Image image;
+    public Sprite sprite;
 
     public Animator animator;
 
@@ -16,7 +20,8 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         informations = new Queue<string>();
-
+        sprites = new Queue<Sprite>();
+       // images = new Queue<Image>();
     }
     public void StartDialogue (Dialogue dialogue) {
         Debug.Log("Display information about "+ dialogue.buildingName);
@@ -26,22 +31,34 @@ public class DialogueManager : MonoBehaviour
         buildingNameText.text = dialogue.buildingName; 
 
         informations.Clear();
+      //  image.Clear();
 
         foreach (string information in dialogue.informations)
         {
             informations.Enqueue(information);
             
         }
+        foreach (Sprite s in dialogue.image.sprite)
+        {
+            image.sprite.Enqueue(s);
+        }
         DisplayNext();
     
     }
     public void DisplayNext(){
+        Debug.Log("Display next1");
         if (informations.Count==0){
             EndDialogue();
             return;
         }
+        Debug.Log("Display next2");
+        //maybe remove
+        if (images.Count==0){
+            return;
+        }
 
         string information = informations.Dequeue();
+        Image image= images.Dequeue();
         StopAllCoroutines();
         Debug.Log(information);
         StartCoroutine(TypeSentence(information)); 
