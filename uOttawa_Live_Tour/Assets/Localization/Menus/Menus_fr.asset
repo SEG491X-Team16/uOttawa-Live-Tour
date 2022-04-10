@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13375427468824576
-    m_Localized: Commencer la Visite
+    m_Localized: Commencer
     m_Metadata:
       m_Items: []
   - m_Id: 13376184993681408
@@ -32,6 +32,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13376434949033984
     m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14383632038727680
+    m_Localized: Aide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660082704814080
+    m_Localized: Envoyer Des Commentaires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660781530386432
+    m_Localized: "Permission pour la Cam\xE9ra"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661450274410496
+    m_Localized: Permission pour le GPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661659989610496
+    m_Localized: Prochaine
     m_Metadata:
       m_Items: []
   references:

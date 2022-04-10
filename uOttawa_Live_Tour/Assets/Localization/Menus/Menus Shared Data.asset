@@ -31,6 +31,26 @@ MonoBehaviour:
     m_Key: credits
     m_Metadata:
       m_Items: []
+  - m_Id: 14383632038727680
+    m_Key: help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660082704814080
+    m_Key: feedback
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660781530386432
+    m_Key: camera_permission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661450274410496
+    m_Key: gps_permission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661659989610496
+    m_Key: next_btn
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

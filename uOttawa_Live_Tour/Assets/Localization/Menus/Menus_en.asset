@@ -34,5 +34,25 @@ MonoBehaviour:
     m_Localized: Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 14383632038727680
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660082704814080
+    m_Localized: Send Feedback
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14660781530386432
+    m_Localized: Camera Permissions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661450274410496
+    m_Localized: GPS Permissions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14661659989610496
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -23,7 +23,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
   - m_GUID: 80ae9b976114087489c6b45c42e517a7
-    m_Address: French (fr)
+    m_Address: "Fran\xE7ais (fr)"
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
