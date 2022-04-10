@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
+//modified from example in package docs at: https://docs.unity3d.com/Packages/com.unity.localization@0.2/manual/index.html
 public class LocaleDropdown : MonoBehaviour
 {
     public Dropdown dropdown;
