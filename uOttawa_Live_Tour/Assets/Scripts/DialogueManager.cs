@@ -11,8 +11,8 @@ public class DialogueManager : MonoBehaviour
     //private Queue<Image> images;
     public Text buildingNameText;
     public Text informationText;
-    public Image image;
-    public Sprite sprite;
+    // public Image image;
+    // public Sprite sprite;
 
     public Animator animator;
 
@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         informations = new Queue<string>();
-        sprites = new Queue<Sprite>();
+        // sprites = new Queue<Sprite>();
        // images = new Queue<Image>();
     }
     public void StartDialogue (Dialogue dialogue) {
@@ -38,10 +38,10 @@ public class DialogueManager : MonoBehaviour
             informations.Enqueue(information);
             
         }
-        foreach (Sprite s in dialogue.image.sprite)
-        {
-            image.sprite.Enqueue(s);
-        }
+        // foreach (Sprite s in dialogue.image.sprite)
+        // {
+        //     image.sprite.Enqueue(s);
+        // }
         DisplayNext();
     
     }
@@ -53,12 +53,12 @@ public class DialogueManager : MonoBehaviour
         }
         Debug.Log("Display next2");
         //maybe remove
-        if (images.Count==0){
-            return;
-        }
+        // if (images.Count==0){
+        //     return;
+        // }
 
         string information = informations.Dequeue();
-        Image image= images.Dequeue();
+        // Image image= images.Dequeue();
         StopAllCoroutines();
         Debug.Log(information);
         StartCoroutine(TypeSentence(information)); 
