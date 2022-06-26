@@ -43,6 +43,7 @@ jobs:
         with:
           projectPath: uOttawa_Live_Tour
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          testMode: PlayMode #EditMode doesn't seem to work right now
           
       - uses: actions/upload-artifact@v2
         if: always()
