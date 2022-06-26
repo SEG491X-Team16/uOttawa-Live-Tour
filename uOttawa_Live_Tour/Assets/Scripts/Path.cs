@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * This class respresents the entire Tour Path including all waypoints and POIs.
+ */
 public class Path
 {
     //this error is throw when a bad POIs and Segments list are set
@@ -20,10 +23,6 @@ public class Path
     public PathSegment[] Segments
     {
         get => _segments;
-        // set {
-        //     _segments = value;
-        //     _currentSegmentIndex = 0;
-        // }
     }
 
     private PointOfInterest[] _pois;
@@ -31,7 +30,6 @@ public class Path
     public PointOfInterest[] POIs
     {
         get => _pois;
-        // set => _pois = value;
     }
 
     private int _currentSegmentIndex = 0;

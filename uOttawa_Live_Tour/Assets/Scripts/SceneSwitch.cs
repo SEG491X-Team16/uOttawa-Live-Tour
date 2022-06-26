@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * This class is added to one empty in a scene that needs to be able to switch to another scene.
+ */
 public class SceneSwitch : MonoBehaviour
 {
     public void loadSettings()

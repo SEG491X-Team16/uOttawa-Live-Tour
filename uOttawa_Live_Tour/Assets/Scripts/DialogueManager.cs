@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 
+/**
+ * This manager handles displaying the dialogues to the user at a POI.
+ */
 public class DialogueManager : MonoBehaviour
 {   
     private Queue<string> informations;

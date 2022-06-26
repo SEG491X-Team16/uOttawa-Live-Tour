@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * This class represents one of the waypoint segments between POIs in the tour.
+ */
 public class PathSegment 
 {
 

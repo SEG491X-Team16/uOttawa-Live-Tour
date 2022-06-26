@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * This class represents a tour stop on the tour.
+ */
 public class PointOfInterest : MonoBehaviour
 {
 

@@ -9,7 +9,9 @@ using UnityEngine.XR.ARSubsystems;
 using Google.XR.ARCoreExtensions;
 
 
-//The POI Manager handles resolving the cloud anchors for the POIs
+/**
+ * This manager handles resolving the cloud anchors for the POIs (tour stops).
+ */
 public class POIManager : MonoBehaviour
 {
 

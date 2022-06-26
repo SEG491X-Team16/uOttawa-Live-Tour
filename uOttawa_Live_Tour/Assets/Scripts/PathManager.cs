@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-//Based on theory/quasi-example from: https://blog.anarks2.com/Geolocated-AR-In-Unity-ARFoundation/
-
+/**
+ * This manager handles the placement of waypoints and any other specifics of following the path.
+ *
+ * Waypoint placing based on theory/quasi-example from: https://blog.anarks2.com/Geolocated-AR-In-Unity-ARFoundation/
+ */
 public class PathManager : MonoBehaviour
 {
     //Max distance user can be from waypoint for them to be visible

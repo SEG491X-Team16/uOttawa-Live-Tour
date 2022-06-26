@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//The Tour Manager coordinates the tour and the other managers
-//It controls the entire TourPath scene
+/**
+ * This manager coordinates the tour and the other managers for the tour.
+ * It controls the entire TourPath scene
+ */
 public class TourManager : MonoBehaviour
 {
 

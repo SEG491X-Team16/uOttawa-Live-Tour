@@ -219,14 +219,14 @@ public class GPSSingleton : MonoBehaviour
     */
     public GPSCoords GetUserOrigin()
     {
-        return new GPSCoords(45.424622f, -75.685978f);
-        // return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
+        // return new GPSCoords(45.424622f, -75.685978f);
+        return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }
 
     public float GetUserOriginHeading()
     {
-        return 0;
-        // return this.userOriginHeading;
+        // return 0;
+        return this.userOriginHeading;
     }
 
     public bool IsRunning(){

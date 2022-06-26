@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/**
+ * This class handles the building highlights on the AR map of campus.
+ */
 public class BuildingHighlight : MonoBehaviour
 {
     private string[] buildings = {"15/17", "34/36", "38", "40", "90U", "109", "110", "143", "227", "538/540", "542", "555", "559", "600", "603", "631", "ARC", "ATK", "AWHC", "BRS", "BSC", "CBY", "CRG", "CRX", "CTE", "DMS", "DRO", "FSS", "FTX", "GNN", "GSD", "HGN", "HNN", "HSY", "KED", "LABO", "LBC", "LMX", "LPR", "LR3", "LRR", "MCE", "MHN", "MNN", "MNO", "MNT", "MRD", "MRN", "MRT", "ODL", "PRZ", "SCR", "SMD", "SMN", "STE", "STM", "STN", "STT", "SWT", "TBT", "THN", "UCU", "VNR", "WCA", "WLD"};
