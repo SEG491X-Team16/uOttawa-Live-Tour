@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * This class represents the Dialogues shown to the user at a POI.
+ */
 [System.Serializable]
 public class Dialogue 
 {

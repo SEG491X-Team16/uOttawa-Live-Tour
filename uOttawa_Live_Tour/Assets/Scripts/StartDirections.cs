@@ -14,6 +14,8 @@ public class StartDirections : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] TextMeshProUGUI locationText;
 
+    public SceneSwitch sceneSwitch;
+
     private const double radius = 6371000d; //radius of earth
 
     //lat & lon bounds for campus
@@ -27,7 +29,7 @@ public class StartDirections : MonoBehaviour
     
     public double startLat = 45.42466d;
     public double startLon = -75.68608d;
-    private float minDistance = 5f;
+    private float minDistance = 20f;//5f;
     float distance;
     
     //used so distance is updated 1 time/sec
@@ -89,7 +91,7 @@ public class StartDirections : MonoBehaviour
 
                 if(distance <= minDistance){
                     //display success, move to next scene
-                    SceneSwitch.loadTourPath();
+                    sceneSwitch.loadTourPath();
                 }
             }  
         }

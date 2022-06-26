@@ -114,7 +114,7 @@ public class GPSSingleton : MonoBehaviour
 
         #endif
 
-        UnityEngine.Input.location.Start(10f, 10f);
+        UnityEngine.Input.location.Start(5f, 5f);
 
         //enable the compass, otherwise we get 0
         UnityEngine.Input.compass.enabled = true;
@@ -219,12 +219,13 @@ public class GPSSingleton : MonoBehaviour
     */
     public GPSCoords GetUserOrigin()
     {
-        //return new GPSCoords(45.054411f, -75.640017f);
+        // return new GPSCoords(45.424622f, -75.685978f);
         return (this.lastUpdate == -1) ? (new GPSCoords(0, 0)) : (this.userOrigin);
     }
 
     public float GetUserOriginHeading()
     {
+        // return 0;
         return this.userOriginHeading;
     }
 

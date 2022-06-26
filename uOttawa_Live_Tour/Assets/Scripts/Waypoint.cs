@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint //: MonoBehaviour
+/**
+ * This class represents one of the arrows along the tour path that
+ * a trail for the user to follow along the tour.
+ */
+public class Waypoint
 {
+
+    public Waypoint(GPSCoords coordinates, int id) {
+        this._coordinates = coordinates;
+        this._id = id;
+    }
+
     private GPSCoords _coordinates = new GPSCoords(0, 0);
 
     public GPSCoords Coordinates
@@ -27,8 +37,10 @@ public class Waypoint //: MonoBehaviour
     }
 
     public void ClearInGameInstance() {
-        GameObject.Destroy(_inGameInstance);
-        this._inGameInstance = null;
+        if (this._inGameInstance != null) {
+            GameObject.Destroy(_inGameInstance);
+            this._inGameInstance = null;
+        }
     }
 
     public bool IsVisible() {
