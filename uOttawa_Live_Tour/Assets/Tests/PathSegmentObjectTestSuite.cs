@@ -150,7 +150,6 @@ public class PathSegmentObjectTestSuite
         Assert.AreEqual(seg.GetVisibleEnd(), null);
         Assert.AreEqual(seg.GetNextVisibleStart(), seg.Waypoints[0]);
 
-        
         Assert.That(seg.IncrementVisibleStart());
         for(int i = 0; i < WaypointsLength - 1; i++)
         {
@@ -163,5 +162,38 @@ public class PathSegmentObjectTestSuite
         Assert.AreEqual(seg.GetNextVisibleStart(), null);
 
         Assert.That(!seg.IncrementVisibleEnd());
+    }
+
+    [UnityTest]
+    public IEnumerator ClearAllWaypoints()
+    {
+        PathSegment seg = new PathSegment(this.waypoints);
+
+        for (int i = 0; i < (4 % WaypointsLength); i++)
+        {
+            GameObject waypointArrow =  MonoBehaviour.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/arrow.fbx"));
+            seg.Waypoints[i].SetInGameInstance(waypointArrow);
+            Assert.That(seg.IncrementVisibleStart());
+            Assert.That(seg.Waypoints[i].IsVisible());
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        seg.ClearVisibleWaypoints();
+
+        for (int i = 0; i < WaypointsLength; i++)
+        {
+            Assert.That(!seg.Waypoints[i].IsVisible());
+        }
+    }
+
+    [UnityTest]
+    public IEnumerator ClearAllWaypointsEmptyWaypoints()
+    {
+        Waypoint[] waypoints = { };
+        PathSegment seg = new PathSegment(waypoints);
+
+        Assert.DoesNotThrow(() => seg.ClearVisibleWaypoints());
+
+        yield return null;
     }
 }
