@@ -9,7 +9,7 @@ public class PathSegmentObjectTestSuite
 {
     private const int WaypointsLength = 10;
 
-    private Waypoint[] waypoints = new Waypoint[10];
+    private Waypoint[] waypoints = new Waypoint[WaypointsLength];
 
     //run before each test method
     [SetUp]

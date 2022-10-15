@@ -5,7 +5,7 @@ using UnityEngine;
 /**
  * This class represents a tour stop on the tour.
  */
-public class PointOfInterest : MonoBehaviour
+public class PointOfInterest
 {
 
     public PointOfInterest(string cloudAnchorId, string buildingHighlight, GPSCoords coordinates, Dialogue dialogue) {
