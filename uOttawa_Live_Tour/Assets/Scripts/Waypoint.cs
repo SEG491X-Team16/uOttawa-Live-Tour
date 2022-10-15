@@ -46,16 +46,5 @@ public class Waypoint
     public bool IsVisible() {
         return this._inGameInstance != null;
     }
-
-    // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    
 }
