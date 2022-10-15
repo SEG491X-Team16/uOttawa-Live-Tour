@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 
+/**
+ * This manager handles displaying the dialogues to the user at a POI.
+ */
 public class DialogueManager : MonoBehaviour
 {   
     private Queue<string> informations;
-    private Queue<Sprite> sprites;
+    // private Queue<Sprite> sprites;
     //private Queue<Image> images;
     public Text buildingNameText;
     public Text informationText;
@@ -15,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     // public Sprite sprite;
 
     public Animator animator;
+
+    public UnityEvent dialogueFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -77,5 +83,6 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end");
         animator.SetBool("IsOpen",false);
 
+        dialogueFinished.Invoke();
     }
 }
