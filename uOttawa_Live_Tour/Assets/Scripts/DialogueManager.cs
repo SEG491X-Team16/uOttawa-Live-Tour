@@ -2,26 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 
 public class DialogueManager : MonoBehaviour
-{   
-    private Queue<string> informations;
-    private Queue<Sprite> sprites;
-    //private Queue<Image> images;
+{    
+    private AudioClip[] audioClips;
+    private string[] dialogueInformation;
+    private int currentIndex;
+
+    public AudioSource source;
     public Text buildingNameText;
     public Text informationText;
-    // public Image image;
-    // public Sprite sprite;
+    public Text nextButtonText;
+    public Text playButtonText;
 
     public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        informations = new Queue<string>();
-        // sprites = new Queue<Sprite>();
-       // images = new Queue<Image>();
+
+    }
+    void Update(){
+        if (source.isPlaying){
+            playButtonText.text = "Pause II";
+        } else {
+            playButtonText.text = "Play ►";
+        }
     }
     public void StartDialogue (Dialogue dialogue) {
         Debug.Log("Display information about "+ dialogue.buildingName);
@@ -30,14 +38,11 @@ public class DialogueManager : MonoBehaviour
 
         buildingNameText.text = dialogue.buildingName; 
 
-        informations.Clear();
-      //  image.Clear();
+        audioClips = dialogue.audioClips;
+        dialogueInformation = dialogue.informations;
+        currentIndex = -1;
+        nextButtonText.text = "Next";
 
-        foreach (string information in dialogue.informations)
-        {
-            informations.Enqueue(information);
-            
-        }
         // foreach (Sprite s in dialogue.image.sprite)
         // {
         //     image.sprite.Enqueue(s);
@@ -45,23 +50,35 @@ public class DialogueManager : MonoBehaviour
         DisplayNext();
     
     }
+    
     public void DisplayNext(){
-        Debug.Log("Display next1");
-        if (informations.Count==0){
+        source.Stop();
+        currentIndex ++;
+        if (currentIndex == dialogueInformation.Length){
             EndDialogue();
             return;
         }
-        Debug.Log("Display next2");
-        //maybe remove
-        // if (images.Count==0){
-        //     return;
-        // }
+        if (currentIndex == dialogueInformation.Length -1){
+            nextButtonText.text = "Finish";
+        }
 
-        string information = informations.Dequeue();
-        // Image image= images.Dequeue();
         StopAllCoroutines();
-        Debug.Log(information);
-        StartCoroutine(TypeSentence(information)); 
+        StartCoroutine(TypeSentence(dialogueInformation[currentIndex])); 
+        Debug.Log("Current Index: " + currentIndex);
+        
+    }
+
+    public void DisplayPrevious(){
+        if (currentIndex == dialogueInformation.Length -1){
+            nextButtonText.text = "Next";
+        }
+        if (currentIndex > 0){
+            source.Stop();
+            currentIndex --;
+        
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(dialogueInformation[currentIndex])); 
+        } 
     }
 
     IEnumerator TypeSentence (string information)
@@ -78,4 +95,14 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen",false);
 
     }
+
+    public void PlayAudio(){
+        source.clip = audioClips[currentIndex];
+        if (source.isPlaying){
+            source.Pause();
+        } else {
+            source.Play();
+        }
+    }
+
 }
