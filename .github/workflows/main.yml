@@ -1,0 +1,70 @@
+name: Build
+
+on: [push, pull_request]
+
+# Allows you to run this workflow manually from the Actions tab
+#workflow_dispatch:
+
+# cancel any jobs that are already in progress
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build uOttawa Live Tour
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            targetPlatform:
+                - Android
+                - iOS
+
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: uOttawa_Live_Tour
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          testMode: PlayMode #EditMode doesn't seem to work right now
+          
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results ${{ matrix.targetPlatform }}
+          path: artifacts/${{ matrix.targetPlatform }}
+
+      # Build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: 2020.3.28f1
+          projectPath: uOttawa_Live_Tour
+          targetPlatform: ${{ matrix.targetPlatform }}
+
+      # Output
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
