@@ -29,7 +29,7 @@ namespace Google.XR.ARCoreExtensions
 
     public class PersistentCloudAnchorsController : MonoBehaviour
     {
-        [Header("AR Foundation")]
+        [Header("AR Components")]
 
         /// <summary>
         /// The active ARSessionOrigin used in the scene.
