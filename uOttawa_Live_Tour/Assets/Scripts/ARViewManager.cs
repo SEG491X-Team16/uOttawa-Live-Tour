@@ -65,6 +65,16 @@ namespace Google.XR.ARCoreExtensions
         /// </summary>
         public Text DebugText;
 
+            /// <summary>
+        /// UI element to display information at runtime.
+        /// </summary>
+        public GameObject InfoPanel;
+
+        /// <summary>
+        /// Text displaying <see cref="GeospatialPose"/> information at runtime.
+        /// </summary>
+        public Text InfoText;
+
         /// <summary>
         /// Helper message for <see cref="NotTrackingReason.Initializing">.</see>
         /// </summary>
@@ -171,7 +181,22 @@ namespace Google.XR.ARCoreExtensions
             _pendingCloudAnchors.Clear();
             _cachedCloudAnchors.Clear();
 
-            InstructionBar.SetActive(true);
+            InfoPanel.SetActive(true);
+                            InfoText.text = string.Format(
+                "Latitude/Longitude: {1}°, {2}°{0}" +
+                "Horizontal Accuracy: {3}m{0}" +
+                "Altitude: {4}m{0}" +
+                "Vertical Accuracy: {5}m{0}" +
+                "Heading: {6}°{0}" +
+                "Heading Accuracy: {7}°",
+                "\n",
+                "F6",
+                "F6",
+                "F6",
+                "F2",
+                "F2",
+                "F1",
+                "F1");
 
             // Manually pre-load cloud anchor in resolving set
             Controller.LoadCloudAnchorHistory();
