@@ -326,10 +326,6 @@ namespace Google.XR.ARCoreExtensions
         public void SwitchToARView()
         {            
             _isInARView = true;
-
-            SessionOrigin.gameObject.SetActive(true);
-            Session.gameObject.SetActive(true);
-            ARCoreExtensions.gameObject.SetActive(true);
     
             ResetAllViews();
             ARView.SetActive(true);
