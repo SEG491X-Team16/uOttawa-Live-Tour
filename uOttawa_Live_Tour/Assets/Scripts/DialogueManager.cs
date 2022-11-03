@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 
+/**
+ * This manager handles displaying the dialogues to the user at a POI.
+ */
 public class DialogueManager : MonoBehaviour
 {    
     private AudioClip[] audioClips;
@@ -18,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     public Text playButtonText;
 
     public Animator animator;
+
+    public UnityEvent dialogueFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +100,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end");
         animator.SetBool("IsOpen",false);
 
+        dialogueFinished.Invoke();
     }
 
     public void PlayAudio(){

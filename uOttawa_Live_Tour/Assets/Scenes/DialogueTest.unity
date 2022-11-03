@@ -5394,9 +5394,8 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727651832
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1744085459806425074, guid: 1470f0d2fd2c8c64a94ee6fe77cf1eca, type: 3}
+  m_PrefabInstance: {fileID: 1744085459495163547}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727651830}
   m_Enabled: 1
@@ -6233,9 +6232,8 @@ RectTransform:
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2101518297
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1744085460066206923, guid: 1470f0d2fd2c8c64a94ee6fe77cf1eca, type: 3}
+  m_PrefabInstance: {fileID: 1744085459495163547}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101518295}
   m_Enabled: 1
