@@ -21,9 +21,7 @@
       "EnableInlining"
     ],
     "option_file_generation_option": [],
-    "option_generics_option": [
-      "EnableFullSharing"
-    ],
+    "option_generics_option": [],
     "option_feature": [],
     "option_diagnostic_option": [],
     "option_convert_to_cpp": true,

@@ -492,7 +492,6 @@ UnityEngine.IntegratedSubsystem::IsRunning
 UnityEngine.IntegratedSubsystem::SetHandle
 UnityEngine.IntegratedSubsystem::Start
 UnityEngine.IntegratedSubsystem::Stop
-UnityEngine.JsonUtility::FromJsonInternal
 UnityEngine.JsonUtility::ToJsonInternal
 UnityEngine.LayerMask::NameToLayer
 UnityEngine.Light::get_useColorTemperature

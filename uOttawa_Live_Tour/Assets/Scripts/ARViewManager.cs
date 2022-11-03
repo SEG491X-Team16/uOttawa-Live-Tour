@@ -20,6 +20,7 @@
 
 namespace Google.XR.ARCoreExtensions
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -39,6 +40,11 @@ namespace Google.XR.ARCoreExtensions
         /// The main controller for Geospatial API.
         /// </summary>
         public GeospatialController Controller;
+
+        /// <summary>
+        /// The location of the camera in Earth-relative coordinates
+        /// </summary>
+        public GeospatialPose CameraPose;
 
         /// <summary>
         /// The UI element that displays the instructions to guide resolving experience.
@@ -80,24 +86,7 @@ namespace Google.XR.ARCoreExtensions
         public void OnEnable()
         {
             _isReturning = false;
-
-
             InfoPanel.SetActive(true);
-                            InfoText.text = string.Format(
-                "Latitude/Longitude: {1}°, {2}°{0}" +
-                "Horizontal Accuracy: {3}m{0}" +
-                "Altitude: {4}m{0}" +
-                "Vertical Accuracy: {5}m{0}" +
-                "Heading: {6}°{0}" +
-                "Heading Accuracy: {7}°",
-                "\n",
-                "F6",
-                "F6",
-                "F6",
-                "F2",
-                "F2",
-                "F1",
-                "F1");
         }
 
         /// <summary>
@@ -114,7 +103,27 @@ namespace Google.XR.ARCoreExtensions
         /// </summary>  
         public void Update()
         {
-            
+            if (Controller.getEarthTrackingState() == TrackingState.Tracking) {
+                var pose = Controller.getCameraGeospatialPose();
+                InfoText.text = string.Format(
+                    "Latitude/Longitude: {1}°, {2}°{0}" +
+                    "Horizontal Accuracy: {3}m{0}" +
+                    "Altitude: {4}m{0}" +
+                    "Vertical Accuracy: {5}m{0}" +
+                    "Heading: {6}°{0}" +
+                    "Heading Accuracy: {7}°",
+                    Environment.NewLine,
+                    pose.Latitude.ToString("F6"),
+                    pose.Longitude.ToString("F6"),
+                    pose.HorizontalAccuracy.ToString("F6"),
+                    pose.Altitude.ToString("F2"),
+                    pose.VerticalAccuracy.ToString("F2"),
+                    pose.Heading.ToString("F1"),
+                    pose.HeadingAccuracy.ToString("F1")
+                );                
+            } else {
+                InfoText.text = "GEOSPATIAL POSE: not tracking \n Point camera to nearby buildings or check error logs";
+            }
         }
 
         private void ReturnToHomePage(string reason)
