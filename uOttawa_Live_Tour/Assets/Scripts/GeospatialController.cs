@@ -175,7 +175,7 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // On home page, pressing 'back' button quits the app.
-            // Otherwise, returns to home page.
+            // In AR view, return to home page.
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 if (HomePage.activeSelf)
@@ -301,6 +301,18 @@ namespace Google.XR.ARCoreExtensions
             var earthTrackingState = EarthManager.EarthTrackingState;
             return earthTrackingState;
         }
+
+        /// <summary>
+        /// Checks whether the Geospatial API is supported on this device.
+        /// </summary>
+        public bool isGeospatialModeSupported() {
+            var featureSupport = EarthManager.IsGeospatialModeSupported(GeospatialMode.Enabled);
+            if (featureSupport == FeatureSupported.Unsupported || featureSupport == FeatureSupported.Unknown) 
+            {
+                return false;
+            }
+            return true;
+        }
         
         /// <summary>
         /// Switch to home page, and disable all other screens.
@@ -326,13 +338,14 @@ namespace Google.XR.ARCoreExtensions
         public void SwitchToARView()
         {            
             _isInARView = true;
-    
             ResetAllViews();
             ARView.SetActive(true);
             SetPlatformActive(true);
-
-            _asyncCheck = AvailabilityCheck();
-            StartCoroutine(_asyncCheck);  
+            if (_asyncCheck == null) 
+            {
+                _asyncCheck = AvailabilityCheck();
+                StartCoroutine(_asyncCheck);  
+            }
         }
 
         private void ResetAllViews()

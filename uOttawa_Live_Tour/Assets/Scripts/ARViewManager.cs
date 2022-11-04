@@ -102,7 +102,12 @@ namespace Google.XR.ARCoreExtensions
         //  Update is called once per frame
         /// </summary>  
         public void Update()
-        {
+        {   
+            if (!Controller.isGeospatialModeSupported()) 
+            {
+                DebugText.text = "Geospatial API not supported by this device.";
+            }
+
             if (Controller.getEarthTrackingState() == TrackingState.Tracking) {
                 var pose = Controller.getCameraGeospatialPose();
                 InfoText.text = string.Format(
