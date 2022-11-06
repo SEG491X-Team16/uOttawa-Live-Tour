@@ -105,6 +105,7 @@ public class DialogueManager : MonoBehaviour
 
     public void PlayAudio(){
         source.clip = audioClips[currentIndex];
+        Debug.Log("playing" + audioClips[currentIndex].channels);
         if (source.isPlaying){
             source.Pause();
         } else {
