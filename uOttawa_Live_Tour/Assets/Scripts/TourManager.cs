@@ -37,7 +37,7 @@ public class TourManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         //set up the tour
-        this._path = getTabaretPath();
+        this._path = getPath();
         pathManager.SetCurrentPath(this._path);
 
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
@@ -87,6 +87,35 @@ public class TourManager : MonoBehaviour
     }
 
     private Path getPath() {
+        Path path = new Path();
+
+        //segment 1: 
+        Waypoint way1 = new Waypoint(new GPSCoords(0,0), 1);
+
+        Waypoint[] waypoints1 = new Waypoint[] {way1};
+        PathSegment seg1 = new PathSegment(waypoints1);
+
+        Dialogue dia1 = new Dialogue();
+        dia1.buildingName = "name1";
+        dia1.informations = new string[] {"info1", "info2", "info3"};
+        dia1.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        
+        PointOfInterest poi1 = new PointOfInterest("ua-b2bb7bb87eca47a53fd6591fceb0601e", "ARC", new GPSCoords(0,0), dia1);
+
+        //segment 2:
+
+        //segment 3:
+
+        //assemble path
+        PathSegment[] segments = {seg1};
+        PointOfInterest[] pois = {poi1};
+
+        path.SetSegmentsAndPOIs(segments, pois);
+
+        return path;
+    }
+
+    private Path getTestPath() {
         //TODO: get the path from the database
 
         Path path = new Path();
