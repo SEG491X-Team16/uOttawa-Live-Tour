@@ -123,7 +123,7 @@ public class TourManager : MonoBehaviour
                                             "Hamelin and Simard are two buildings that have a connecting hallway that bridges the two of them together. This bridge actually contains a classroom known as The Batcave which holds roughly 250 students.", 
                                             "Hamelin is home to many departments in the Faculty of Arts including Modern Languages, Linguistics, Philosophy, and Religious Studies",
                                             "Simard is home to the Faculty of Arts, French Department, and Department of Geography. Also found here on its bottom floor is Café Alt, a space run by students where movies, slam poetry and open mic nights happen often."};
-        //dia2.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia2.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/SMD/Here_are_Hamelin_and_161"), Resources.Load<AudioClip>("Audio/SMD/Hamelin_and_Simard_a_808"), Resources.Load<AudioClip>("Audio/SMD/Hamelin_is_home_to_m_409"), Resources.Load<AudioClip>("Audio/SMD/Simard_is_home_to_th_585")};
         
         PointOfInterest poi2 = new PointOfInterest("ua-dd0c7a71ddd870cfde1b637a449f1a68", "SMD", new GPSCoords(45.42369764735622f, -75.68534683603103f), dia2);
 
@@ -142,7 +142,7 @@ public class TourManager : MonoBehaviour
         dia3.informations = new string[] {"This is Perez Hall!",
                                             "Perez is home to the university’s Department of Music. It houses its very own music library as well as practice rooms and auditoriums.", 
                                             "It also features the Piano Pedagogy Research Laboratory that measures and digitizes performance based on both visual and auditory responses to study and improve the process of piano learning and teaching."};
-        // dia3.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia3.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/PRZ/This_is_Perez_Hall_608"), Resources.Load<AudioClip>("Audio/PRZ/Perez_is_home_to_the_918"), Resources.Load<AudioClip>("Audio/PRZ/It_also_features_the_770")};
         
         PointOfInterest poi3 = new PointOfInterest("ua-6a9eb96ae5a65bd61f6e49aff234cadd", "PRZ", new GPSCoords(45.423489072144754f, -75.68494405430351f), dia3);
 
@@ -162,7 +162,7 @@ public class TourManager : MonoBehaviour
         dia4.informations = new string[] {"Welcome to Morisset Library!",
                                             "Morisset is uOttawa’s main graduate and undergraduate library. With a total of 6 floors and 2 basement levels, Morisset features a plethora of research material to help you discover the information you need. It is also the most energy efficient library found in all of Canada!",
                                             "In Morisset, there are many different types of study areas to fit your personal needs including quiet study spaces, communal study areas, and reservable rooms for collaborative work!"};
-        // dia4.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia4.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/MRT/Welcome_to_Morisset__279"), Resources.Load<AudioClip>("Audio/MRT/Morisset_is_uOttawa_324"), Resources.Load<AudioClip>("Audio/MRT/In_Morisset_there_a_430")};
         
         PointOfInterest poi4 = new PointOfInterest("ua-ba0620616227078a8a68c50fdd714149", "MRT", new GPSCoords(45.423087393707114f, -75.68463110327154f), dia4);
 
@@ -183,7 +183,7 @@ public class TourManager : MonoBehaviour
                                             "90U is one of uOttawa’s many residence buildings that offer housing to students in search of accommodations closer to campus life. Other residences include Annex, Hyman-Soloway, 45 Mann, Friel, Thompson, Henderson, LeBlanc, Marchand, and Stanton, Rideau.",
                                             "Housing in one of uOttawa’s residence buildings is even guaranteed to all first year students who apply before June 1st of the given year. Rooms are offered on a first come, first served basis so be sure to apply as soon as possible to secure a room of your choice!",
                                             "Residences are both on and off campus, with off campus residences being within at most a 5-10 min walk to the university grounds."};
-        // dia5.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia5.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/Welcome_to_the_90_Un_729"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/Housing_in_one_of_uO_392"), Resources.Load<AudioClip>("Audio/90U/Residences_are_both__147")};
         
         PointOfInterest poi5 = new PointOfInterest("ua-bd38a26e00f58f18c2697cfda7993b97", "90U", new GPSCoords(45.422619886354354f, -75.6845417557385f), dia5);
 
@@ -202,7 +202,7 @@ public class TourManager : MonoBehaviour
                                             "The University Center is an all purpose area for communities on campus to gather in a common space. The Terminus, located on the second floor of UCU, is a gathering space commonly used by many of the diverse clubs at uOttawa.",
                                             "Many services can also be found here including the Health Promotion Centre, Community Life Service, and Career Development Centre. The campus Bookstore can also be found here where you can buy and rent textbooks or shop for some uOttawa merch. The offices for the student union, UOSU, are in the basement and they’re where new students can get their U-Pass bus passes and get informed on various services offered to them.",
                                             "Also featured in the University Center is the award-winning Dining Hall with a wide variety of fresh meals prepared on site. It is not only zero-waste, but can also accommodate almost any dietary need including allergies (nuts, tree nuts, gluten or wheat, dairy, egg) and restrictions (vegan, vegetarian, halal)."};
-        // dia6.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia6.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/UCU/This_is_the_Universi_361"), Resources.Load<AudioClip>("Audio/UCU/The_University_Cente_541"), Resources.Load<AudioClip>("Audio/UCU/Many_services_can_al_601"), Resources.Load<AudioClip>("Audio/UCU/Also_featured_in_the_935")};
         
         PointOfInterest poi6 = new PointOfInterest("ua-61701ae599e1ac2fff38db6bbeb71691", "UCU", new GPSCoords(45.422452795327466f, -75.6841623404532f), dia6);
 
@@ -224,7 +224,7 @@ public class TourManager : MonoBehaviour
                                             "The Faculty of Social Sciences is the largest faculty at uOttawa and includes programs such as criminology, psychology, Conflict Studies & Human Rights, economy, political sciences and feminist and gender studies.The living wall is a focal point of this building that can be seen when entering the building and extends up to the 6th floor. In fact, it is the largest biofilter in all of North America!",
                                             "At FSS, you can find classrooms and offices throughout the building along with plenty of spaces for either personal study or group collaboration. It is also home to the Inspire psychology lab that enables students to apply modern equipment to study various branches of psychology.",
                                             "FSS is also home to the International Exchange office which allows students to earn their degree while also experiencing the cultures that different institutions have to offer both within and outside of Canada."};
-        // dia7.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia7.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/FSS/Welcome_to_the_Facul_371"), Resources.Load<AudioClip>("Audio/FSS/The_Faculty_of_Socia_410"), Resources.Load<AudioClip>("Audio/FSS/At_F_S_S_you_can_fi_286"), Resources.Load<AudioClip>("Audio/FSS/F_S_S_is_also_home_t_472")};
         
         PointOfInterest poi7 = new PointOfInterest("ua-d39695084e8f1e7b07f2bf9cd70f870a", "FSS", new GPSCoords(45.42187282288526f, -75.68368270033561f), dia7);
         
@@ -251,7 +251,7 @@ public class TourManager : MonoBehaviour
         dia8.informations = new string[] {"This is the O-Train station!",
                                             "Here is the O-Train station located right here on the uOttawa campus! Using the U-Pass service included with your university fees, you can board the O-Train or any OC Transpo and STO buses by simply tapping your U-Pass on the card reader.",
                                             "Taking the train eastbound, you can even stop at Lees station where you’ll find uOttawa’s athletic facilities including our sports playing field!"};
-        // dia8.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia8.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/O-Train/This_is_the_OTrain__493"), Resources.Load<AudioClip>("Audio/O-Train/Here_is_the_OTrain__468"), Resources.Load<AudioClip>("Audio/O-Train/Taking_the_train_eas_123")};
         
         PointOfInterest poi8 = new PointOfInterest("ua-221c88f0ea0d0d4560aa795e313fb2df", "MCE", new GPSCoords(45.42106239089179f, -75.68224828242504f), dia8);
 
@@ -272,7 +272,7 @@ public class TourManager : MonoBehaviour
                                             "The Bioscience Complex is where the Husky Courtyard is located. It is known as a living classroom as it is a simulation of a Canadian boreal forest and wetland environment where students can learn to study and identify the flora. Despite being a slice of nature, its outdoor seating and internet access makes for a great spot to study.",
                                             "Additionally, the Bioscience Complex is home to the living laboratory aquarium where sea-ing is believing! Using ecologically sustainable methods, a coral reef environment allows students a rare and personal view of the intricate interactions occurring continually between the living organisms that inhabit the reef. By studying these interactions in a controlled environment, students and researchers will continue to positively impact the health and welfare of aquatic life and in particular the highly endangered natural coral reefs.",
                                             "Students also study plants at the Faculty of Science greenhouse located on the roof of the Bioscience Complex. This is where researchers and students find new methods to study and research these plants that come from all around the globe!"};
-        // dia9.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia9.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/BSC/This_is_the_Bioscien_473"), Resources.Load<AudioClip>("Audio/BSC/The_Bioscience_Compl_564"), Resources.Load<AudioClip>("Audio/BSC/The_Bioscience_Compl_640"), Resources.Load<AudioClip>("Audio/BSC/Additionally_the_Bi_503"), Resources.Load<AudioClip>("Audio/BSC/By_studying_these_in_813")};
         
         PointOfInterest poi9 = new PointOfInterest("ua-39929a0c430a8354fc1e5d46fce3a5a6", "BSC", new GPSCoords(45.421427478621005f, -75.6815448149214f), dia9);
 
@@ -290,7 +290,7 @@ public class TourManager : MonoBehaviour
         dia10.informations = new string[] {"Here is the Learning Crossroads!",
                                             "The Learning Crossroads is a modern, open concept building designed to provide students with ample study spaces. It features a wide range of study spaces including individual study spaces, open concept study areas, and reservable private study rooms. These rooms are open to all students and can be found on every floor.",
                                             "In addition to the many study spaces, CRX also features a variety of places to eat whether you’re on the go or in between classes including Tim Hortons, the Thai Express, and the Paramount."};
-        // dia10.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia10.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/CRX/Here_is_the_Learning_229"), Resources.Load<AudioClip>("Audio/CRX/The_Learning_Crossro_153"), Resources.Load<AudioClip>("Audio/CRX/In_addition_to_the_m_130")};
         
         PointOfInterest poi10 = new PointOfInterest("ua-ba948d19751c853afcb6aa76a7b806bf", "CRX", new GPSCoords(45.42173726045992f, -75.68131914364116f), dia10);
 
@@ -316,7 +316,7 @@ public class TourManager : MonoBehaviour
                                             "The STEM complex also features the Makerspace, a student run facility where students have the opportunity to design, prototype, and build their own creations for free. Included in the Makerspace are 3D printers, Arduinos, laser cutters and much more. Whether it's for class work or a personal project, the Makerspace allows you to develop and create your products and ideas.",
                                             "The Brunsfield Centre, a machining shop open to students, can also be found here. Students can get training to use the lathes, mills, drill presses, bandsaws, and welding.",
                                             "STEM is also the home of the JMTS team space, where the university’s competitive engineering teams are. There are many different teams students can join including Rocketry, Formula SAE, Supermileage, Concrete Toboggan, BAJA, Kelpie Robotics, and Mars Rover."};
-        // dia11.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia11.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/STM/Welcome_to_the_STEM__263"), Resources.Load<AudioClip>("Audio/STM/The_recently_constru_492"), Resources.Load<AudioClip>("Audio/STM/The_STEM_complex_con_925"), Resources.Load<AudioClip>("Audio/STM/The_STEM_complex_als_217"), Resources.Load<AudioClip>("Audio/STM/The_Brunsfield_Centr_692"), Resources.Load<AudioClip>("Audio/STM/STEM_is_also_the_home_674")};
         
         PointOfInterest poi11 = new PointOfInterest("ua-3a202a65407286a8ba810dfa8a5ef26a", "STM", new GPSCoords(45.420556148692285f, -75.68057560720175f), dia11);
 
@@ -340,7 +340,7 @@ public class TourManager : MonoBehaviour
         dia12.informations = new string[] {"Here is Colonel By Hall!",
                                             "Colonel By Hall is home to the Faculty of Engineering and houses the Departments of Chemical, Mechanical, and Civil Engineering. There are many classrooms, computer and science labs, and study spaces located throughout the building.",
                                             "The basement floor is home to the Student Lounge and the Engineering Students’ Society who provide many services and organize events for students."};
-        // dia12.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia12.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/CBY/Here_is_Colonel_By_H_331"), Resources.Load<AudioClip>("Audio/CBY/Colonel_By_Hall_is_h_400"), Resources.Load<AudioClip>("Audio/CBY/The_basement_floor_i_902")};
         
         PointOfInterest poi12 = new PointOfInterest("ua-97a668f0e931c8d931c56bc3c9721f5a", "CBY", new GPSCoords(45.41996688056417f, -75.67955100334834f), dia12);
 
@@ -359,7 +359,7 @@ public class TourManager : MonoBehaviour
         dia13.informations = new string[] {"Welcome to SITE!",
                                             "The School of Information Technology and Engineering (SITE) is one of the 3 main engineering buildings at uOttawa. It is also home to the School of Electrical Engineering and Computer Science (EECS) whose programs include Electrical, Software, and Computer Engineering as well as Computer Science.",
                                             "SITE contains plenty of spacious lecture halls and computer labs, the largest of which can be found on the ground floor. It also features plenty of study areas and spaces for breaks with a full service Tim Hortons."};
-        // dia13.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426"), Resources.Load<AudioClip>("Audio/90U/90U_is_one_of_uOttaw_426")};
+        dia13.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/STE/Welcome_to_SITE_380"), Resources.Load<AudioClip>("Audio/STE/The_School_of_Inform_907"), Resources.Load<AudioClip>("Audio/STE/SITE_contains_plenty_581")};
         
         PointOfInterest poi13 = new PointOfInterest("ua-af8105afd4e84870f91fcf42fbf6330a", "STE", new GPSCoords(45.41976350036815f, -75.67887707902575f), dia13);
 
