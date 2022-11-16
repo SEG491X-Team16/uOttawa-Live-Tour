@@ -5631,6 +5631,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906445077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8974996530125874746, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
+  m_PrefabInstance: {fileID: 924961227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &924961227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5726,6 +5737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 8974996529285603837, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
+      propertyPath: m_Name
+      value: NextBuildingText
+      objectReference: {fileID: 0}
     - target: {fileID: 8974996529663685953, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5733,6 +5748,10 @@ PrefabInstance:
     - target: {fileID: 8974996529663685953, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974996530125874740, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
+      propertyPath: m_Name
+      value: DistanceText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
@@ -11691,6 +11710,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1605412417593158901, guid: b490499edc59fc14da864431f5894564, type: 3}
   m_PrefabInstance: {fileID: 1486222512}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678677040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8974996529285603779, guid: c6ef829bfeecd7c4d954f7a29dfa3134, type: 3}
+  m_PrefabInstance: {fileID: 924961227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1750188599
 GameObject:
   m_ObjectHideFlags: 0
@@ -11726,6 +11756,8 @@ MonoBehaviour:
   buildingHighlighter: {fileID: 1098011417}
   destinationMarker: {fileID: 868179516}
   sceneSwitch: {fileID: 1132043391}
+  nextBuildingText: {fileID: 1678677040}
+  distanceText: {fileID: 906445077}
 --- !u!4 &1750188601
 Transform:
   m_ObjectHideFlags: 0

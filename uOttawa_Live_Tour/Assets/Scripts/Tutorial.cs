@@ -23,7 +23,7 @@ public class Tutorial : MonoBehaviour
 
     public void next(){
         if (screenIndex == textScreens.Length -1){
-            camera.GetComponent<SceneSwitch>().loadTour();
+            camera.GetComponent<SceneSwitch>().loadTourPath();
         }
         if (screenIndex < textScreens.Length -1){
             textScreens[screenIndex].SetActive(false);
