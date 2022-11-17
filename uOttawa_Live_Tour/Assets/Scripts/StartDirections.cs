@@ -91,7 +91,7 @@ public class StartDirections : MonoBehaviour
 
                 if(distance <= minDistance){
                     //display success, move to next scene
-                    sceneSwitch.loadTourPath();
+                    sceneSwitch.loadTutorial();
                 }
             }  
         }

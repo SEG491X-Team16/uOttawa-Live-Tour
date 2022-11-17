@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /**
  * This manager coordinates the tour and the other managers for the tour.
@@ -30,6 +31,14 @@ public class TourManager : MonoBehaviour
     //the tour path to be used for the tour
     private Path _path;
 
+    //time interval and next time to display distance updates
+    private int interval = 1; 
+    private int nextTime = 0;
+
+    //reference to distance/next building heading text
+    public Text nextBuildingText;
+    public Text distanceText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +57,7 @@ public class TourManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateDistanceText();      
     }
 
     //callback when the user reaches the end of the path segment
@@ -84,6 +93,7 @@ public class TourManager : MonoBehaviour
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
+        nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
     }
 
     private Path getEnglishPath() {
@@ -508,5 +518,15 @@ public class TourManager : MonoBehaviour
         Debug.Log("path created");
 
         return path;
+    }
+
+    private void UpdateDistanceText(){
+        if (Time.time >= nextTime) {
+            nextTime += interval; 
+
+            GPSCoords userPos = GPSSingleton.Instance.GetCurrentCoordinates();
+            double distance = userPos.GetDistance(this._path.GetCurrentPOI().Coordinates);
+            distanceText.text = ("Distance - " + Mathf.Round((float)distance) + "m");
+        }
     }
 }
