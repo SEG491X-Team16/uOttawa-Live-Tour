@@ -11929,7 +11929,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 948597312}
   buildingHighlighter: {fileID: 1098011417}
   destinationMarker: {fileID: 868179516}
-  mapDirections: {fileID: 0}
+  mapDirections: {fileID: 1392780102}
   sceneSwitch: {fileID: 1132043391}
   nextBuildingText: {fileID: 1678677040}
   distanceText: {fileID: 906445077}
