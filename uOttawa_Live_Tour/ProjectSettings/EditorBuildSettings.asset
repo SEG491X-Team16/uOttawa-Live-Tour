@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settings.unity
     guid: b393ca3da6b14894db03fd7d8ebaee42
   - enabled: 1
@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 71150f82d9ee65d4b8b823135a61fb22
+  - enabled: 1
     path: Assets/Scenes/TourPath.unity
     guid: 8955af9c4b74f2747803420abaa9fcd0
   - enabled: 0
@@ -35,9 +38,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DialogueTest.unity
     guid: 9a259f59885ef8f429bc49c75a785e9c
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 71150f82d9ee65d4b8b823135a61fb22
+  - enabled: 0
+    path: Assets/Scenes/3DMap Testing.unity
+    guid: 9184914e33dc17b4ab3dbe63bbc40f0e
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: a77c0f663ca9f9f40923825c3805c182, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 310489921802f4148bd7e8a72cbf686f, type: 2}
