@@ -31,7 +31,7 @@ public class MapDirections : MonoBehaviour
         map = GameObject.Find("uOttawaMap");
         moveMarker = this.GetComponent<MoveMarker>();
 
-        TestPoints();
+        // TestPoints();
 
     }
 

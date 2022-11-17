@@ -24,6 +24,9 @@ public class TourManager : MonoBehaviour
 
     //reference to the Destination Pin on the 3D map in the scene
     public MoveMarker destinationMarker;
+    
+    //reference to the controller for the waypoints on the 3D map in the scene
+    public MapDirections mapDirections;
 
     //reference to the object that handles switching scenes
     public SceneSwitch sceneSwitch;
@@ -49,9 +52,13 @@ public class TourManager : MonoBehaviour
         this._path = getEnglishPath();
         pathManager.SetCurrentPath(this._path);
 
+        // updateNextSegementOn3DMap();
+        Waypoint[] start = { new Waypoint(new GPSCoords(45.42456813170738f, -75.6859576372278f), 1), new Waypoint(new GPSCoords(45.42454778216218f, -75.68598234644377f), 2) };
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
+        nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
+        mapDirections.setDirections(start);
     }
 
     // Update is called once per frame
@@ -65,6 +72,7 @@ public class TourManager : MonoBehaviour
     public void OnPathSegmentFinished() {
         Debug.Log("path segment finished callback");
         poiManager.AddPOI(this._path.GetCurrentPOI());
+        mapDirections.clearDirections();
     }
 
     //callback when the POI Manager finds the POI
@@ -90,10 +98,17 @@ public class TourManager : MonoBehaviour
         }
 
         //start the next segment
+        updateNextSegementOn3DMap();
+    }
+
+    //called when starting the next segment to update the 3D map in the scenee
+    private void updateNextSegementOn3DMap()
+    {
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
         nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
+        mapDirections.setDirections(this._path.GetCurrentSegment().Waypoints);
     }
 
     private Path getEnglishPath() {
