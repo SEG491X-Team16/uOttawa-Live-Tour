@@ -5792,6 +5792,7 @@ MonoBehaviour:
   source: {fileID: 1778579536}
   buildingNameText: {fileID: 1285028155}
   informationText: {fileID: 1285028154}
+  textSizer: {fileID: 1285028156}
   nextButtonText: {fileID: 1285028153}
   playButtonText: {fileID: 1285028152}
   animator: {fileID: 1285028151}
@@ -6566,6 +6567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 3769798199372753368, guid: d52caaf109d65b44abcfbd228086fbaa, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3769798199380139818, guid: d52caaf109d65b44abcfbd228086fbaa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6630,6 +6635,17 @@ MonoBehaviour:
 --- !u!114 &1285028155 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3769798199632536289, guid: d52caaf109d65b44abcfbd228086fbaa, type: 3}
+  m_PrefabInstance: {fileID: 1285028149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1285028156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5359785298031659298, guid: d52caaf109d65b44abcfbd228086fbaa, type: 3}
   m_PrefabInstance: {fileID: 1285028149}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
