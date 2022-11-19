@@ -1039,7 +1039,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: edfa1a8e1940fbf419455efe2d26bc41, type: 3}
       propertyPath: m_RootOrder
-      value: 68
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edfa1a8e1940fbf419455efe2d26bc41, type: 3}
       propertyPath: m_LocalScale.x
@@ -1672,7 +1672,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
       propertyPath: m_RootOrder
-      value: 67
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c416254c6e8047c479b8cf9f4a6fd6ca, type: 3}
       propertyPath: m_LocalScale.x
@@ -2354,6 +2354,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6140685187600494280, guid: 83d5c36444b872c47b285bb41ceba659, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa121da7c5c154448bbc39ae6fdd2e61, type: 2}
     - target: {fileID: 919132149155446097, guid: 83d5c36444b872c47b285bb41ceba659, type: 3}
       propertyPath: m_Name
       value: uOttawaMap
