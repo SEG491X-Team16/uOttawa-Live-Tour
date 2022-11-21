@@ -62,16 +62,29 @@ public class MoveMarker : MonoBehaviour
 
     //Tried a bunch of ways to project coordinates using different projecting methods, but they always gave odd numbers
     //I found simply mapping them worked the best since the map is pretty small in scale and doesnt really have to account for Earth's curvature
-    void LonToX (double lon){
+    public void LonToX (double lon){
         //calculate difference between points on map as a percentage and multiply by maps's dimension
         double deltaX = (lon - centerLon)/(topLon - bottomLon);
         x = (float)(6.92f * deltaX * 2);
 
     }
 
-    void LatToZ (double lat){
+    public void LatToZ (double lat){
          //calculate difference between points on map as a percentage and multiply by maps's dimension
         double deltaZ = (lat - centerLat)/(bottomLat - topLat);
         z = (float)(5.35f * deltaZ * 2);
+    }
+
+    public float GetLonToX (double lon){
+        //calculate difference between points on map as a percentage and multiply by maps's dimension
+        double deltaX = (lon - centerLon)/(topLon - bottomLon);
+        return (float)(6.92f * deltaX * 2);
+
+    }
+
+    public float GetLatToZ (double lat){
+         //calculate difference between points on map as a percentage and multiply by maps's dimension
+        double deltaZ = (lat - centerLat)/(bottomLat - topLat);
+        return (float)(5.35f * deltaZ * 2);
     }
 }

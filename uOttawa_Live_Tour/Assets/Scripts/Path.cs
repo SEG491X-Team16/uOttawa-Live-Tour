@@ -19,13 +19,13 @@ public class Path
             System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 
-    private PathSegment[] _segments;
+    private PathSegment[] _segments = new PathSegment[0];
     public PathSegment[] Segments
     {
         get => _segments;
     }
 
-    private PointOfInterest[] _pois;
+    private PointOfInterest[] _pois = new PointOfInterest[0];
 
     public PointOfInterest[] POIs
     {
