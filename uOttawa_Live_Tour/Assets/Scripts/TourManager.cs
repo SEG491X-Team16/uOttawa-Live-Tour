@@ -95,7 +95,7 @@ public class TourManager : MonoBehaviour
 
         //if we've reached the end of the tour, go back to the main menu
         if (!pathManager.StartNextPathSegment()) {
-            sceneSwitch.loadMenu();
+            sceneSwitch.loadEnding();
         }
 
         //start the next segment

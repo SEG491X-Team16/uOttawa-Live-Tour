@@ -9,13 +9,19 @@ public class GeeGeeAnimations : MonoBehaviour
     Animator animator;
     Scene currentScene;
     int currentIndex;
+    public SceneSwitch sceneSwitch;
 
     // Start is called before the first frame update
     void Start(){
         animator = GetComponent<Animator>();
         currentIndex = 1;
-        PlayAnimation();
         
+        currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "TourFinish"){
+            animator.SetInteger("Action", 11); //congrats
+        } else{
+            PlayAnimation();
+        }
     }
 
     // Update is called once per frame
@@ -24,6 +30,11 @@ public class GeeGeeAnimations : MonoBehaviour
     }
 
     public void NextAnimation(int max){
+
+        if (currentScene.name == "TourFinish"){
+            StartCoroutine(Finish());
+        }
+
         if (currentIndex < max){
             currentIndex ++;
             if (currentIndex == max - 1){
@@ -69,6 +80,13 @@ public class GeeGeeAnimations : MonoBehaviour
                 animator.SetInteger("Action", random); //random
                 break;
         }
+
+    }
+
+    IEnumerator Finish(){
+        animator.SetInteger("Action", 1);
+        yield return new WaitForSecondsRealtime(2);
+        sceneSwitch.loadMainMenu();
 
     }
 }

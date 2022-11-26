@@ -27,6 +27,11 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene("Scenes/MenuTest");
     }
 
+    public void loadEnding()
+    {
+        SceneManager.LoadScene("Scenes/FinishTour");
+    }
+
     public void loadTutorial()
     {
         SceneManager.LoadScene("Scenes/Tutorial");
