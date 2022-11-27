@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public AudioSource source;
     public Text buildingNameText;
     public Text informationText;
+    public Text textSizer;
     public Text nextButtonText;
     public Text playButtonText;
 
@@ -69,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         StopAllCoroutines();
+        StartCoroutine(ResizeFont());
         StartCoroutine(TypeSentence(dialogueInformation[currentIndex])); 
         Debug.Log("Current Index: " + currentIndex);
         
@@ -83,6 +85,7 @@ public class DialogueManager : MonoBehaviour
             currentIndex --;
         
             StopAllCoroutines();
+            StartCoroutine(ResizeFont());
             StartCoroutine(TypeSentence(dialogueInformation[currentIndex])); 
         } 
     }
@@ -111,6 +114,17 @@ public class DialogueManager : MonoBehaviour
         } else {
             source.Play();
         }
+    }
+
+    IEnumerator ResizeFont(){
+        textSizer.text = dialogueInformation[currentIndex];
+        
+        yield return new WaitForEndOfFrame();
+
+        informationText.fontSize =  (int)(textSizer.cachedTextGenerator.fontSizeUsedForBestFit/2 + 4.5);
+        Debug.Log((int)(textSizer.cachedTextGenerator.fontSizeUsedForBestFit/2 + 4.5));
+        //informationText.fontSize =  (int)(textSizer.cachedTextGenerator.fontSizeUsedForBestFit * 0.555 + 0.005);
+        //informationText.fontSize = textSizer.cachedTextGenerator.fontSizeUsedForBestFit;
     }
 
 }

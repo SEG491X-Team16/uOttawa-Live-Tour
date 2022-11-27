@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MapDirections : MonoBehaviour
 {
-    private LineRenderer lineRenderer;
+    public LineRenderer lineRenderer;
 
     public Waypoint[] waypoints;
     public GameObject[] go;
     public GameObject map;
+    public GameObject prefab;
 
     [SerializeField]
     public float y;
@@ -27,18 +28,15 @@ public class MapDirections : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        lineRenderer = GetComponent<LineRenderer>();
-        map = GameObject.Find("uOttawaMap");
+        //lineRenderer = this.GetComponent<LineRenderer>();
+        //map = GameObject.Find("uOttawaMap");
         moveMarker = this.GetComponent<MoveMarker>();
 
-        // TestPoints();
-
+        //TestPoints();
     }
 
     //Clears current reference GOs, creates a new array of GOs, and set waypoints to new values
-    public void setDirections(Waypoint[] waypoints){
-        clearDirections();
-
+    public void SetDirections(Waypoint[] waypoints){
         lineRenderer.positionCount = waypoints.Length;
         this.waypoints = waypoints;
 
@@ -46,14 +44,17 @@ public class MapDirections : MonoBehaviour
 
         for(int i = 0; i < this.waypoints.Length; i++){
             go[i] = new GameObject("MapDirectionsWayPoint");
+            //go[i] = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
             go[i].transform.SetParent(map.transform);
         }
     }
 
     //clears all current GOs used as reference
-    public void clearDirections(){
-        for(int i = 0; i < this.go.Length; i++){
-            GameObject.Destroy(go[i]);
+    public void ClearDirections(){
+        if (go != null){
+            for(int i = 0; i < this.go.Length; i++){
+                GameObject.Destroy(go[i]);
+            }
         }
         this.waypoints = null;
         lineRenderer.positionCount = 0;
@@ -70,6 +71,7 @@ public class MapDirections : MonoBehaviour
         }
         if (waypoints != null){
             for(int i = 0; i < waypoints.Length; i++){
+                Debug.Log("Set Map Waypoint" + i + "to: "+ waypoints[i].Coordinates.Longitude +", " + waypoints[i].Coordinates.Latitude);
                 go[i].transform.localPosition = new Vector3(moveMarker.GetLonToX(waypoints[i].Coordinates.Longitude), y , moveMarker.GetLatToZ(waypoints[i].Coordinates.Latitude));
                 lineRenderer.SetPosition(i, go[i].transform.position);
             }
@@ -86,6 +88,6 @@ public class MapDirections : MonoBehaviour
         waypoints[0] = new Waypoint(c1,1);
         waypoints[1] = new Waypoint(c2,2);
         waypoints[2] = new Waypoint(c3,3);
-        setDirections(waypoints);
+        SetDirections(waypoints);
     }
 }
