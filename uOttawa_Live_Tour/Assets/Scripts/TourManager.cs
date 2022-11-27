@@ -115,9 +115,9 @@ public class TourManager : MonoBehaviour
         Path path = new Path();
 
         //segment 1: Tabaret
-        Waypoint way11 = new Waypoint(new GPSCoords(45.42456813170738f, -75.6859576372278f), 1);
+        Waypoint way1_1 = new Waypoint(new GPSCoords(45.42456813170738f, -75.6859576372278f), 1);
 
-        Waypoint[] waypoints1 = new Waypoint[] { way11 };
+        Waypoint[] waypoints1 = new Waypoint[] { way1_1 };
         PathSegment seg1 = new PathSegment(waypoints1);
 
         Dialogue dia1 = new Dialogue();
@@ -131,15 +131,15 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi1 = new PointOfInterest("ua-bfb49c915c938cfc02d425bba471b290", "TBT", new GPSCoords(45.424553434090974f, -75.68598078289368f), dia1);
 
         //segment 2: Simard
-        Waypoint way21 = new Waypoint(new GPSCoords(45.42452298657076f, -75.68591748761722f), 1);
-        Waypoint way22 = new Waypoint(new GPSCoords(45.42439678207031f, -75.68582066299066f), 2);
-        Waypoint way23 = new Waypoint(new GPSCoords(45.42427785834053f, -75.68571865133055f), 3);
-        Waypoint way24 = new Waypoint(new GPSCoords(45.42417228298274f, -75.68561663967043f), 4);
-        Waypoint way25 = new Waypoint(new GPSCoords(45.42404243714795f, -75.6855319181142f), 5);
-        Waypoint way26 = new Waypoint(new GPSCoords(45.42389681530589f, -75.68540570029744f), 6);
-        Waypoint way27 = new Waypoint(new GPSCoords(45.423754833648225f, -75.68536074600655f), 7);
+        Waypoint way2_1 = new Waypoint(new GPSCoords(45.42452298657076f, -75.68591748761722f), 1);
+        Waypoint way2_2 = new Waypoint(new GPSCoords(45.42439678207031f, -75.68582066299066f), 2);
+        Waypoint way2_3 = new Waypoint(new GPSCoords(45.42427785834053f, -75.68571865133055f), 3);
+        Waypoint way2_4 = new Waypoint(new GPSCoords(45.42417228298274f, -75.68561663967043f), 4);
+        Waypoint way2_5 = new Waypoint(new GPSCoords(45.42404243714795f, -75.6855319181142f), 5);
+        Waypoint way2_6 = new Waypoint(new GPSCoords(45.42389681530589f, -75.68540570029744f), 6);
+        Waypoint way2_7 = new Waypoint(new GPSCoords(45.423754833648225f, -75.68536074600655f), 7);
 
-        Waypoint[] waypoints2 = new Waypoint[] { way21, way22, way23, way24, way25, way26, way27 };
+        Waypoint[] waypoints2 = new Waypoint[] { way2_1, way2_2, way2_3, way2_4, way2_5, way2_6, way2_7 };
         PathSegment seg2 = new PathSegment(waypoints2);
 
         Dialogue dia2 = new Dialogue();
@@ -153,13 +153,13 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi2 = new PointOfInterest("ua-dd0c7a71ddd870cfde1b637a449f1a68", "SMD", new GPSCoords(45.42369764735622f, -75.68534683603103f), dia2);
 
         //segment 3: Perez
-        Waypoint way31 = new Waypoint(new GPSCoords(45.42372449563585f, -75.68531406269784f), 1);
-        Waypoint way32 = new Waypoint(new GPSCoords(45.423649257307304f, -75.68523279917198f), 2);
-        Waypoint way33 = new Waypoint(new GPSCoords(45.423540040200336f, -75.68514289059019f), 3);
-        Waypoint way34 = new Waypoint(new GPSCoords(45.42342596877411f, -75.68502013079579f), 4);
-        Waypoint way35 = new Waypoint(new GPSCoords(45.423467228678284f, -75.68493713825876f), 5);
+        Waypoint way3_1 = new Waypoint(new GPSCoords(45.42372449563585f, -75.68531406269784f), 1);
+        Waypoint way3_2 = new Waypoint(new GPSCoords(45.423649257307304f, -75.68523279917198f), 2);
+        Waypoint way3_3 = new Waypoint(new GPSCoords(45.423540040200336f, -75.68514289059019f), 3);
+        Waypoint way3_4 = new Waypoint(new GPSCoords(45.42342596877411f, -75.68502013079579f), 4);
+        Waypoint way3_5 = new Waypoint(new GPSCoords(45.423467228678284f, -75.68493713825876f), 5);
 
-        Waypoint[] waypoints3 = new Waypoint[] { way31, way32, way33, way34, way35 };
+        Waypoint[] waypoints3 = new Waypoint[] { way3_1, way3_2, way3_3, way3_4, way3_5 };
         PathSegment seg3 = new PathSegment(waypoints3);
 
         Dialogue dia3 = new Dialogue();
@@ -172,14 +172,14 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi3 = new PointOfInterest("ua-6a9eb96ae5a65bd61f6e49aff234cadd", "PRZ", new GPSCoords(45.423489072144754f, -75.68494405430351f), dia3);
 
         //segment 4: Morriset
-        Waypoint way41 = new Waypoint(new GPSCoords(45.42346890997606f, -75.68494944118413f), 1);
-        Waypoint way42 = new Waypoint(new GPSCoords(45.42343862522054f, -75.68502978794896f), 2);
-        Waypoint way43 = new Waypoint(new GPSCoords(45.42333315060046f, -75.6849509290872f), 3);
-        Waypoint way44 = new Waypoint(new GPSCoords(45.423224542864915f, -75.68486016700099f), 4);
-        Waypoint way45 = new Waypoint(new GPSCoords(45.423114890612275f, -75.68476940491482f), 5);
-        Waypoint way46 = new Waypoint(new GPSCoords(45.42304178899223f, -75.68467715492558f), 5);
+        Waypoint way4_1 = new Waypoint(new GPSCoords(45.42346890997606f, -75.68494944118413f), 1);
+        Waypoint way4_2 = new Waypoint(new GPSCoords(45.42343862522054f, -75.68502978794896f), 2);
+        Waypoint way4_3 = new Waypoint(new GPSCoords(45.42333315060046f, -75.6849509290872f), 3);
+        Waypoint way4_4 = new Waypoint(new GPSCoords(45.423224542864915f, -75.68486016700099f), 4);
+        Waypoint way4_5 = new Waypoint(new GPSCoords(45.423114890612275f, -75.68476940491482f), 5);
+        Waypoint way4_6 = new Waypoint(new GPSCoords(45.42304178899223f, -75.68467715492558f), 5);
 
-        Waypoint[] waypoints4 = new Waypoint[] { way41, way42, way43, way44, way45, way46 };
+        Waypoint[] waypoints4 = new Waypoint[] { way4_1, way4_2, way4_3, way4_4, way4_5, way4_6 };
         PathSegment seg4 = new PathSegment(waypoints4);
 
         Dialogue dia4 = new Dialogue();
@@ -192,14 +192,14 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi4 = new PointOfInterest("ua-ba0620616227078a8a68c50fdd714149", "MRT", new GPSCoords(45.423087393707114f, -75.68463110327154f), dia4);
 
         //segment 5: 90U
-        Waypoint way51 = new Waypoint(new GPSCoords(45.42305745362539f, -75.6847024492701f), 1);
-        Waypoint way52 = new Waypoint(new GPSCoords(45.422926914818916f, -75.68461168718393f), 2);
-        Waypoint way53 = new Waypoint(new GPSCoords(45.42284232551114f, -75.68453431622521f), 3);
-        Waypoint way54 = new Waypoint(new GPSCoords(45.42279115413995f, -75.68449860655195f), 4);
-        Waypoint way55 = new Waypoint(new GPSCoords(45.42271909641621f, -75.68444950575123f), 5);
-        Waypoint way56 = new Waypoint(new GPSCoords(45.42263555111413f, -75.68448075171533f), 6);
+        Waypoint way5_1 = new Waypoint(new GPSCoords(45.42305745362539f, -75.6847024492701f), 1);
+        Waypoint way5_2 = new Waypoint(new GPSCoords(45.422926914818916f, -75.68461168718393f), 2);
+        Waypoint way5_3 = new Waypoint(new GPSCoords(45.42284232551114f, -75.68453431622521f), 3);
+        Waypoint way5_4 = new Waypoint(new GPSCoords(45.42279115413995f, -75.68449860655195f), 4);
+        Waypoint way5_5 = new Waypoint(new GPSCoords(45.42271909641621f, -75.68444950575123f), 5);
+        Waypoint way5_6 = new Waypoint(new GPSCoords(45.42263555111413f, -75.68448075171533f), 6);
 
-        Waypoint[] waypoints5 = new Waypoint[] { way51, way52, way53, way54, way55, way56 };
+        Waypoint[] waypoints5 = new Waypoint[] { way5_1, way5_2, way5_3, way5_4, way5_5, way5_6 };
         PathSegment seg5 = new PathSegment(waypoints5);
 
         Dialogue dia5 = new Dialogue();
@@ -213,12 +213,12 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi5 = new PointOfInterest("ua-bd38a26e00f58f18c2697cfda7993b97", "90U", new GPSCoords(45.422619886354354f, -75.6845417557385f), dia5);
 
         //segment 6: UCU
-        Waypoint way61 = new Waypoint(new GPSCoords(45.42263241815559f, -75.68447628799723f), 1);
-        Waypoint way62 = new Waypoint(new GPSCoords(45.422617797714196f, -75.68437659849273f), 2);
-        Waypoint way63 = new Waypoint(new GPSCoords(45.42251649883774f, -75.68427095737601f), 3);
-        Waypoint way64 = new Waypoint(new GPSCoords(45.42246219421056f, -75.68419209851426f), 4);
+        Waypoint way6_1 = new Waypoint(new GPSCoords(45.42263241815559f, -75.68447628799723f), 1);
+        Waypoint way6_2 = new Waypoint(new GPSCoords(45.422617797714196f, -75.68437659849273f), 2);
+        Waypoint way6_3 = new Waypoint(new GPSCoords(45.42251649883774f, -75.68427095737601f), 3);
+        Waypoint way6_4 = new Waypoint(new GPSCoords(45.42246219421056f, -75.68419209851426f), 4);
 
-        Waypoint[] waypoints6 = new Waypoint[] { way61, way62, way63, way64 };
+        Waypoint[] waypoints6 = new Waypoint[] { way6_1, way6_2, way6_3, way6_4 };
         PathSegment seg6 = new PathSegment(waypoints6);
 
         Dialogue dia6 = new Dialogue();
@@ -232,15 +232,15 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi6 = new PointOfInterest("ua-61701ae599e1ac2fff38db6bbeb71691", "UCU", new GPSCoords(45.422452795327466f, -75.6841623404532f), dia6);
 
         //segment 7: FSS
-        Waypoint way71 = new Waypoint(new GPSCoords(45.42243383251971f, -75.68419768445995f), 1);
-        Waypoint way72 = new Waypoint(new GPSCoords(45.4223265257399f, -75.68410648935537f), 2);
-        Waypoint way73 = new Waypoint(new GPSCoords(45.42220980585308f, -75.68400456541492f), 3);
-        Waypoint way74 = new Waypoint(new GPSCoords(45.42212885482213f, -75.683934827982f), 4);
-        Waypoint way75 = new Waypoint(new GPSCoords(45.42203660815698f, -75.68387313717594f), 5);
-        Waypoint way76 = new Waypoint(new GPSCoords(45.421934948392234f, -75.68376048439968f), 6);
-        Waypoint way77 = new Waypoint(new GPSCoords(45.42189729658109f, -75.68370415801155f), 7);
+        Waypoint way7_1 = new Waypoint(new GPSCoords(45.42243383251971f, -75.68419768445995f), 1);
+        Waypoint way7_2 = new Waypoint(new GPSCoords(45.4223265257399f, -75.68410648935537f), 2);
+        Waypoint way7_3 = new Waypoint(new GPSCoords(45.42220980585308f, -75.68400456541492f), 3);
+        Waypoint way7_4 = new Waypoint(new GPSCoords(45.42212885482213f, -75.683934827982f), 4);
+        Waypoint way7_5 = new Waypoint(new GPSCoords(45.42203660815698f, -75.68387313717594f), 5);
+        Waypoint way7_6 = new Waypoint(new GPSCoords(45.421934948392234f, -75.68376048439968f), 6);
+        Waypoint way7_7 = new Waypoint(new GPSCoords(45.42189729658109f, -75.68370415801155f), 7);
 
-        Waypoint[] waypoints7 = new Waypoint[] { way71, way72, way73, way74, way75, way76, way77 };
+        Waypoint[] waypoints7 = new Waypoint[] { way7_1, way7_2, way7_3, way7_4, way7_5, way7_6, way7_7 };
         PathSegment seg7 = new PathSegment(waypoints7);
 
         Dialogue dia7 = new Dialogue();
@@ -254,21 +254,21 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi7 = new PointOfInterest("ua-d39695084e8f1e7b07f2bf9cd70f870a", "FSS", new GPSCoords(45.42187282288526f, -75.68368270033561f), dia7);
         
         //segment 8: LRT
-        Waypoint way81 = new Waypoint(new GPSCoords(45.42194550463739f, -75.68359014472165f), 1);
-        Waypoint way82 = new Waypoint(new GPSCoords(45.421996490834424f, -75.68340335015502f), 2);
-        Waypoint way83 = new Waypoint(new GPSCoords(45.4219542451316f, -75.68322900855952f), 3);
-        Waypoint way84 = new Waypoint(new GPSCoords(45.42187412388421f, -75.68300693057475f), 4);
-        Waypoint way85 = new Waypoint(new GPSCoords(45.42182459432897f, -75.68283051348405f), 5);
-        Waypoint way86 = new Waypoint(new GPSCoords(45.42178671875738f, -75.68261466198484f), 6);
-        Waypoint way87 = new Waypoint(new GPSCoords(45.421769500103494f, -75.68246547384669f), 7);
-        Waypoint way88 = new Waypoint(new GPSCoords(45.421619515530956f, -75.68233766002706f), 8);
-        Waypoint way89 = new Waypoint(new GPSCoords(45.421462521902f, -75.68221184329393f), 9);
-        Waypoint way810 = new Waypoint(new GPSCoords(45.42133776772691f, -75.68217190147398f), 10);
-        Waypoint way811 = new Waypoint(new GPSCoords(45.42122703064545f, -75.68215592474652f), 11);
-        Waypoint way812 = new Waypoint(new GPSCoords(45.421172362892264f, -75.68221384038354f), 12);
-        Waypoint way813 = new Waypoint(new GPSCoords(45.42110367769138f, -75.68224379674751f), 13);
+        Waypoint way8_1 = new Waypoint(new GPSCoords(45.42194550463739f, -75.68359014472165f), 1);
+        Waypoint way8_2 = new Waypoint(new GPSCoords(45.421996490834424f, -75.68340335015502f), 2);
+        Waypoint way8_3 = new Waypoint(new GPSCoords(45.4219542451316f, -75.68322900855952f), 3);
+        Waypoint way8_4 = new Waypoint(new GPSCoords(45.42187412388421f, -75.68300693057475f), 4);
+        Waypoint way8_5 = new Waypoint(new GPSCoords(45.42182459432897f, -75.68283051348405f), 5);
+        Waypoint way8_6 = new Waypoint(new GPSCoords(45.42178671875738f, -75.68261466198484f), 6);
+        Waypoint way8_7 = new Waypoint(new GPSCoords(45.421769500103494f, -75.68246547384669f), 7);
+        Waypoint way8_8 = new Waypoint(new GPSCoords(45.421619515530956f, -75.68233766002706f), 8);
+        Waypoint way8_9 = new Waypoint(new GPSCoords(45.421462521902f, -75.68221184329393f), 9);
+        Waypoint way8_10 = new Waypoint(new GPSCoords(45.42133776772691f, -75.68217190147398f), 10);
+        Waypoint way8_11 = new Waypoint(new GPSCoords(45.42122703064545f, -75.68215592474652f), 11);
+        Waypoint way8_12 = new Waypoint(new GPSCoords(45.421172362892264f, -75.68221384038354f), 12);
+        Waypoint way8_13 = new Waypoint(new GPSCoords(45.42110367769138f, -75.68224379674751f), 13);
 
-        Waypoint[] waypoints8 = new Waypoint[] { way81, way82, way83, way84, way85, way86, way87, way88, way89, way810, way811, way812, way813 };
+        Waypoint[] waypoints8 = new Waypoint[] { way8_1, way8_2, way8_3, way8_4, way8_5, way8_6, way8_7, way8_8, way8_9, way8_10, way8_11, way8_12, way8_13 };
         PathSegment seg8 = new PathSegment(waypoints8);
 
         Dialogue dia8 = new Dialogue();
@@ -281,13 +281,12 @@ public class TourManager : MonoBehaviour
         PointOfInterest poi8 = new PointOfInterest("ua-221c88f0ea0d0d4560aa795e313fb2df", "MCE", new GPSCoords(45.42106239089179f, -75.68224828242504f), dia8);
 
         //segment 9: Biosciences
-        Waypoint way91 = new Waypoint(new GPSCoords(45.42115414029608f, -75.68222182874727f), 1);
-        Waypoint way92 = new Waypoint(new GPSCoords(45.42124104800955f, -75.68208203238204f), 2);
-        Waypoint way93 = new Waypoint(new GPSCoords(45.421287305286356f, -75.68189230874353f), 3);
-        Waypoint way94 = new Waypoint(new GPSCoords(45.421360195463826f, -75.6816586491045f), 4);
-        Waypoint way95 = new Waypoint(new GPSCoords(45.42140785437512f, -75.68155679746698f), 5);
+        Waypoint way9_1 = new Waypoint(new GPSCoords(45.42115414029608f, -75.68222182874727f), 1);
+        Waypoint way9_2 = new Waypoint(new GPSCoords(45.42124104800955f, -75.68208203238204f), 2);
+        Waypoint way9_3 = new Waypoint(new GPSCoords(45.421287305286356f, -75.68189230874353f), 3);
+        Waypoint way9_4 = new Waypoint(new GPSCoords(45.421360195463826f, -75.6816586491045f), 4);
 
-        Waypoint[] waypoints9 = new Waypoint[] { way91, way92, way93, way94, way95 };
+        Waypoint[] waypoints9 = new Waypoint[] { way9_1, way9_2, way9_3, way9_4 };
         PathSegment seg9 = new PathSegment(waypoints9);
 
         Dialogue dia9 = new Dialogue();
@@ -299,15 +298,16 @@ public class TourManager : MonoBehaviour
                                             "Students also study plants at the Faculty of Science greenhouse located on the roof of the Bioscience Complex. This is where researchers and students find new methods to study and research these plants that come from all around the globe!"};
         dia9.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/BSC/This_is_the_Bioscien_473"), Resources.Load<AudioClip>("Audio/BSC/The_Bioscience_Compl_564"), Resources.Load<AudioClip>("Audio/BSC/The_Bioscience_Compl_640"), Resources.Load<AudioClip>("Audio/BSC/Additionally_the_Bi_503"), Resources.Load<AudioClip>("Audio/BSC/By_studying_these_in_813")};
         
-        PointOfInterest poi9 = new PointOfInterest("ua-39929a0c430a8354fc1e5d46fce3a5a6", "BSC", new GPSCoords(45.421427478621005f, -75.6815448149214f), dia9);
+        PointOfInterest poi9 = new PointOfInterest("ua-152ac567954511a9b903e4d5fad2fb25", "BSC", new GPSCoords(45.42133094736899f, -75.68160565806315f), dia9);
 
         //segment 10: CRX
-        Waypoint way101 = new Waypoint(new GPSCoords(45.421454111519f, -75.68159673928068f), 1);
-        Waypoint way102 = new Waypoint(new GPSCoords(45.421543822228216f, -75.6815548003711f), 2);
-        Waypoint way103 = new Waypoint(new GPSCoords(45.42161671207449f, -75.68147691382477f), 3);
-        Waypoint way104 = new Waypoint(new GPSCoords(45.42168259320076f, -75.68133312327768f), 4);
+        Waypoint way10_1 = new Waypoint(new GPSCoords(45.42140138570245f, -75.6816020645416f), 1);
+        Waypoint way10_2 = new Waypoint(new GPSCoords(45.421454111519f, -75.68159673928068f), 2);
+        Waypoint way10_3 = new Waypoint(new GPSCoords(45.421543822228216f, -75.6815548003711f), 3);
+        Waypoint way10_4 = new Waypoint(new GPSCoords(45.42161671207449f, -75.68147691382477f), 4);
+        Waypoint way10_5 = new Waypoint(new GPSCoords(45.42168259320076f, -75.68133312327768f), 5);
 
-        Waypoint[] waypoints10 = new Waypoint[] { way101, way102, way103, way104 };
+        Waypoint[] waypoints10 = new Waypoint[] { way10_1, way10_2, way10_3, way10_4, way10_5 };
         PathSegment seg10 = new PathSegment(waypoints10);
 
         Dialogue dia10 = new Dialogue();
