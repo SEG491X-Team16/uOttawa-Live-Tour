@@ -115,6 +115,7 @@ public class TourManager : MonoBehaviour
         Path path = new Path();
 
         //segment 1: Tabaret
+        // Waypoint way11 = new Waypoint(new GPSCoords(45.42509555582798f, -75.67929290999768f), 1);
         Waypoint way11 = new Waypoint(new GPSCoords(45.42456813170738f, -75.6859576372278f), 1);
 
         Waypoint[] waypoints1 = new Waypoint[] { way11 };

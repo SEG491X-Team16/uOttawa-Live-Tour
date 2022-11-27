@@ -57,18 +57,18 @@ namespace Google.XR.ARCoreExtensions
         /// </summary>
         public ARCoreExtensions ARCoreExtensions;
 
-        [Header("UI")]
+        // [Header("UI")]
 
         /// <summary>
         /// The home page to choose entering hosting or resolving work flow.
         /// </summary>
-        public GameObject HomePage;
+        // public GameObject HomePage;
 
         /// <summary>
         /// The AR screen which displays the AR view, hosts or resolves cloud anchors,
         /// and returns to home page.
         /// </summary>
-        public GameObject ARView;
+        // public GameObject ARView;
 
         /// <summary>
         /// The timeout period waiting for localization to be completed.
@@ -102,35 +102,35 @@ namespace Google.XR.ARCoreExtensions
         /// The Unity Awake() method.     
         //  Awake is called before the first frame update
         /// </summary>
-        public void Awake()
-        {
-            // Lock screen to portrait.
-            Screen.autorotateToLandscapeLeft = false;
-            Screen.autorotateToLandscapeRight = false;
-            Screen.autorotateToPortraitUpsideDown = false;
-            Screen.orientation = ScreenOrientation.Portrait;
+        // public void Awake()
+        // {
+        //     // Lock screen to portrait.
+        //     Screen.autorotateToLandscapeLeft = false;
+        //     Screen.autorotateToLandscapeRight = false;
+        //     Screen.autorotateToPortraitUpsideDown = false;
+        //     Screen.orientation = ScreenOrientation.Portrait;
 
-            // Target 60 fps camera capture on supported devices
-            Application.targetFrameRate = 60;
+        //     // Target 60 fps camera capture on supported devices
+        //     Application.targetFrameRate = 60;
 
-            // Check AR Configuration
-            if (SessionOrigin == null)
-            {
-                Debug.LogError("Cannot find ARSessionOrigin.");
-            }
+        //     // Check AR Configuration
+        //     if (SessionOrigin == null)
+        //     {
+        //         Debug.LogError("Cannot find ARSessionOrigin.");
+        //     }
 
-            if (Session == null)
-            {
-                Debug.LogError("Cannot find ARSession.");
-            }
+        //     if (Session == null)
+        //     {
+        //         Debug.LogError("Cannot find ARSession.");
+        //     }
 
-            if (ARCoreExtensions == null)
-            {
-                Debug.LogError("Cannot find ARCoreExtensions.");
-            }
+        //     if (ARCoreExtensions == null)
+        //     {
+        //         Debug.LogError("Cannot find ARCoreExtensions.");
+        //     }
 
-            Debug.Log("Geospatial controller awake!");
-        }
+        //     Debug.Log("Geospatial controller awake!");
+        // }
 
         /// <summary>
         /// Unity's OnEnable() method.
@@ -144,7 +144,12 @@ namespace Google.XR.ARCoreExtensions
             _localizationPassedTime = 0f;
             _isLocalizing = true;
 
-            SwitchToHomePage();
+            // SwitchToHomePage();
+            if (_asyncCheck == null) 
+            {
+                _asyncCheck = AvailabilityCheck();
+                StartCoroutine(_asyncCheck);  
+            }
         }
 
         /// <summary>
@@ -169,25 +174,25 @@ namespace Google.XR.ARCoreExtensions
         {
 
             // No need for geospatial api on the home page
-            if (!_isInARView)
-            {
-                return;
-            }
+            // if (!_isInARView)
+            // {
+            //     return;
+            // }
 
             // On home page, pressing 'back' button quits the app.
             // In AR view, return to home page.
-            if (Input.GetKeyUp(KeyCode.Escape))
-            {
-                if (HomePage.activeSelf)
-                {
-                    Application.Quit();
-                }
-                else
-                {
-                    SwitchToHomePage();
-                    _isInARView = false;
-                }
-            }
+            // if (Input.GetKeyUp(KeyCode.Escape))
+            // {
+            //     if (HomePage.activeSelf)
+            //     {
+            //         Application.Quit();
+            //     }
+            //     else
+            //     {
+            //         SwitchToHomePage();
+            //         _isInARView = false;
+            //     }
+            // }
 
             // Check AR session error status
             // LifecycleUpdate();
@@ -244,6 +249,7 @@ namespace Google.XR.ARCoreExtensions
                 return;
             }
 
+            //TODO: remove this
             // Check earth localisation
             bool isSessionReady = ARSession.state == ARSessionState.SessionTracking &&
                 Input.location.status == LocationServiceStatus.Running;
@@ -317,51 +323,51 @@ namespace Google.XR.ARCoreExtensions
         /// <summary>
         /// Switch to home page, and disable all other screens.
         /// </summary>
-        public void SwitchToHomePage()
-        {
-            ResetAllViews();
+        // public void SwitchToHomePage()
+        // {
+        //     ResetAllViews();
 
-            HomePage.SetActive(true);
-        }
+        //     HomePage.SetActive(true);
+        // }
 
         /// <summary>
         /// Callback handling "Begin to resolve" button click event in Home Page.
         /// </summary>
-        public void OnBeginButtonClicked()
-        {
-            SwitchToARView();        
-        }
+        // public void OnBeginButtonClicked()
+        // {
+        //     SwitchToARView();        
+        // }
 
         /// <summary>
         /// Switch to AR view and disable all other screens.
         /// </summary>
-        public void SwitchToARView()
-        {            
-            _isInARView = true;
-            ResetAllViews();
-            ARView.SetActive(true);
-            SetPlatformActive(true);
-            if (_asyncCheck == null) 
-            {
-                _asyncCheck = AvailabilityCheck();
-                StartCoroutine(_asyncCheck);  
-            }
-        }
+        // public void SwitchToARView()
+        // {            
+        //     _isInARView = true;
+        //     ResetAllViews();
+        //     ARView.SetActive(true);
+        //     SetPlatformActive(true);
+        //     if (_asyncCheck == null) 
+        //     {
+        //         _asyncCheck = AvailabilityCheck();
+        //         StartCoroutine(_asyncCheck);  
+        //     }
+        // }
 
-        private void ResetAllViews()
-        {
-            Screen.sleepTimeout = SleepTimeout.SystemSetting;
-            SetPlatformActive(false);
-            ARView.SetActive(false);
-            HomePage.SetActive(false);
-        }
+        // private void ResetAllViews()
+        // {
+        //     Screen.sleepTimeout = SleepTimeout.SystemSetting;
+        //     SetPlatformActive(false);
+        //     ARView.SetActive(false);
+        //     HomePage.SetActive(false);
+        // }
 
-        private void SetPlatformActive(bool active)
-        {
-            SessionOrigin.gameObject.SetActive(active);
-            Session.gameObject.SetActive(active);
-            ARCoreExtensions.gameObject.SetActive(active);
-        }
+        // private void SetPlatformActive(bool active)
+        // {
+        //     SessionOrigin.gameObject.SetActive(active);
+        //     Session.gameObject.SetActive(active);
+        //     ARCoreExtensions.gameObject.SetActive(active);
+        // }
 
         /// <summary>
         /// Monitor ARSession state and quit the app when there are errors
@@ -369,10 +375,10 @@ namespace Google.XR.ARCoreExtensions
         private void LifecycleUpdate()
         {
             // Pressing 'back' button quits the app (phone's back not app's)
-            if (Input.GetKeyUp(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
+            // if (Input.GetKeyUp(KeyCode.Escape))
+            // {
+            //     Application.Quit();
+            // }
 
             if (_isReturning)
             {

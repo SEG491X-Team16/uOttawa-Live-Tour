@@ -5065,6 +5065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20241e3450b6a0439b55d465b8d8724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  geospatialController: {fileID: 831778209}
+  userCamera: {fileID: 1778579530}
   pathSegmentFinished:
     m_PersistentCalls:
       m_Calls:
@@ -5254,6 +5256,7 @@ GameObject:
   - component: {fileID: 672368146}
   - component: {fileID: 672368145}
   - component: {fileID: 672368144}
+  - component: {fileID: 672368148}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -5342,6 +5345,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AnchorPrefab: {fileID: 0}
+--- !u!114 &672368148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672368141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04013b89158ee479c9d622e942e3b60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &831778208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831778210}
+  - component: {fileID: 831778209}
+  m_Layer: 0
+  m_Name: GeoSpatialController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &831778209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831778208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9aae429cdfe4eb47ad43a8c36d86619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SessionOrigin: {fileID: 672368142}
+  Session: {fileID: 1264532769}
+  RaycastManager: {fileID: 672368145}
+  EarthManager: {fileID: 672368148}
+  ARCoreExtensions: {fileID: 1993962296}
+--- !u!4 &831778210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831778208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &868179513
 PrefabInstance:
   m_ObjectHideFlags: 0

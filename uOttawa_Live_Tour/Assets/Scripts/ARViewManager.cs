@@ -143,20 +143,20 @@ namespace Google.XR.ARCoreExtensions
             Invoke("DoReturnToHomePage", 3.0f);
         }
 
-        private void ARCoreLifecycleUpdate()
-        {
-            // Return to home page if ARSession is in error status.
-            if (ARSession.state != ARSessionState.Ready &&
-                ARSession.state != ARSessionState.SessionInitializing &&
-                ARSession.state != ARSessionState.SessionTracking)
-            {
-                ReturnToHomePage("");
-            }
-        }
+        // private void ARCoreLifecycleUpdate()
+        // {
+        //     // Return to home page if ARSession is in error status.
+        //     if (ARSession.state != ARSessionState.Ready &&
+        //         ARSession.state != ARSessionState.SessionInitializing &&
+        //         ARSession.state != ARSessionState.SessionTracking)
+        //     {
+        //         ReturnToHomePage("");
+        //     }
+        // }
 
-        private void DoReturnToHomePage()
-        {
-            Controller.SwitchToHomePage();
-        }
+        // private void DoReturnToHomePage()
+        // {
+        //     Controller.SwitchToHomePage();
+        // }
     }
 }
