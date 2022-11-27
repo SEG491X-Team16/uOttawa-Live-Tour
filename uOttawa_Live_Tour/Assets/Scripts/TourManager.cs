@@ -57,8 +57,9 @@ public class TourManager : MonoBehaviour
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
+        
         nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
-        mapDirections.setDirections(start);
+        mapDirections.SetDirections(start);
     }
 
     // Update is called once per frame
@@ -72,7 +73,7 @@ public class TourManager : MonoBehaviour
     public void OnPathSegmentFinished() {
         Debug.Log("path segment finished callback");
         poiManager.AddPOI(this._path.GetCurrentPOI());
-        mapDirections.clearDirections();
+        mapDirections.ClearDirections();
     }
 
     //callback when the POI Manager finds the POI
@@ -94,7 +95,7 @@ public class TourManager : MonoBehaviour
 
         //if we've reached the end of the tour, go back to the main menu
         if (!pathManager.StartNextPathSegment()) {
-            sceneSwitch.loadMenu();
+            sceneSwitch.loadEnding();
         }
 
         //start the next segment
@@ -108,7 +109,7 @@ public class TourManager : MonoBehaviour
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
         nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
-        mapDirections.setDirections(this._path.GetCurrentSegment().Waypoints);
+        mapDirections.SetDirections(this._path.GetCurrentSegment().Waypoints);
     }
 
     private Path getEnglishPath() {
@@ -278,7 +279,7 @@ public class TourManager : MonoBehaviour
                                             "Taking the train eastbound, you can even stop at Lees station where you’ll find uOttawa’s athletic facilities including our sports playing field!"};
         dia8.audioClips = new AudioClip[] { Resources.Load<AudioClip>("Audio/O-Train/This_is_the_OTrain__493"), Resources.Load<AudioClip>("Audio/O-Train/Here_is_the_OTrain__468"), Resources.Load<AudioClip>("Audio/O-Train/Taking_the_train_eas_123")};
         
-        PointOfInterest poi8 = new PointOfInterest("ua-221c88f0ea0d0d4560aa795e313fb2df", "MCE", new GPSCoords(45.42106239089179f, -75.68224828242504f), dia8);
+        PointOfInterest poi8 = new PointOfInterest("ua-221c88f0ea0d0d4560aa795e313fb2df", "OTRAIN", new GPSCoords(45.42106239089179f, -75.68224828242504f), dia8);
 
         //segment 9: Biosciences
         Waypoint way9_1 = new Waypoint(new GPSCoords(45.42115414029608f, -75.68222182874727f), 1);

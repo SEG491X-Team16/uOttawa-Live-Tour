@@ -33,11 +33,11 @@ EditorBuildSettings:
     path: Assets/Scenes/TourPath.unity
     guid: 8955af9c4b74f2747803420abaa9fcd0
   - enabled: 0
-    path: Assets/Scenes/3DMapARScene.unity
-    guid: de94d9b0e60b0294aa6a83df94a2504e
-  - enabled: 0
     path: Assets/Scenes/DialogueTest.unity
     guid: 9a259f59885ef8f429bc49c75a785e9c
+  - enabled: 0
+    path: Assets/Scenes/3DMapARScene.unity
+    guid: de94d9b0e60b0294aa6a83df94a2504e
   - enabled: 0
     path: Assets/Scenes/3DMap Testing.unity
     guid: 9184914e33dc17b4ab3dbe63bbc40f0e
