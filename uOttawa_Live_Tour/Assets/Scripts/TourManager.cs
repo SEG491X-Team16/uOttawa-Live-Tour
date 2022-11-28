@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 /**
  * This manager coordinates the tour and the other managers for the tour.
@@ -49,7 +50,14 @@ public class TourManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         //set up the tour
-        this._path = TourPathGenerator.GetEnglishPath();
+        if (LocalizationSettings.SelectedLocale.LocaleName == "Français (fr)")
+        {
+            this._path = TourPathGenerator.GetFrenchPath();
+        }
+        else
+        {
+            this._path = TourPathGenerator.GetEnglishPath();
+        }
         pathManager.SetCurrentPath(this._path);
 
         // updateNextSegementOn3DMap();
