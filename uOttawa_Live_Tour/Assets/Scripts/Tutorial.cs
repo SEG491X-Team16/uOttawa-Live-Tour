@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class Tutorial : MonoBehaviour
 {
@@ -35,13 +36,21 @@ public class Tutorial : MonoBehaviour
             dots[screenIndex].color = new Color(dots[screenIndex].color.r, dots[screenIndex].color.g, dots[screenIndex].color.b, 1f);
         }
         if (screenIndex == textScreens.Length -1){
-            nextButtonText.text = "Finish";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                nextButtonText.text = "Finir";
+            } else{
+                nextButtonText.text = "Finish";
+            }
         }
     }
 
     public void previous(){
         if (screenIndex == textScreens.Length -1){
-            nextButtonText.text = "Next";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                nextButtonText.text = "Suivant";
+            } else{
+                nextButtonText.text = "Next";
+            }
         }
         if (screenIndex > 0){
             textScreens[screenIndex].SetActive(false);

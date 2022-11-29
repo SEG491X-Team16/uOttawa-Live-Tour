@@ -13,6 +13,7 @@ public class StartDirections : MonoBehaviour
     [SerializeField] GameObject map;
     [SerializeField] Camera camera;
     [SerializeField] TextMeshProUGUI locationText;
+    [SerializeField] TextMeshProUGUI distanceToStart;
 
     public SceneSwitch sceneSwitch;
 
@@ -87,7 +88,7 @@ public class StartDirections : MonoBehaviour
                 map.SetActive(true);
 
                 distance = CalculateDistance(playerLat, playerLon, startLat, startLon);
-                locationText.SetText(" Distance to Start: " + Mathf.Round(distance) + "m");
+                locationText.SetText(distanceToStart.text + Mathf.Round(distance) + "m");
 
                 if(distance <= minDistance){
                     //display success, move to next scene

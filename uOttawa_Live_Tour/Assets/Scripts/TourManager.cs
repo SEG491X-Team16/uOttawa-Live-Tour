@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
+
 
 /**
  * This manager coordinates the tour and the other managers for the tour.
@@ -58,7 +60,12 @@ public class TourManager : MonoBehaviour
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
         
-        nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
+        string nextStopText = "Next Stop - ";
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+            nextStopText = "Prochain Arrêt - ";
+        } 
+        
+        nextBuildingText.text = (nextStopText + this._path.GetCurrentPOI().BuildingHighlight);
         mapDirections.SetDirections(start);
     }
 
