@@ -16,4 +16,18 @@ public class Dialogue
     //public Image[] images;
     public Image image;
 
+    public Dialogue()
+    {
+        this.buildingName = "";
+        this.informations = new string[] { };
+        this.audioClips = new AudioClip[] { };
+    }
+
+    public Dialogue(string buildingName, string[] informations, AudioClip[] audioClips)
+    {
+        this.buildingName = buildingName;
+        this.informations = informations;
+        this.audioClips = audioClips;
+    }
+
 }

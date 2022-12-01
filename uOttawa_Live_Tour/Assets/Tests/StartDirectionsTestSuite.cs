@@ -26,7 +26,6 @@ public class StartDirectionsTestSuite
     public void Teardown()
     {
         Object.Destroy(scene.gameObject);
-
     }
 
     [UnityTest]
