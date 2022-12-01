@@ -12,11 +12,11 @@ using System;
 public class PathManager : MonoBehaviour
 {
     //Max distance user can be from waypoint for them to be visible
-    private const float MaxDistFromWayPointToDisplay = 500.0f; //meters
+    private const float MaxDistFromWayPointToDisplay = 50.0f; //meters
 
     //Max distance user can be from the last waypoint for the system to register as
     //the user having reached the end of the segment
-    private const float MaxDistFromEnd = 500.0f; //meters
+    private const float MaxDistFromEnd = 50.0f; //meters
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
