@@ -91,7 +91,7 @@ public class StartDirections : MonoBehaviour
 
                 string distanceStartText = " Distance to Start: ";
                 if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
-                    distanceStartText = "PDistance vers le départ : ";
+                    distanceStartText = "Distance vers le départ : ";
                 } 
                 locationText.SetText(distanceStartText + Mathf.Round(distance) + "m");
 
