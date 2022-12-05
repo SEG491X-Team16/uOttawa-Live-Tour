@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
+using TMPro;
 
 /**
  * This manager coordinates the tour and the other managers for the tour.
@@ -43,6 +44,9 @@ public class TourManager : MonoBehaviour
     public Text nextBuildingText;
     public Text distanceText;
 
+    public Image nextBuildingImage;
+    public TextMeshProUGUI nextBuildingName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +64,7 @@ public class TourManager : MonoBehaviour
         }
         pathManager.SetCurrentPath(this._path);
 
-        // updateNextSegementOn3DMap();
+        // UpdateNextSegementOn3DMap();
         Waypoint[] start = { new Waypoint(new GPSCoords(45.42456813170738f, -75.6859576372278f), 1), new Waypoint(new GPSCoords(45.42454778216218f, -75.68598234644377f), 2) };
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
@@ -71,8 +75,9 @@ public class TourManager : MonoBehaviour
             nextStopText = "Prochain Arrêt - ";
         } 
         
-        nextBuildingText.text = (nextStopText + this._path.GetCurrentPOI().BuildingHighlight);
+        
         mapDirections.SetDirections(start);
+        UpdateUIElements();
     }
 
     // Update is called once per frame
@@ -112,16 +117,24 @@ public class TourManager : MonoBehaviour
         }
 
         //start the next segment
-        updateNextSegementOn3DMap();
+        UpdateNextSegementOn3DMap();
+        UpdateUIElements();
+    }
+
+    private void UpdateUIElements(){
+        nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
+        nextBuildingImage.sprite = Resources.Load<Sprite>(this._path.GetCurrentPOI().BuildingImagePath);
+        nextBuildingName.SetText(this._path.GetCurrentPOI().BuildingName);
+
     }
 
     //called when starting the next segment to update the 3D map in the scenee
-    private void updateNextSegementOn3DMap()
+    private void UpdateNextSegementOn3DMap()
     {
         buildingHighlighter.SetBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
         destinationMarker.lat = this._path.GetCurrentPOI().Coordinates.Latitude;
         destinationMarker.lon = this._path.GetCurrentPOI().Coordinates.Longitude;
-        nextBuildingText.text = ("Next Stop - " + this._path.GetCurrentPOI().BuildingHighlight);
+        
         mapDirections.SetDirections(this._path.GetCurrentSegment().Waypoints);
     }
 
