@@ -14,14 +14,14 @@ using UnityEngine.XR.ARSubsystems;
 public class PathManager : MonoBehaviour
 {
     //Max distance user can be from waypoint for them to be visible
-    private const float MaxDistFromWayPointToDisplay = 5000.0f; //meters
+    private const float MaxDistFromWayPointToDisplay = 500.0f; //meters
 
     //Max distance user can be from the last waypoint for the system to register as
     //the user having reached the end of the segment
     private const float MaxDistFromEnd = 500.0f; //meters
 
     //minimum heading error before arrows will be placed
-    private const float MinHeadingAccuracy = 2.0f; //degrees 
+    private const float MinHeadingAccuracy = 4.0f; //degrees 
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
@@ -36,6 +36,9 @@ public class PathManager : MonoBehaviour
     //the prefab used for instantiating the waypoint arrows
     public GameObject arrowPrefab;
 
+    
+    public GameObject posCalMsg;
+
     //Two models used for debugging
     public GameObject userPosPrefab;
     private GameObject userPosInstance;
@@ -45,6 +48,8 @@ public class PathManager : MonoBehaviour
 
     //the Path that is currently being followed
     private Path currentPath;
+
+    private float time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -64,37 +69,70 @@ public class PathManager : MonoBehaviour
 
         //if we have a path
         if ((this.currentPath != null) && guidanceEnabled && (this.geospatialController.getEarthTrackingState() == TrackingState.Tracking) && (this.geospatialController.getCameraGeospatialPose().HeadingAccuracy <= MinHeadingAccuracy)) {
+            this.posCalMsg.SetActive(false);
             GPSCoords userPos = GPSSingleton.Instance.GetCurrentCoordinates();
-
             PathSegment currSegment = this.currentPath.GetCurrentSegment();
 
-            //check if current visible ends need to be added or removed
-            while (((currSegment.GetVisibleStart() == null) || (currSegment.GetLastWaypoint() != currSegment.GetVisibleStart())) 
-                        && (Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)) < MaxDistFromWayPointToDisplay)) {
-                //make the next waypoint visible
-                if (currSegment.IncrementVisibleStart()) {
-                    Waypoint next = currSegment.GetNextVisibleStart();
+            if(time > 0) {
+                time -= Time.deltaTime;
+ 
+                if(time < 0) time = 0;
+            }
+     
+            if(time <= 0){
+                //Do stuff here
+                time = 5;
+                Debug.Log("updating waypoints");
+
+                //place the waypoints
+                this.currentPath.ClearVisiblePath();
+                for (int i = 0; i < currSegment.Waypoints.Length; i++)
+                {
+                    // currSegment.IncrementVisibleStart();
+                    // Waypoint next = currSegment.Waypoints[i + 1];//currSegment.GetNextVisibleStart();
 
                     //point to POI if no more waypoints
                     GPSCoords pointTo;
-                    if (next == null) {
+                    if (i == currSegment.Waypoints.Length - 1) {//(next == null) {
                         pointTo = currentPath.GetCurrentPOI().Coordinates;
                     } else {
-                        pointTo = next.Coordinates;
+                        pointTo = currSegment.Waypoints[i + 1].Coordinates;//next.Coordinates;
                     }
                     
-                    placeWaypoint(currSegment.GetVisibleStart(), pointTo);
+                    placeWaypoint(currSegment.Waypoints[i], pointTo);//currSegment.GetVisibleStart(), pointTo);
                 }
             }
 
-            while ((currSegment.GetVisibleEnd() != null) && Math.Abs(userPos.GetDistance(currSegment.GetVisibleEnd().Coordinates)) > MaxDistFromWayPointToDisplay) {
-                //TODO: make the last waypoint NOT visible
-            }
+            
+
+            //check if current visible ends need to be added or removed
+            // while (((currSegment.GetVisibleStart() == null) || (currSegment.GetLastWaypoint() != currSegment.GetVisibleStart())) 
+            //             && (Math.Abs(userPos.GetDistance(currSegment.GetNextVisibleStart().Coordinates)) < MaxDistFromWayPointToDisplay)) {
+            //     //make the next waypoint visible
+            //     if (currSegment.IncrementVisibleStart()) {
+            //         Waypoint next = currSegment.GetNextVisibleStart();
+
+            //         //point to POI if no more waypoints
+            //         GPSCoords pointTo;
+            //         if (next == null) {
+            //             pointTo = currentPath.GetCurrentPOI().Coordinates;
+            //         } else {
+            //             pointTo = next.Coordinates;
+            //         }
+                    
+            //         placeWaypoint(currSegment.GetVisibleStart(), pointTo);
+            //     }
+            // }
+
+            // while ((currSegment.GetVisibleEnd() != null) && Math.Abs(userPos.GetDistance(currSegment.GetVisibleEnd().Coordinates)) > MaxDistFromWayPointToDisplay) {
+            //     //TODO: make the last waypoint NOT visible
+            // }
 
             //if we have access to knowing cloud anchors loads we might want to use that instead
             //check if in range of the end
-            if ((currSegment.GetVisibleStart() != null) && (currSegment.GetLastWaypoint() == currSegment.GetVisibleStart())
-                    && (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd)) {
+            // if ((currSegment.GetVisibleStart() != null) && (currSegment.GetLastWaypoint() == currSegment.GetVisibleStart())
+            //         && (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd)) {
+            if (Math.Abs(userPos.GetDistance(currSegment.GetLastWaypoint().Coordinates)) < MaxDistFromEnd) {
                 //trigger pathsegment end
                 Debug.Log("reached end");
                 guidanceEnabled = false;
@@ -104,19 +142,23 @@ public class PathManager : MonoBehaviour
                 this.pathSegmentFinished.Invoke();
             }
         }
+        else
+        {
+            this.posCalMsg.SetActive(true);
+        }
 
         //show current user pos for debugging
         //TODO: remove this when done
-        if (userPosPrefab != null) {
-            if (userPosInstance != null) {
-                Destroy(userPosInstance);
-            }
+        // if (userPosPrefab != null) {
+        //     if (userPosInstance != null) {
+        //         Destroy(userPosInstance);
+        //     }
 
-            Waypoint way = new Waypoint(GPSSingleton.Instance.GetCurrentCoordinates(), 0);
-            Vector3 waypointPos = getWaypointUnityPos(way.Coordinates);
+        //     Waypoint way = new Waypoint(GPSSingleton.Instance.GetCurrentCoordinates(), 0);
+        //     Vector3 waypointPos = getWaypointUnityPos(way.Coordinates);
 
-            userPosInstance = Instantiate(userPosPrefab, waypointPos, Quaternion.identity);
-        }
+        //     userPosInstance = Instantiate(userPosPrefab, waypointPos, Quaternion.identity);
+        // }
     }
 
     //called when the tour starts
@@ -166,8 +208,8 @@ public class PathManager : MonoBehaviour
 
     //get the waypoint position in the unity world from the waypoint GPS point
     private Vector3 getWaypointUnityPos(GPSCoords waypoint) {
-        GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
-        origin = new GPSCoords((float)this.geospatialController.getCameraGeospatialPose().Latitude, (float)this.geospatialController.getCameraGeospatialPose().Longitude);
+        // GPSCoords origin = GPSSingleton.Instance.GetUserOrigin();
+        GPSCoords origin = new GPSCoords((float)this.geospatialController.getCameraGeospatialPose().Latitude, (float)this.geospatialController.getCameraGeospatialPose().Longitude);
 
         double x = origin.GetDistance(new GPSCoords(origin.Latitude, waypoint.Longitude));
         double z = origin.GetDistance(new GPSCoords(waypoint.Latitude, origin.Longitude));
@@ -185,12 +227,12 @@ public class PathManager : MonoBehaviour
         // Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
 
         //vector3 = (x, y, z)
-        Vector3 dir = new Vector3((float)x, 0, (float)z);
+        Vector3 dir = new Vector3((float)x, 0, (float)z) + this.userCamera.transform.position;
         Vector3 heading;
         if (this.geospatialController.getEarthTrackingState() == TrackingState.Tracking)
         {
             Debug.Log("using the VPS headings"+(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y)+":"+this.geospatialController.getCameraGeospatialPose().Heading+":"+this.userCamera.transform.rotation.y+":"+this.geospatialController.getCameraGeospatialPose().HeadingAccuracy);
-            heading = new Vector3(0, -1*(float)(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y), 0);
+            heading = new Vector3(0, (float)(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y), 0);
         }
         else
         {
