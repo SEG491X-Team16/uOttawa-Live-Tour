@@ -51,6 +51,22 @@ public class PointOfInterest
         set => _dialogue = value;
     }
 
+    private string _buildingName;
+
+    public string BuildingName
+    {
+        get => _buildingName;
+        set => _buildingName = value;
+    }
+
+    private string _buildingImagePath;
+
+    public string BuildingImagePath
+    {
+        get => _buildingImagePath;
+        set => _buildingImagePath = value;
+    }
+
     // Start is called before the first frame update
     // void Start()
     // {

@@ -41,6 +41,8 @@ public class TourPathGenerator
 
         Dialogue dia1 = new Dialogue("Tabaret", dialogueInfo[Buildings.TBT], dialogAudio[Buildings.TBT]);
         PointOfInterest poi1 = new PointOfInterest("ua-bfb49c915c938cfc02d425bba471b290", "TBT", new GPSCoords(45.424553434090974f, -75.68598078289368f), dia1);
+        poi1.BuildingImagePath = "Images/tbt";
+        poi1.BuildingName = "Tabaret Hall";
 
         //segment 2: Simard
         Waypoint way2_1 = new Waypoint(new GPSCoords(45.42452298657076f, -75.68591748761722f), 1);
@@ -56,6 +58,8 @@ public class TourPathGenerator
 
         Dialogue dia2 = new Dialogue("Simard and Hamelin Halls", dialogueInfo[Buildings.SMD], dialogAudio[Buildings.SMD]);
         PointOfInterest poi2 = new PointOfInterest("ua-dd0c7a71ddd870cfde1b637a449f1a68", "SMD", new GPSCoords(45.42369764735622f, -75.68534683603103f), dia2);
+        poi2.BuildingImagePath = "Images/smd";
+        poi2.BuildingName = "Simard and Hamelin Hall";
 
         //segment 3: Perez
         Waypoint way3_1 = new Waypoint(new GPSCoords(45.42372449563585f, -75.68531406269784f), 1);
@@ -69,6 +73,8 @@ public class TourPathGenerator
 
         Dialogue dia3 = new Dialogue("Perez Hall", dialogueInfo[Buildings.PRZ], dialogAudio[Buildings.PRZ]);
         PointOfInterest poi3 = new PointOfInterest("ua-6a9eb96ae5a65bd61f6e49aff234cadd", "PRZ", new GPSCoords(45.423489072144754f, -75.68494405430351f), dia3);
+        poi3.BuildingImagePath = "Images/prz";
+        poi3.BuildingName = "Parez Hall";
 
         //segment 4: Morriset
         Waypoint way4_1 = new Waypoint(new GPSCoords(45.42346890997606f, -75.68494944118413f), 1);
@@ -83,6 +89,8 @@ public class TourPathGenerator
 
         Dialogue dia4 = new Dialogue("Morriset Library", dialogueInfo[Buildings.MRT], dialogAudio[Buildings.MRT]);
         PointOfInterest poi4 = new PointOfInterest("ua-ba0620616227078a8a68c50fdd714149", "MRT", new GPSCoords(45.423087393707114f, -75.68463110327154f), dia4);
+        poi4.BuildingImagePath = "Images/mrt";
+        poi4.BuildingName = "Morisset Library";
 
         //segment 5: 90U
         Waypoint way5_1 = new Waypoint(new GPSCoords(45.42305745362539f, -75.6847024492701f), 1);
@@ -97,6 +105,8 @@ public class TourPathGenerator
 
         Dialogue dia5 = new Dialogue("90 U", dialogueInfo[Buildings.Res90U], dialogAudio[Buildings.Res90U]);
         PointOfInterest poi5 = new PointOfInterest("ua-bd38a26e00f58f18c2697cfda7993b97", "90U", new GPSCoords(45.422619886354354f, -75.6845417557385f), dia5);
+        poi5.BuildingImagePath = "Images/90u";
+        poi5.BuildingName = "90 University Residence";
 
         //segment 6: UCU
         Waypoint way6_1 = new Waypoint(new GPSCoords(45.42263241815559f, -75.68447628799723f), 1);
@@ -109,6 +119,8 @@ public class TourPathGenerator
 
         Dialogue dia6 = new Dialogue("University Center (UCU)", dialogueInfo[Buildings.UCU], dialogAudio[Buildings.UCU]);
         PointOfInterest poi6 = new PointOfInterest("ua-61701ae599e1ac2fff38db6bbeb71691", "UCU", new GPSCoords(45.422452795327466f, -75.6841623404532f), dia6);
+        poi6.BuildingImagePath = "Images/ucu";
+        poi6.BuildingName = "University Center";
 
         //segment 7: FSS
         Waypoint way7_1 = new Waypoint(new GPSCoords(45.42243383251971f, -75.68419768445995f), 1);
@@ -124,6 +136,8 @@ public class TourPathGenerator
 
         Dialogue dia7 = new Dialogue("FSS", dialogueInfo[Buildings.FSS], dialogAudio[Buildings.FSS]);
         PointOfInterest poi7 = new PointOfInterest("ua-d39695084e8f1e7b07f2bf9cd70f870a", "FSS", new GPSCoords(45.42187282288526f, -75.68368270033561f), dia7);
+        poi7.BuildingImagePath = "Images/fss";
+        poi7.BuildingName = "Faculty of Social Sciences";
         
         //segment 8: LRT
         Waypoint way8_1 = new Waypoint(new GPSCoords(45.42194550463739f, -75.68359014472165f), 1);
@@ -145,7 +159,9 @@ public class TourPathGenerator
 
         Dialogue dia8 = new Dialogue("O-Train uOttawa Station", dialogueInfo[Buildings.OTrain], dialogAudio[Buildings.OTrain]);
         PointOfInterest poi8 = new PointOfInterest("ua-221c88f0ea0d0d4560aa795e313fb2df", "OTRAIN", new GPSCoords(45.42106239089179f, -75.68224828242504f), dia8);
-
+        poi8.BuildingImagePath = "Images/otrain";
+        poi8.BuildingName = "O-Train Station";
+        
         //segment 9: Biosciences
         Waypoint way9_1 = new Waypoint(new GPSCoords(45.42115414029608f, -75.68222182874727f), 1);
         Waypoint way9_2 = new Waypoint(new GPSCoords(45.42124104800955f, -75.68208203238204f), 2);
@@ -157,7 +173,9 @@ public class TourPathGenerator
 
         Dialogue dia9 = new Dialogue("Biosciences", dialogueInfo[Buildings.BSC], dialogAudio[Buildings.BSC]);
         PointOfInterest poi9 = new PointOfInterest("ua-152ac567954511a9b903e4d5fad2fb25", "BSC", new GPSCoords(45.42133094736899f, -75.68160565806315f), dia9);
-
+        poi9.BuildingImagePath = "Images/bsc";
+        poi9.BuildingName = "Biosciences Complex";
+        
         //segment 10: CRX
         Waypoint way10_1 = new Waypoint(new GPSCoords(45.42140138570245f, -75.6816020645416f), 1);
         Waypoint way10_2 = new Waypoint(new GPSCoords(45.421454111519f, -75.68159673928068f), 2);
@@ -170,7 +188,9 @@ public class TourPathGenerator
 
         Dialogue dia10 = new Dialogue("Learning Crossroads", dialogueInfo[Buildings.CRX], dialogAudio[Buildings.CRX]);
         PointOfInterest poi10 = new PointOfInterest("ua-ba948d19751c853afcb6aa76a7b806bf", "CRX", new GPSCoords(45.42173726045992f, -75.68131914364116f), dia10);
-
+        poi10.BuildingImagePath = "Images/crx";
+        poi10.BuildingName = "Learning Crossroads";
+        
         //segment 11: STEM
         Waypoint way11_1 = new Waypoint(new GPSCoords(45.421713957912495f, -75.68120056189126f), 1);
         Waypoint way11_2 = new Waypoint(new GPSCoords(45.42163865397028f, -75.6810610870254f), 2);
@@ -187,7 +207,9 @@ public class TourPathGenerator
 
         Dialogue dia11 = new Dialogue("STEM", dialogueInfo[Buildings.STEM], dialogAudio[Buildings.STEM]);
         PointOfInterest poi11 = new PointOfInterest("ua-3a202a65407286a8ba810dfa8a5ef26a", "STM", new GPSCoords(45.420556148692285f, -75.68057560720175f), dia11);
-
+        poi11.BuildingImagePath = "Images/stm";
+        poi11.BuildingName = "STEM Complex";
+        
         //segment 12: CBY
         Waypoint way12_1 = new Waypoint(new GPSCoords(45.42063898460803f, -75.68054073846669f), 1);
         Waypoint way12_2 = new Waypoint(new GPSCoords(45.4208008908263f, -75.68050855195919f), 2);
@@ -205,7 +227,9 @@ public class TourPathGenerator
 
         Dialogue dia12 = new Dialogue("Colonel By Hall", dialogueInfo[Buildings.CBY], dialogAudio[Buildings.CBY]);
         PointOfInterest poi12 = new PointOfInterest("ua-97a668f0e931c8d931c56bc3c9721f5a", "CBY", new GPSCoords(45.41996688056417f, -75.67955100334834f), dia12);
-
+        poi12.BuildingImagePath = "Images/cby";
+        poi12.BuildingName = "Colonel By Hall";
+        
         //segment 13: SITE
         Waypoint way13_1 = new Waypoint(new GPSCoords(45.41998565408678f, -75.67951008034f), 1);
         Waypoint way13_2 = new Waypoint(new GPSCoords(45.419974358156075f, -75.67935719442936f), 2);
@@ -218,7 +242,9 @@ public class TourPathGenerator
 
         Dialogue dia13 = new Dialogue("SITE", dialogueInfo[Buildings.SITE], dialogAudio[Buildings.SITE]);
         PointOfInterest poi13 = new PointOfInterest("ua-af8105afd4e84870f91fcf42fbf6330a", "STE", new GPSCoords(45.41976350036815f, -75.67887707902575f), dia13);
-
+        poi13.BuildingImagePath = "Images/ste";
+        poi13.BuildingName = "SITE";
+        
         //assemble path
         PathSegment[] segments = { seg1, seg2, seg3, seg4, seg5, seg6, seg7, seg8, seg9, seg10, seg11, seg12, seg13 };
         PointOfInterest[] pois = { poi1, poi2, poi3, poi4, poi5, poi6, poi7, poi8, poi9, poi10, poi11, poi12, poi13 };
