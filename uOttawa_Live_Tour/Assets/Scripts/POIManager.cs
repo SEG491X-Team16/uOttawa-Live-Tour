@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -53,6 +56,9 @@ public class POIManager : MonoBehaviour
     void Start()
     {
         _timeSinceStart = 0.0f;
+        #if UNITY_IOS
+        StartCoroutine(SetARCoreAuthToken(30000.0f));
+        #endif
     }
 
     // Update is called once per frame
@@ -222,5 +228,29 @@ public class POIManager : MonoBehaviour
 
         _pendingCloudAnchors.RemoveAll(
             x => x.cloudAnchorState != CloudAnchorState.TaskInProgress);
+    }
+
+    /// <summary>
+    /// Periodically obtain and set a new ARCore authorization token     
+    /// </summary>
+    IEnumerator SetARCoreAuthToken(float waitTime)
+    {
+        while (true) 
+        {
+            UnityWebRequest www = UnityWebRequest.Get("https://us-central1-uottawa-live-tour.cloudfunctions.net/getAuthToken");
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success) 
+            {
+                Debug.Log(www.error);
+            }
+            else 
+            {
+                String jwt = www.downloadHandler.text;
+                anchorManager.SetAuthToken(jwt);
+            }
+
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 }

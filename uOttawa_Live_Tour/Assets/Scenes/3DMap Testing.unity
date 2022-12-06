@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5f112bb6431185c4cb7f3ee5e99a47c3, type: 2}
+    - target: {fileID: -6140685187600494280, guid: f1c47edb7b0be454c836af80c775a5c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa121da7c5c154448bbc39ae6fdd2e61, type: 2}
     - target: {fileID: 919132149155446097, guid: f1c47edb7b0be454c836af80c775a5c6, type: 3}
       propertyPath: m_Name
       value: uOttawaMap
@@ -774,7 +778,7 @@ Transform:
   m_LocalScale: {x: 0.20000002, y: 0.20000002, z: 0.20000002}
   m_Children: []
   m_Father: {fileID: 857391943}
-  m_RootOrder: 67
+  m_RootOrder: 68
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2033514592
 MonoBehaviour:
