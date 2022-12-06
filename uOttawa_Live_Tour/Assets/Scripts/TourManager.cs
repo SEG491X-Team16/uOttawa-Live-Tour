@@ -111,6 +111,10 @@ public class TourManager : MonoBehaviour
         poiManager.RemovePOI(this._path.GetCurrentPOI());
         buildingHighlighter.ClearBuildingHighlight(this._path.GetCurrentPOI().BuildingHighlight);
 
+        if (this._path.GetCurrentPOI().BuildingHighlight == "OTRAIN") {
+            sceneSwitch.loadEnding();
+        }
+
         //if we've reached the end of the tour, go back to the main menu
         if (!pathManager.StartNextPathSegment()) {
             sceneSwitch.loadEnding();

@@ -898,6 +898,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8572451710664075835, guid: 66dacdfe5d85654479c8db7b2913b6a5, type: 3}
+      propertyPath: outlineWidth
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8806259899885378592, guid: 66dacdfe5d85654479c8db7b2913b6a5, type: 3}
       propertyPath: m_Name
       value: geegee

@@ -16,7 +16,7 @@ public class PathManager : MonoBehaviour
 
     //Max distance user can be from the last waypoint for the system to register as
     //the user having reached the end of the segment
-    private const float MaxDistFromEnd = 50.0f; //meters
+    private const float MaxDistFromEnd = 30.0f; //meters
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
