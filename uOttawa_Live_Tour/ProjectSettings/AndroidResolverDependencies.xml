@@ -1,7 +1,6 @@
 <dependencies>
   <packages>
     <package>com.google.android.gms:play-services-auth-base:16+</package>
-    <package>com.google.android.gms:play-services-location:16+</package>
   </packages>
   <files>
     <file>Assets/Plugins/Android/android.arch.core.common-1.0.0.jar</file>
@@ -17,8 +16,6 @@
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-auth-base-16.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-base-16.0.1.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-basement-16.0.1.aar</file>
-    <file>Assets/Plugins/Android/com.google.android.gms.play-services-location-16.0.0.aar</file>
-    <file>Assets/Plugins/Android/com.google.android.gms.play-services-places-placereport-16.0.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-tasks-16.0.1.aar</file>
   </files>
   <settings>

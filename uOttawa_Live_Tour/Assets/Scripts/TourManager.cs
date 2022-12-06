@@ -61,6 +61,7 @@ public class TourManager : MonoBehaviour
         else
         {
             this._path = TourPathGenerator.GetEnglishPath();
+            // this._path = getAppartmentPath();
         }
         pathManager.SetCurrentPath(this._path);
 
@@ -163,6 +164,53 @@ public class TourManager : MonoBehaviour
         PointOfInterest[] pois = {poi1};
 
         path.SetSegmentsAndPOIs(segments, pois);
+
+        return path;
+    }
+
+    private Path getAppartmentPath() {
+        //TODO: get the path from the database
+
+        Path path = new Path();
+        
+        //sgement 1
+        Waypoint way1 = new Waypoint(new GPSCoords(45.42508482415584f, -75.6792733837361f), 1);
+        Waypoint way2 = new Waypoint(new GPSCoords(45.42510082527518f, -75.67928075981074f), 2);
+        Waypoint way3 = new Waypoint(new GPSCoords(45.42513423936271f, -75.67930288803466f), 3);
+
+        Waypoint[] ways1 = new Waypoint[] {way1, way2, way3 };
+        PathSegment seg1 = new PathSegment(ways1);
+
+        //segment 2
+        Waypoint way4 = new Waypoint(new GPSCoords(45.054439f, -75.639727f), 4);
+        Waypoint way5 = new Waypoint(new GPSCoords(45.054436f, -75.639698f), 5);
+
+        Waypoint[] ways2 = new Waypoint[] {way4, way5};
+        PathSegment seg2 = new PathSegment(ways2);
+
+        PathSegment[] segments = new PathSegment[] {seg1, seg2};
+
+        //POIs
+        GPSCoords arcPos = new GPSCoords(45.420713f, -75.678542f);
+        GPSCoords crxPos = new GPSCoords(45.421709f, -75.681234f);
+
+        Dialogue dia1 = new Dialogue();
+        dia1.buildingName = "Tabaret Sign";
+        dia1.informations = new string[] {"Welcome to the uOttawa Live Tour!", "This is Tabaret, the first building ever built on campus. It's also on the uOttawa logo."};
+
+        Dialogue dia2 = new Dialogue();
+        dia2.buildingName = "She Dances with the Earth, Water and Sky";
+        dia2.informations = new string[] {"She Dances with the Earth, Water and Sky: This piece of artwork recognizes, and is dedicated to, the relationship between the University of Ottawa and the Omamìwìnini Anishinàbeg as well as all Indigenous people in the National Capital Region."};
+
+
+        PointOfInterest pOI1 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "ARC", arcPos, dia1);
+        PointOfInterest pOI2 = new PointOfInterest("ua-3466088c3f3206288d98e66062cf15c5", "CRX", crxPos, dia2);
+
+        PointOfInterest[] pois = new PointOfInterest[] {pOI1, pOI2};
+
+        path.SetSegmentsAndPOIs(segments, pois);
+
+        Debug.Log("path created");
 
         return path;
     }

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using System;
 using Google.XR.ARCoreExtensions;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 /**
  * This manager handles the placement of waypoints and any other specifics of following the path.
@@ -21,7 +22,7 @@ public class PathManager : MonoBehaviour
     private const float MaxDistFromEnd = 50.0f; //meters
 
     //minimum heading error before arrows will be placed
-    private const float MinHeadingAccuracy = 4.0f; //degrees 
+    private const float MinHeadingAccuracy = 5.0f; //degrees 
 
     //invoked when navigation of a path segment is finished
     //all callbacks for this event are attached via the GUI
@@ -42,6 +43,8 @@ public class PathManager : MonoBehaviour
     //Two models used for debugging
     public GameObject userPosPrefab;
     private GameObject userPosInstance;
+
+    public TextMeshProUGUI heading;
 
     //flag that is true if the pathManager should display waypoints
     private bool guidanceEnabled = false;
@@ -66,7 +69,8 @@ public class PathManager : MonoBehaviour
         }
 
         Debug.Log("heading accuracy: "+this.geospatialController.getCameraGeospatialPose().HeadingAccuracy+":"+this.geospatialController.getCameraGeospatialPose().Heading);
-
+        Debug.Log((this.currentPath != null) +":"+ guidanceEnabled+":"+ (this.geospatialController.getEarthTrackingState() == TrackingState.Tracking) +":"+ (this.geospatialController.getCameraGeospatialPose().HeadingAccuracy <= MinHeadingAccuracy));
+        heading.text = "heading:"+(-1 *(float)(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y))+":"+(this.geospatialController.getCameraGeospatialPose().HeadingAccuracy)+":"+(this.geospatialController.getCameraGeospatialPose().Heading);
         //if we have a path
         if ((this.currentPath != null) && guidanceEnabled && (this.geospatialController.getEarthTrackingState() == TrackingState.Tracking) && (this.geospatialController.getCameraGeospatialPose().HeadingAccuracy <= MinHeadingAccuracy)) {
             this.posCalMsg.SetActive(false);
@@ -81,7 +85,7 @@ public class PathManager : MonoBehaviour
      
             if(time <= 0){
                 //Do stuff here
-                time = 5;
+                time = 3;
                 Debug.Log("updating waypoints");
 
                 //place the waypoints
@@ -227,12 +231,12 @@ public class PathManager : MonoBehaviour
         // Debug.Log("heading: "+ GPSSingleton.Instance.GetUserOriginHeading());
 
         //vector3 = (x, y, z)
-        Vector3 dir = new Vector3((float)x, 0, (float)z) + this.userCamera.transform.position;
+        Vector3 dir = new Vector3((float)x, 0, (float)z);// + this.userCamera.transform.position;
         Vector3 heading;
         if (this.geospatialController.getEarthTrackingState() == TrackingState.Tracking)
         {
             Debug.Log("using the VPS headings"+(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y)+":"+this.geospatialController.getCameraGeospatialPose().Heading+":"+this.userCamera.transform.rotation.y+":"+this.geospatialController.getCameraGeospatialPose().HeadingAccuracy);
-            heading = new Vector3(0, (float)(this.geospatialController.getCameraGeospatialPose().Heading - this.userCamera.transform.rotation.y), 0);
+            heading = new Vector3(0, (float)(this.userCamera.transform.rotation.y - this.geospatialController.getCameraGeospatialPose().Heading), 0);
         }
         else
         {
@@ -241,7 +245,7 @@ public class PathManager : MonoBehaviour
         }
         dir = Quaternion.Euler(heading) * dir;
 
-        return dir;
+        return (dir + this.userCamera.transform.position);
     }
 
     private void removeWaypoint(Waypoint waypoint) {
