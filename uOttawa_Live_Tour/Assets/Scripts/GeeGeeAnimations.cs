@@ -85,7 +85,7 @@ public class GeeGeeAnimations : MonoBehaviour
 
     IEnumerator Finish(){
         animator.SetInteger("Action", 1);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         sceneSwitch.loadMainMenu();
 
     }

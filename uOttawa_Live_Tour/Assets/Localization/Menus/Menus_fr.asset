@@ -51,7 +51,107 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14661659989610496
-    m_Localized: Prochaine
+    m_Localized: Suivant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99057659952029696
+    m_Localized: Utilisez votre cellulaire pour naviguer dans le tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99077891152207872
+    m_Localized: "Regardez autour pour voir les fl\xE8ches qui vous guideront vers
+      votre destination"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99078699419754496
+    m_Localized: Adjustez votre cellulaire vers le bas pour voir une carte du campus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079145345572864
+    m_Localized: "Utilisez deux doigts pour pincer et tournez pour changer la taille
+      et l'angle de la carte\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079964417646592
+    m_Localized: Tenez votre cellulaire vers le haut lorsque vous approchez votre
+      destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084141629857792
+    m_Localized: Tutoriel de Visite en Direct uOttawa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084887792345088
+    m_Localized: "Pr\xE9c\xE9dent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99085240319401984
+    m_Localized: Terminer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99087717458567168
+    m_Localized: "Rendez-vous au point de d\xE9part pour commencer la visite !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088122590584832
+    m_Localized: "Vous ne semblez pas \xEAtre sur le campus de uOttawa.\n\nRendez-vous
+      sur le campus de uOttawa pour commencer la visite\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088645490270208
+    m_Localized: "Oops! Il semble que vos autorisations de localisation soient d\xE9sactiv\xE9es.
+      Veuillez appuyer sur le bouton ci-dessous pour autoriser la localisation.\n\n(Vos
+      donn\xE9es de localisation ne sont pas stock\xE9es et ne sont utilis\xE9es
+      qu'\xE0 des fins de positionnement)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99120768204988416
+    m_Localized: "Il semble que vos services de localisation soient d\xE9sactiv\xE9s.
+      Veuillez activer vos services de localisation dans le menu des param\xE8tres
+      de votre appareil."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121514279395328
+    m_Localized: Autoriser la Localisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121489277149184
+    m_Localized: Activer la Localisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99128910963859456
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129479786979328
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir quitter la visite et retoruner au
+      menu principal\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129628101763072
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129664957112320
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99131262076772352
+    m_Localized: "Distance vers le d\xE9part\_: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148472274968576
+    m_Localized: Finir la Visite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148403396108288
+    m_Localized: "Nous esp\xE9rons que vous avez aim\xE9 la Visite en Directe uOttawa\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99161703949328384
+    m_Localized: "Si aucune \xE9pingle n'appara\xEEt, vous \xEAtes peut-\xEAtre quand
+      m\xEAme au bon endroit. De mauvaises conditions climatiques ou lumineuses peuvent
+      affecter l'emplacement, essayez donc d'utiliser le bouton \"Sauter\" si n\xE9cessaire."
     m_Metadata:
       m_Items: []
   references:

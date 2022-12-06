@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 
 public class StartDirections : MonoBehaviour
@@ -87,7 +88,12 @@ public class StartDirections : MonoBehaviour
                 map.SetActive(true);
 
                 distance = CalculateDistance(playerLat, playerLon, startLat, startLon);
-                locationText.SetText(" Distance to Start: " + Mathf.Round(distance) + "m");
+
+                string distanceStartText = " Distance to Start: ";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                    distanceStartText = "Distance vers le départ : ";
+                } 
+                locationText.SetText(distanceStartText + Mathf.Round(distance) + "m");
 
                 if(distance <= minDistance){
                     //display success, move to next scene

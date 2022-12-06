@@ -51,6 +51,94 @@ MonoBehaviour:
     m_Key: next_btn
     m_Metadata:
       m_Items: []
+  - m_Id: 99057659952029696
+    m_Key: tut_phone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99077891152207872
+    m_Key: tut_arrows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99078699419754496
+    m_Key: tut_map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079145345572864
+    m_Key: tut_map_controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079964417646592
+    m_Key: tut_destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084141629857792
+    m_Key: tut_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084887792345088
+    m_Key: prev_btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99085240319401984
+    m_Key: finish_btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99087717458567168
+    m_Key: directions_instructions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088122590584832
+    m_Key: not_on_campus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088645490270208
+    m_Key: allow_gps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99120768204988416
+    m_Key: enable_gps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121489277149184
+    m_Key: enable_gps_btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121514279395328
+    m_Key: allow_gps_btn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99128910963859456
+    m_Key: continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129479786979328
+    m_Key: exit_popup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129628101763072
+    m_Key: cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129664957112320
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99131262076772352
+    m_Key: distance_to_start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148403396108288
+    m_Key: ending_screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148472274968576
+    m_Key: finish_tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99161703949328384
+    m_Key: tut_skip
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.Events;
+using UnityEngine.Localization.Settings;
 
 
 /**
@@ -35,7 +36,11 @@ public class DialogueManager : MonoBehaviour
         if (source.isPlaying){
             playButtonText.text = "Pause II";
         } else {
-            playButtonText.text = "Play ►";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                playButtonText.text = "Jouer ►";
+            } else{
+                playButtonText.text = "Play ►";
+            }
         }
     }
     public void StartDialogue (Dialogue dialogue) {
@@ -48,7 +53,11 @@ public class DialogueManager : MonoBehaviour
         audioClips = dialogue.audioClips;
         dialogueInformation = dialogue.informations;
         currentIndex = -1;
-        nextButtonText.text = "Next";
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                nextButtonText.text = "Suivant";
+         } else{
+            nextButtonText.text = "Next";
+        }
 
         // foreach (Sprite s in dialogue.image.sprite)
         // {
@@ -66,7 +75,11 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         if (currentIndex == dialogueInformation.Length -1){
-            nextButtonText.text = "Finish";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                nextButtonText.text = "Finir";
+            } else{
+                nextButtonText.text = "Finish";
+            }
         }
 
         StopAllCoroutines();
@@ -78,7 +91,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayPrevious(){
         if (currentIndex == dialogueInformation.Length -1){
-            nextButtonText.text = "Next";
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.GetLocale("fr")){
+                nextButtonText.text = "Suivant";
+            } else{
+                nextButtonText.text = "Next";
+            }
         }
         if (currentIndex > 0){
             source.Stop();
