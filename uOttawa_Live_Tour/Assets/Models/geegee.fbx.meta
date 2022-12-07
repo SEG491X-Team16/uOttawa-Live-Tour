@@ -39,6 +39,39 @@ ModelImporter:
   - first:
       74: 5404347575020875500
     second: Armature|Wave
+  - first:
+      74: -3691491773429736804
+    second: Armature|Behold Idle
+  - first:
+      74: -2089545391239595658
+    second: Armature|Behold Return
+  - first:
+      74: -7713351835730703180
+    second: Armature|Congrats
+  - first:
+      74: -7272873089196006818
+    second: Armature|Congrats Loop
+  - first:
+      74: 4548185918892896596
+    second: Armature|Congrats Return
+  - first:
+      74: 6340322657777001231
+    second: Armature|Gunshow Idle
+  - first:
+      74: 372644760804024150
+    second: Armature|Gunshow Return
+  - first:
+      74: -7597170403010352066
+    second: Armature|Hmmm Idle
+  - first:
+      74: -1488234876652050953
+    second: Armature|Hmmm Return
+  - first:
+      74: -534995735709852976
+    second: Armature|Talk Return
+  - first:
+      74: -8872200000013064226
+    second: Armature|Talking
   externalObjects: {}
   materials:
     materialImportMode: 2
