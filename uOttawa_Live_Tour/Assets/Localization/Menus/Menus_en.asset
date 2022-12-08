@@ -54,5 +54,102 @@ MonoBehaviour:
     m_Localized: Next
     m_Metadata:
       m_Items: []
+  - m_Id: 99057659952029696
+    m_Localized: Use your phone to navigate the through the tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99077891152207872
+    m_Localized: Look around to see arrows that will guide you to your destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99078699419754496
+    m_Localized: Point your phone downwards to see a map of the campus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079145345572864
+    m_Localized: 'Use two fingers to pinch and twist to scale and rotate the map!
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99079964417646592
+    m_Localized: Hold your phone upwards as you approach your destination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084141629857792
+    m_Localized: uOttawa Live Tour Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99084887792345088
+    m_Localized: Previous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99085240319401984
+    m_Localized: Finish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99087717458567168
+    m_Localized: Head over to the starting point to get started with the tour!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088122590584832
+    m_Localized: "It doesn't look like you're at the uOttawa campus. \n\nHead over
+      to the uOttawa campus to start the tour!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99088645490270208
+    m_Localized: "Oops! Looks like you have your location permissions disabled. Please
+      press the button below to allow location permissions. \n\n(Your location data
+      is not stored and is only used for positioning purposes)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99120768204988416
+    m_Localized: Sorry, it appears that your location services are disabled. Please
+      enable your location services in your device's settings menu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121489277149184
+    m_Localized: Enable Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99121514279395328
+    m_Localized: Allow Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99128910963859456
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129479786979328
+    m_Localized: Are you sure you would like to exit the tour and return to the main
+      menu?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129628101763072
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99129664957112320
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99131262076772352
+    m_Localized: ' Distance to Start: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148472274968576
+    m_Localized: Finish Tour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99148403396108288
+    m_Localized: We hope you enjoyed uOttawa Live Tour!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99161703949328384
+    m_Localized: If no pin appears, you may still be in the right place. Poor weather
+      or lighting conditions can affect rendering, so try using the 'Skip' button
+      if needed
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400.00003, y: 822.2222}
-  m_SizeDelta: {x: 800, y: 1644.4445}
+  m_AnchoredPosition: {x: 413.5039, y: 1024.7795}
+  m_SizeDelta: {x: 827.0078, y: 2049.559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &99519061
 Animator:
@@ -401,9 +401,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 770518197}
-        m_TargetAssemblyTypeName: SceneSwitch, ScriptsAssempblyDefinition
-        m_MethodName: loadTour
+      - m_Target: {fileID: 1042940932}
+        m_TargetAssemblyTypeName: TourStartSelector, ScriptsAssempblyDefinition
+        m_MethodName: FrenchTourSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 1042940931}
   - component: {fileID: 1042940930}
   - component: {fileID: 1042940929}
+  - component: {fileID: 1042940932}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1043,6 +1044,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1042940932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042940928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2ade0ee34e5af4fb57a27351a08c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneSwitch: {fileID: 770518197}
 --- !u!1 &1061239708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,9 +1274,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 770518197}
-        m_TargetAssemblyTypeName: SceneSwitch, ScriptsAssempblyDefinition
-        m_MethodName: loadTour
+      - m_Target: {fileID: 1042940932}
+        m_TargetAssemblyTypeName: TourStartSelector, ScriptsAssempblyDefinition
+        m_MethodName: EnglishTourSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
